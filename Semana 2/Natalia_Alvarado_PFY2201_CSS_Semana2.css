@@ -371,6 +371,9 @@ header p {
 
     font-size: 1.05rem;
     line-height: 1.8;
+
+    font-weight: 400;
+    letter-spacing: 0.2px;
 }
 
 

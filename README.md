@@ -1,101 +1,82 @@
+<div align="center">
+
+<img src="Semana%204/logo_natgamez.png" alt="Logo de NatGamez" width="220">
+
 🎮 NatGamez
 
-Proyecto académico desarrollado para la asignatura Desarrollo Frontend I (PFY2201).
+Desarrollo Frontend I · PFY2201 · Semana 4
 
-Estudiante: Natalia Alvarado
-Carrera: Analista Programador Computacional
-Semana actual: Semana 4
-Tecnología principal de esta entrega: Bootstrap 5
+Proyecto académico de tienda gamer ficticia desarrollado con HTML5, CSS3, JavaScript y Bootstrap 5, manteniendo una identidad visual propia y responsive.
 
-📌 Descripción
 
-NatGamez es una tienda ficticia de videojuegos desarrollada progresivamente durante el curso de Desarrollo Frontend I.
 
-La versión correspondiente a la Semana 4 conserva la identidad visual construida en las semanas anteriores e integra Bootstrap 5 para mejorar la estructura responsive, la navegación, la organización del catálogo y la interacción del sitio.
 
-El proyecto mantiene una estética propia basada en tonos oscuros con detalles en morado, azul y verde, efectos RGB, tarjetas de productos, secciones de colección y componentes interactivos adaptados a distintos tamaños de pantalla.
 
-🌐 Sitio publicado
+</div>
 
-GitHub Pages:
+✨ Sobre el proyecto
+
+NatGamez es una tienda ficticia de videojuegos construida progresivamente durante la asignatura Desarrollo Frontend I (PFY2201).
+
+En la Semana 4 el proyecto integra Bootstrap 5 para reforzar la navegación responsive, la distribución mediante Grid, las Cards y los componentes interactivos, sin perder la estética original desarrollada en semanas anteriores.
+
+La idea central fue usar Bootstrap como soporte estructural y funcional, no como reemplazo del diseño visual propio de NatGamez.
+
+🚀 Demo
+
+🌐 GitHub Pages
+
 https://ladyred145.github.io/NatGamez/
 
-Repositorio:
+📁 Repositorio
+
 https://github.com/LadyRed145/NatGamez
 
-🧩 Funcionalidades implementadas en Semana 4
+🧩 Funcionalidades principales
 
-Navbar responsive con Bootstrap
+Componente
 
-La navegación principal fue integrada con Bootstrap manteniendo el diseño original de NatGamez.
+Implementación
 
-Incluye:
+Navbar Bootstrap
 
-Navbar responsive.
+Responsive, colapsable y con botón hamburguesa
 
-Menú expandido en escritorio.
+Grid Bootstrap
 
-Botón hamburguesa en resoluciones menores a 992 px.
+3 columnas desktop · 2 tablet · 1 móvil
 
-Componente collapse de Bootstrap.
+Cards Bootstrap
 
-Navegación accesible mediante teclado.
+9 videojuegos con información ampliada
 
-Atributos aria-* asociados a los controles.
+Modal Bootstrap
 
-Breakpoint verificado:
+Detalles dinámicos según el juego seleccionado
 
-991 px → menú colapsado.
+Carousel Bootstrap
 
-992 px → menú expandido.
+Rotación automática cada 3 segundos
 
-Grid responsive
+Controles del Carousel
 
-El catálogo utiliza el sistema Grid de Bootstrap para adaptar automáticamente la distribución de videojuegos según el tamaño de pantalla.
+Flechas, indicadores, contador y pausa/reproducción
 
-Distribución implementada:
+Diseño responsive
 
-Escritorio: 3 tarjetas por fila.
+Adaptado a desktop, tablet y móvil
 
-Tablet: 2 tarjetas por fila.
+Accesibilidad
 
-Móvil: 1 tarjeta por fila.
+alt, aria-*, foco visible, navegación por teclado
 
-Clases Bootstrap principales utilizadas:
+GitHub Pages
 
-container
-row
-col-12
-col-md-6
-col-lg-4
+Sitio publicado y operativo
 
-Cards de videojuegos
+🎮 Catálogo
 
-El catálogo contiene 9 videojuegos organizados mediante Cards Bootstrap.
-
-Cada tarjeta incluye:
-
-Imagen del videojuego.
-
-Categoría o género.
-
-Nombre.
-
-Descripción.
-
-Plataformas disponibles.
-
-Valoración.
-
-Modalidad de juego.
-
-Estado de disponibilidad.
-
-Precio.
-
-Botón Ver detalles.
-
-Entre los títulos presentes se encuentran:
+La versión actual incluye 9 videojuegos:
 
 God of War Ragnarök
 
@@ -115,57 +96,29 @@ Tiny Tina's Wonderlands
 
 Mortal Kombat 1: Definitive Edition
 
-Modal de detalles
+Cada Card incorpora:
 
-Cada videojuego puede abrir una ficha ampliada utilizando un Modal Bootstrap.
+género;
 
-El modal muestra dinámicamente:
+plataformas;
 
-Imagen.
+valoración;
 
-Nombre del juego.
+modalidad;
 
-Género.
+disponibilidad;
 
-Descripción ampliada.
+precio;
 
-Plataformas.
+botón Ver detalles;
 
-Modalidad.
+Modal Bootstrap con información ampliada.
 
-Valoración.
+💎 Collector's Vault
 
-Estado.
-
-Precio.
-
-La información cambia según la tarjeta seleccionada.
-
-Collector's Vault
-
-La sección Collector's Vault presenta ediciones especiales mediante un Carousel Bootstrap.
+Sección dedicada a ediciones especiales y productos de colección.
 
 Incluye:
-
-3 ediciones de colección.
-
-Cambio automático cada 3 segundos.
-
-Navegación anterior y siguiente.
-
-Indicadores.
-
-Swipe táctil en dispositivos compatibles.
-
-Contador de diapositivas.
-
-Botón Pausar / Reproducir.
-
-Diseño responsive.
-
-Controles accesibles.
-
-Ediciones incluidas:
 
 Elden Ring Collector's Edition
 
@@ -173,11 +126,25 @@ Cyberpunk 2077 5th Anniversary Collector's Set
 
 The Witcher 3 Collector's Edition
 
-Figuras premium
+El Carousel cuenta con:
 
-El catálogo incorpora además una sección destinada a figuras de colección.
+cambio automático cada 3000 ms;
 
-Actualmente incluye:
+navegación anterior/siguiente;
+
+indicadores;
+
+contador 01 / 03;
+
+botón Pausar / Reproducir;
+
+soporte táctil;
+
+diseño responsive.
+
+🏆 Figuras Premium
+
+La sección de colección incluye:
 
 Kratos · Estatua Premium
 
@@ -185,91 +152,83 @@ Malenia · Blade of Miquella
 
 Geralt & Roach · Deluxe Statue
 
-Esta sección mantiene el mismo lenguaje visual del resto de NatGamez y se adapta al diseño responsive del sitio.
+📱 Diseño responsive
+
+El proyecto fue probado en múltiples tamaños de pantalla.
+
+Resolución
+
+Comportamiento
+
+Desktop
+
+Navbar expandida · Grid de 3 columnas
+
+Tablet
+
+Navbar colapsable · Grid de 2 columnas
+
+Móvil
+
+Menú hamburguesa · Grid de 1 columna
+
+991 px
+
+Navbar colapsada
+
+992 px
+
+Navbar expandida
 
 ♿ Accesibilidad
 
-Durante la Semana 4 se reforzaron distintos aspectos de accesibilidad.
+Se incorporaron mejoras de accesibilidad y navegación:
 
-Se implementaron:
+lang="es";
 
-Atributo lang="es".
+textos alternativos alt;
 
-Textos alternativos alt en imágenes.
+atributos aria-label;
 
-Etiquetas aria-label.
+aria-controls, aria-labelledby y aria-describedby;
 
-Relaciones aria-controls, aria-labelledby y aria-describedby.
+enlace Saltar al contenido principal;
 
-Enlace Saltar al contenido principal.
+foco visible para teclado;
 
-Foco visible para navegación mediante teclado.
+soporte de prefers-reduced-motion;
 
-Soporte para prefers-reduced-motion.
+controles accesibles en Navbar, Modal y Carousel;
 
-Controles accesibles en Navbar, Carousel y Modal.
-
-Botón para detener el movimiento automático del Carousel.
-
-📱 Diseño responsive
-
-El sitio fue probado en distintas resoluciones utilizando las herramientas de desarrollo del navegador.
-
-Se verificó el comportamiento en:
-
-Escritorio.
-
-Tablet.
-
-Móvil.
-
-Breakpoints cercanos a los 992 px.
-
-También se comprobó:
-
-Ausencia de desbordamiento horizontal.
-
-Correcta reorganización del Grid.
-
-Adaptación de Cards.
-
-Funcionamiento del Navbar colapsable.
-
-Adaptación del Carousel.
-
-Funcionamiento del Modal en distintos tamaños.
+posibilidad de detener el contenido automático.
 
 🧪 Pruebas realizadas
 
-Durante la revisión técnica se comprobó:
+Se verificó:
 
-Carga correcta de Bootstrap CSS.
+carga correcta de Bootstrap CSS;
 
-Carga correcta de Bootstrap Bundle JS.
+carga correcta de Bootstrap Bundle JS;
 
-Navbar responsive funcional.
+apertura y cierre de Navbar;
 
-Apertura y cierre del menú hamburguesa.
+comportamiento exacto en 991/992 px;
 
-Grid responsive.
+Grid desktop/tablet/móvil;
 
-Cards Bootstrap.
+Cards y Modals;
 
-Apertura y cierre del Modal.
+Carousel automático;
 
-Cambio dinámico de contenido del Modal.
+navegación manual del Carousel;
 
-Carousel automático.
+pausa y reproducción;
 
-Navegación manual del Carousel.
+navegación mediante teclado;
 
-Pausa y reproducción del Carousel.
+ausencia de errores propios en consola;
 
-Navegación mediante teclado.
-
-Consola del navegador sin errores propios del proyecto.
-
-Correcto funcionamiento desde GitHub Pages.
+funcionamiento publicado mediante GitHub Pages.
 
 🗂️ Estructura del repositorio
 
@@ -279,115 +238,72 @@ NatGamez/
 ├── Semana 3/
 ├── Semana 4/
 │   ├── capturas/
+│   │   └── Documentación_Capturas.pdf
 │   ├── Exp1_S4_Natalia_Alvarado.html
 │   ├── catalogo.html
 │   ├── Natalia_Alvarado_PFY2201_CSS_Semana4.css
 │   └── logo_natgamez.png
-│
 ├── index.html
 └── README.md
 
+🛠️ Tecnologías
+
+<div align="center">
+
+
+
+
+
+
+
+
+</div>
+
 📸 Evidencias
 
-La documentación de la Semana 4 incluye evidencias de:
+La documentación de Semana 4 incluye evidencias de:
 
-Inicio en escritorio.
+Inicio desktop
 
-Navbar en escritorio.
+Navbar desktop
 
-Navbar móvil cerrada.
+Navbar móvil cerrada
 
-Navbar móvil abierta.
+Navbar móvil abierta
 
-Grid desktop.
+Grid desktop
 
-Grid tablet.
+Grid tablet
 
-Grid móvil.
+Grid móvil
 
-Modal de detalles.
+Modal de detalles
 
-Carousel desktop.
+Carousel desktop
 
-Carousel móvil.
+Carousel móvil
 
-Carousel pausado.
+Carousel pausado
 
-Figuras premium.
+Figuras premium
 
-Consola sin errores propios.
+Consola sin errores
 
-Breakpoint a 991 px.
+Breakpoint 991 px
 
-Breakpoint a 992 px.
+Breakpoint 992 px
 
-Repositorio GitHub.
-
-GitHub Pages.
-
-🛠️ Tecnologías utilizadas
-
-HTML5
-
-CSS3
-
-Bootstrap 5.3.3
-
-JavaScript
-
-Git
-
-GitHub
+Repositorio GitHub
 
 GitHub Pages
 
-🎨 Identidad visual
+La documentación se encuentra en:
 
-NatGamez utiliza una estética oscura inspirada en interfaces gaming.
-
-Elementos visuales principales:
-
-Fondo oscuro.
-
-Detalles en morado, azul y verde.
-
-Efectos RGB.
-
-Sombras y brillos suaves.
-
-Tarjetas con diseño propio.
-
-Animaciones y transiciones.
-
-Diseño adaptativo para escritorio, tablet y móvil.
-
-Bootstrap se utiliza principalmente para aportar estructura y funcionalidad responsive sin reemplazar la identidad visual personalizada del proyecto.
-
-📚 Objetivo académico
-
-El objetivo principal de la Semana 4 es aplicar Bootstrap 5 para construir una interfaz responsiva utilizando componentes y herramientas del framework.
-
-La implementación incorpora:
-
-Vinculación correcta de Bootstrap 5.
-
-Navbar responsive.
-
-Carousel automático.
-
-Grid responsive.
-
-Cards Bootstrap.
-
-Convenciones de desarrollo frontend.
-
-Accesibilidad.
-
-Publicación mediante GitHub Pages.
+Semana 4/capturas/Documentación_Capturas.pdf
 
 👩‍💻 Autor
 
 Natalia Alvarado
 Analista Programador Computacional
-Desarrollo Frontend I — PFY2201
+Desarrollo Frontend I · PFY2201
 2026

@@ -1,0 +1,4287 @@
+/* =========================================================
+   NatGamez - Semana 4
+   Desarrollo Frontend I - PFY2201
+   Natalia Alvarado
+   ========================================================= */
+
+
+/* =========================================================
+   1. VARIABLES DE COLOR
+   ========================================================= */
+
+:root {
+    --negro: #0b0b10;
+    --negro-secundario: #15151d;
+    --negro-card: #1b1b25;
+
+    --morado: #8b5cf6;
+    --morado-claro: #a78bfa;
+
+    --azul: #3b82f6;
+    --azul-claro: #60a5fa;
+
+    --verde: #22c55e;
+    --verde-claro: #4ade80;
+
+    --blanco: #f8fafc;
+    --gris-claro: #d4d4d8;
+    --gris: #a1a1aa;
+
+    --borde: rgba(255, 255, 255, 0.12);
+}
+
+
+/* =========================================================
+   2. RESET Y MODELO DE CAJAS
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   3. ESTILOS GENERALES
+   ========================================================= */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    position: relative;
+
+    min-height: 100vh;
+
+    overflow-x: hidden;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+
+    background-color: var(--negro);
+    color: var(--blanco);
+}
+
+
+/* =========================================================
+   4. PARTÍCULAS / BRILLITOS RGB DEL FONDO
+   ========================================================= */
+
+body::before {
+    content: "";
+
+    position: fixed;
+
+    top: -140px;
+    left: 0;
+
+    width: 3px;
+    height: 3px;
+
+    z-index: 0;
+
+    pointer-events: none;
+
+    border-radius: 50%;
+
+    background-color: rgba(167, 139, 250, 0.95);
+
+    box-shadow:
+        6vw 8vh rgba(167, 139, 250, 0.90),
+        13vw 18vh rgba(96, 165, 250, 0.88),
+        21vw 10vh rgba(74, 222, 128, 0.78),
+        28vw 26vh rgba(167, 139, 250, 0.86),
+        35vw 14vh rgba(96, 165, 250, 0.88),
+        42vw 34vh rgba(74, 222, 128, 0.72),
+        50vw 12vh rgba(167, 139, 250, 0.88),
+        57vw 24vh rgba(96, 165, 250, 0.84),
+        64vw 9vh rgba(74, 222, 128, 0.76),
+        71vw 30vh rgba(167, 139, 250, 0.84),
+        78vw 16vh rgba(96, 165, 250, 0.86),
+        85vw 22vh rgba(74, 222, 128, 0.74),
+        92vw 11vh rgba(167, 139, 250, 0.86),
+
+        10vw 48vh rgba(96, 165, 250, 0.80),
+        18vw 60vh rgba(167, 139, 250, 0.84),
+        27vw 54vh rgba(74, 222, 128, 0.70),
+        36vw 72vh rgba(96, 165, 250, 0.80),
+        44vw 63vh rgba(167, 139, 250, 0.82),
+        53vw 82vh rgba(74, 222, 128, 0.68),
+        62vw 58vh rgba(96, 165, 250, 0.78),
+        70vw 69vh rgba(167, 139, 250, 0.80),
+        79vw 56vh rgba(74, 222, 128, 0.70),
+        88vw 84vh rgba(96, 165, 250, 0.78),
+        95vw 66vh rgba(167, 139, 250, 0.80);
+
+    filter:
+        drop-shadow(0 0 5px rgba(139, 92, 246, 0.85))
+        drop-shadow(0 0 10px rgba(59, 130, 246, 0.55));
+
+    opacity: 0.92;
+
+    animation:
+        estrellasCaida 16s linear infinite;
+}
+
+body::after {
+    content: "";
+
+    position: fixed;
+
+    top: -180px;
+    left: 0;
+
+    width: 4px;
+    height: 4px;
+
+    z-index: 0;
+
+    pointer-events: none;
+
+    border-radius: 50%;
+
+    background-color: rgba(96, 165, 250, 0.90);
+
+    box-shadow:
+        9vw 12vh rgba(96, 165, 250, 0.88),
+        17vw 28vh rgba(167, 139, 250, 0.82),
+        26vw 7vh rgba(74, 222, 128, 0.74),
+        33vw 39vh rgba(96, 165, 250, 0.84),
+        47vw 17vh rgba(167, 139, 250, 0.82),
+        58vw 32vh rgba(74, 222, 128, 0.72),
+        66vw 13vh rgba(96, 165, 250, 0.84),
+        76vw 27vh rgba(167, 139, 250, 0.82),
+        84vw 8vh rgba(74, 222, 128, 0.70),
+        93vw 36vh rgba(96, 165, 250, 0.82),
+
+        14vw 66vh rgba(167, 139, 250, 0.78),
+        31vw 78vh rgba(96, 165, 250, 0.80),
+        49vw 59vh rgba(74, 222, 128, 0.68),
+        67vw 74vh rgba(167, 139, 250, 0.78),
+        82vw 88vh rgba(96, 165, 250, 0.80);
+
+    filter:
+        drop-shadow(0 0 7px rgba(59, 130, 246, 0.70))
+        drop-shadow(0 0 12px rgba(34, 197, 94, 0.35));
+
+    opacity: 0.82;
+
+    animation:
+        estrellasCaidaLenta 22s linear infinite;
+}
+
+@keyframes estrellasCaida {
+    from {
+        transform: translateY(-130px);
+    }
+
+    to {
+        transform: translateY(118vh);
+    }
+}
+
+@keyframes estrellasCaidaLenta {
+    from {
+        transform:
+            translateY(-170px)
+            translateX(0);
+    }
+
+    to {
+        transform:
+            translateY(122vh)
+            translateX(18px);
+    }
+}
+
+
+/* =========================================================
+   5. CAPAS DEL CONTENIDO
+   ========================================================= */
+
+header,
+nav,
+main,
+footer {
+    position: relative;
+    z-index: 1;
+}
+
+
+/* =========================================================
+   6. TEXTO SOLO PARA LECTORES DE PANTALLA
+   ========================================================= */
+
+.sr-only {
+    position: absolute;
+
+    width: 1px;
+    height: 1px;
+
+    margin: -1px;
+    padding: 0;
+
+    overflow: hidden;
+
+    clip: rect(0, 0, 0, 0);
+
+    white-space: nowrap;
+
+    border: 0;
+}
+
+
+/* =========================================================
+   7. HERO / ENCABEZADO
+   ========================================================= */
+
+header {
+    display: grid;
+
+    grid-template-columns:
+        minmax(220px, 310px)
+        minmax(300px, 650px);
+
+    align-items: center;
+
+    column-gap: clamp(45px, 8vw, 130px);
+
+    overflow: hidden;
+
+    padding: 38px 10%;
+
+    position: relative;
+    isolation: isolate;
+
+    background:
+        radial-gradient(
+            circle at 16% 44%,
+            rgba(139, 92, 246, 0.24) 0%,
+            rgba(139, 92, 246, 0.15) 18%,
+            transparent 42%
+        ),
+        radial-gradient(
+            circle at 48% 28%,
+            rgba(59, 130, 246, 0.18) 0%,
+            rgba(59, 130, 246, 0.11) 16%,
+            transparent 38%
+        ),
+        radial-gradient(
+            circle at 82% 60%,
+            rgba(34, 197, 94, 0.10) 0%,
+            rgba(34, 197, 94, 0.06) 14%,
+            transparent 34%
+        ),
+        var(--negro-secundario);
+
+    border-bottom: 1px solid var(--borde);
+
+    text-align: left;
+
+    box-shadow:
+        inset 0 -30px 60px rgba(0, 0, 0, 0.12);
+}
+
+
+/* Aurora elegante */
+
+header::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    z-index: 0;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            ellipse at 18% 48%,
+            rgba(139, 92, 246, 0.22) 0%,
+            rgba(139, 92, 246, 0.10) 22%,
+            transparent 52%
+        ),
+        radial-gradient(
+            ellipse at 50% 32%,
+            rgba(59, 130, 246, 0.18) 0%,
+            rgba(59, 130, 246, 0.08) 20%,
+            transparent 46%
+        ),
+        radial-gradient(
+            ellipse at 78% 58%,
+            rgba(34, 197, 94, 0.11) 0%,
+            rgba(34, 197, 94, 0.05) 16%,
+            transparent 40%
+        );
+
+    filter: blur(24px);
+
+    opacity: 0.95;
+}
+
+header > * {
+    position: relative;
+    z-index: 1;
+}
+
+
+/* =========================================================
+   8. LOGO NATGAMEZ
+   ========================================================= */
+
+.logo-natgamez {
+    display: block;
+
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+
+    margin: 0;
+
+    justify-self: start;
+
+    border: none;
+    border-radius: 18px;
+
+    box-shadow:
+        0 0 14px rgba(139, 92, 246, 0.16),
+        0 0 24px rgba(59, 130, 246, 0.08);
+
+    transition:
+        transform 0.35s ease,
+        filter 0.35s ease;
+}
+
+.logo-natgamez:hover {
+    transform: scale(1.012);
+
+    filter: brightness(1.05);
+}
+
+header p {
+    max-width: 620px;
+
+    margin: 0;
+
+    color: var(--gris-claro);
+
+    font-size: 1.05rem;
+    line-height: 1.8;
+
+    font-weight: 400;
+    letter-spacing: 0.2px;
+}
+
+
+/* =========================================================
+   9. BARRA RGB ANIMADA
+   ========================================================= */
+
+header::after {
+    content: "";
+
+    position: absolute;
+
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    height: 4px;
+
+    z-index: 2;
+
+    background: linear-gradient(
+        90deg,
+        var(--morado),
+        var(--azul),
+        var(--verde),
+        var(--azul),
+        var(--morado)
+    );
+
+    background-size: 300% 100%;
+
+    animation:
+        rgbMovimiento 6s linear infinite;
+}
+
+@keyframes rgbMovimiento {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 300% 50%;
+    }
+}
+
+
+/* =========================================================
+   10. NAVEGACIÓN
+   ========================================================= */
+
+nav {
+    width: 90%;
+    max-width: 1200px;
+
+    margin: 28px auto 35px;
+
+    padding: 0 20px;
+}
+
+nav h2 {
+    display: inline-block;
+
+    position: relative;
+
+    margin-bottom: 18px;
+
+    padding-bottom: 8px;
+
+    color: var(--morado-claro);
+
+    font-size: 1.9rem;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+
+    text-shadow:
+        0 0 8px rgba(139, 92, 246, 0.45),
+        0 0 14px rgba(59, 130, 246, 0.20);
+}
+
+nav h2::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 3px;
+
+    border-radius: 10px;
+
+    background: linear-gradient(
+        90deg,
+        var(--morado),
+        var(--azul),
+        var(--verde)
+    );
+}
+
+nav ul {
+    display: flex;
+
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+    gap: 15px;
+
+    list-style: none;
+}
+
+nav li {
+    display: inline-block;
+}
+
+nav a {
+    display: inline-block;
+
+    padding: 10px 18px;
+
+    color: var(--blanco);
+
+    background-color: rgba(139, 92, 246, 0.08);
+
+    border: 1px solid var(--morado);
+    border-radius: 8px;
+
+    text-decoration: none;
+
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease,
+        border-color 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--blanco);
+
+    background-color: var(--morado);
+
+    border-color: var(--azul-claro);
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 0 10px rgba(139, 92, 246, 0.70),
+        0 0 18px rgba(59, 130, 246, 0.35);
+}
+
+nav a:focus {
+    outline: 2px solid var(--verde-claro);
+    outline-offset: 3px;
+}
+
+
+/* =========================================================
+   11. CONTENIDO PRINCIPAL
+   ========================================================= */
+
+main {
+    width: 90%;
+    max-width: 1200px;
+
+    margin: 40px auto;
+
+    padding: 20px;
+}
+
+
+/* =========================================================
+   12. SECCIONES
+   ========================================================= */
+
+section {
+    margin-bottom: 35px;
+
+    padding: 30px;
+
+    background-color: rgba(21, 21, 29, 0.96);
+
+    border: 1px solid var(--borde);
+    border-radius: 14px;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.35);
+}
+
+section h2 {
+    margin-bottom: 20px;
+
+    padding-bottom: 10px;
+
+    color: var(--morado-claro);
+
+    font-size: 2rem;
+
+    border-bottom: 2px solid var(--morado);
+}
+
+section p {
+    margin-bottom: 15px;
+
+    color: var(--gris-claro);
+}
+
+
+/* =========================================================
+   13. SECCIÓN DE PRODUCTOS
+   ========================================================= */
+
+#productos {
+    border-color: rgba(139, 92, 246, 0.40);
+}
+
+.productos-destacados-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 25px;
+
+    margin: 0 !important;
+
+    list-style: none;
+}
+
+.productos-destacados-grid > li {
+    margin: 0;
+}
+
+
+/* =========================================================
+   14. TARJETAS DE PRODUCTOS
+   ========================================================= */
+
+article {
+    height: 100%;
+
+    margin-bottom: 20px;
+
+    padding: 22px;
+
+    background-color: rgba(27, 27, 37, 0.97);
+
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        background-color 0.3s ease;
+}
+
+article:hover {
+    background-color: #20202c;
+
+    border-color: var(--morado);
+
+    transform: translateY(-7px);
+
+    box-shadow:
+        0 0 12px rgba(139, 92, 246, 0.55),
+        0 0 25px rgba(59, 130, 246, 0.20);
+}
+
+article h3 {
+    margin-bottom: 12px;
+
+    color: var(--azul-claro);
+
+    font-size: 1.35rem;
+}
+
+article p {
+    margin-bottom: 10px;
+
+    color: var(--gris-claro);
+}
+
+
+/* =========================================================
+   15. SELECTOR AVANZADO NTH-CHILD
+   ========================================================= */
+
+.productos-destacados-grid > li:nth-child(1) article {
+    border-top: 3px solid var(--morado);
+}
+
+.productos-destacados-grid > li:nth-child(2) article {
+    border-top: 3px solid var(--azul);
+}
+
+.productos-destacados-grid > li:nth-child(3) article {
+    border-top: 3px solid var(--verde);
+}
+
+/* Hover cromático coherente con la etiqueta de cada destacado */
+
+.productos-destacados-grid > li:nth-child(1) article:hover {
+    border-color: var(--morado);
+
+    box-shadow:
+        0 0 12px rgba(139, 92, 246, 0.72),
+        0 0 28px rgba(139, 92, 246, 0.30);
+}
+
+.productos-destacados-grid > li:nth-child(2) article:hover {
+    border-color: var(--azul-claro);
+
+    box-shadow:
+        0 0 12px rgba(96, 165, 250, 0.72),
+        0 0 28px rgba(59, 130, 246, 0.30);
+}
+
+.productos-destacados-grid > li:nth-child(3) article:hover {
+    border-color: var(--verde);
+
+    box-shadow:
+        0 0 12px rgba(34, 197, 94, 0.68),
+        0 0 28px rgba(34, 197, 94, 0.26);
+}
+
+
+/* =========================================================
+   16. FIGURAS E IMÁGENES
+   ========================================================= */
+
+figure {
+    margin: 18px 0;
+
+    text-align: center;
+}
+
+figure img {
+    display: block;
+
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+
+    margin: 0 auto;
+
+    border: 2px solid rgba(139, 92, 246, 0.40);
+    border-radius: 10px;
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+figure img:hover {
+    border-color: var(--azul);
+
+    transform: scale(1.02);
+
+    box-shadow:
+        0 0 15px rgba(59, 130, 246, 0.45);
+}
+
+figcaption {
+    margin-top: 10px;
+
+    color: var(--gris);
+
+    font-size: 0.9rem;
+}
+
+
+/* =========================================================
+   17. ENLACES DEL CONTENIDO
+   ========================================================= */
+
+main a {
+    color: var(--azul-claro);
+
+    text-decoration: none;
+
+    transition:
+        color 0.3s ease,
+        text-shadow 0.3s ease;
+}
+
+main a:hover {
+    color: var(--verde-claro);
+
+    text-shadow:
+        0 0 8px rgba(34, 197, 94, 0.50);
+}
+
+
+/* =========================================================
+   18. LISTAS GENERALES
+   ========================================================= */
+
+main ul,
+main ol {
+    margin: 15px 0 15px 25px;
+}
+
+main li {
+    margin-bottom: 8px;
+
+    color: var(--gris-claro);
+}
+
+
+/* =========================================================
+   19. BOTONES
+   ========================================================= */
+
+button,
+.boton {
+    display: inline-block;
+
+    margin-top: 10px;
+
+    padding: 12px 22px;
+
+    color: var(--blanco);
+
+    background-color: var(--morado);
+
+    border: 1px solid var(--morado-claro);
+    border-radius: 8px;
+
+    font-family: inherit;
+    font-size: 1rem;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.3s ease,
+        border-color 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+button:hover,
+.boton:hover {
+    background-color: var(--azul);
+
+    border-color: var(--verde-claro);
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 0 12px rgba(59, 130, 246, 0.55);
+}
+
+button:focus,
+.boton:focus {
+    outline: 2px solid var(--verde-claro);
+    outline-offset: 3px;
+}
+
+
+/* =========================================================
+   20. FOOTER / CONTACTO
+   ========================================================= */
+
+footer {
+    margin-top: 36px;
+
+    padding: 30px 6%;
+
+    color: var(--gris);
+
+    background-color: rgba(21, 21, 29, 0.97);
+
+    border-top: 1px solid var(--borde);
+
+    text-align: left;
+}
+
+footer::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 3px;
+
+    background: linear-gradient(
+        90deg,
+        var(--morado),
+        var(--azul),
+        var(--verde),
+        var(--azul),
+        var(--morado)
+    );
+
+    background-size: 300% 100%;
+
+    animation:
+        rgbMovimiento 6s linear infinite;
+}
+
+footer h2 {
+    margin-bottom: 14px;
+
+    color: var(--morado-claro);
+
+    font-size: 1.65rem;
+
+    text-shadow:
+        0 0 8px rgba(139, 92, 246, 0.35);
+}
+
+footer p {
+    margin-bottom: 8px;
+
+    font-size: 0.98rem;
+    line-height: 1.55;
+}
+
+footer ul {
+    margin: 10px 0;
+
+    padding: 0;
+
+    list-style: none;
+}
+
+footer li {
+    margin-bottom: 4px;
+
+    font-size: 0.98rem;
+}
+
+footer a {
+    color: var(--verde-claro);
+
+    text-decoration: none;
+
+    transition:
+        color 0.3s ease,
+        text-shadow 0.3s ease;
+}
+
+footer a:hover {
+    color: var(--azul-claro);
+
+    text-shadow:
+        0 0 8px rgba(59, 130, 246, 0.40);
+}
+
+
+/* =========================================================
+   21. SELECTORES DE ATRIBUTO
+   ========================================================= */
+
+a[href^="http"] {
+    font-weight: bold;
+}
+
+a[href^="mailto:"] {
+    color: var(--verde-claro);
+}
+
+
+/* =========================================================
+   22. SELECCIÓN DE TEXTO
+   ========================================================= */
+
+::selection {
+    color: var(--blanco);
+
+    background-color: var(--morado);
+}
+
+
+/* =========================================================
+   23. RESPONSIVIDAD - TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    header {
+        grid-template-columns:
+            minmax(200px, 260px)
+            minmax(260px, 1fr);
+
+        column-gap: 35px;
+
+        padding: 35px 6%;
+    }
+
+    .logo-natgamez {
+        max-width: 250px;
+    }
+
+    header p {
+        font-size: 1rem;
+    }
+
+    main {
+        width: 94%;
+
+        padding: 15px;
+    }
+
+    nav {
+        width: 94%;
+
+        padding: 0 15px;
+    }
+
+    .productos-destacados-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    section {
+        padding: 25px;
+    }
+
+    footer {
+        padding: 28px 5%;
+    }
+}
+
+
+/* =========================================================
+   24. RESPONSIVIDAD - MÓVIL
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    header {
+        grid-template-columns: 1fr;
+
+        row-gap: 22px;
+
+        padding: 28px 20px;
+    }
+
+    .logo-natgamez {
+        width: min(250px, 88%);
+
+        max-width: none;
+
+        justify-self: start;
+    }
+
+    header p {
+        max-width: 100%;
+
+        font-size: 0.95rem;
+    }
+
+    nav {
+        width: 96%;
+
+        margin: 25px auto 30px;
+
+        padding: 0 10px;
+    }
+
+    nav h2 {
+        font-size: 1.6rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+
+        gap: 10px;
+    }
+
+    nav li {
+        width: 100%;
+
+        text-align: center;
+    }
+
+    nav a {
+        width: 100%;
+        max-width: 280px;
+
+        text-align: center;
+    }
+
+    main {
+        width: 96%;
+
+        margin: 25px auto;
+
+        padding: 10px;
+    }
+
+    section {
+        margin-bottom: 25px;
+
+        padding: 20px;
+    }
+
+    section h2 {
+        font-size: 1.6rem;
+    }
+
+    .productos-destacados-grid {
+        grid-template-columns: 1fr;
+    }
+
+    article {
+        padding: 18px;
+    }
+
+    figure img {
+        max-width: 100%;
+    }
+
+    footer {
+        padding: 24px 20px;
+    }
+
+    footer h2 {
+        font-size: 1.45rem;
+    }
+
+    footer p,
+    footer li {
+        font-size: 0.95rem;
+    }
+
+    body::before {
+        opacity: 0.78;
+    }
+
+    body::after {
+        opacity: 0.68;
+    }
+}
+
+
+/* =========================================================
+   25. ACCESIBILIDAD
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    header::after,
+    footer::before,
+    body::before,
+    body::after {
+        animation: none;
+    }
+
+    article,
+    nav a,
+    figure img,
+    button,
+    .boton,
+    footer a,
+    .logo-natgamez {
+        transition: none;
+    }
+}
+
+/* =========================================================
+   26. EVOLUCIÓN SEMANA 4 - ELEMENTOS COMUNES
+   ========================================================= */
+
+.etiqueta-seccion {
+    display: inline-block;
+
+    margin-bottom: 10px;
+
+    color: var(--verde-claro);
+
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+}
+
+.hero-texto {
+    max-width: 650px;
+}
+
+.hero-texto .etiqueta-seccion {
+    margin-bottom: 12px;
+}
+
+
+
+.bienvenida-evolucion {
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(139, 92, 246, 0.12),
+            rgba(59, 130, 246, 0.06) 48%,
+            rgba(34, 197, 94, 0.08)
+        ),
+        rgba(21, 21, 29, 0.96);
+}
+
+.bienvenida-evolucion::after {
+    content: "";
+
+    position: absolute;
+
+    top: -70px;
+    right: -70px;
+
+    width: 180px;
+    height: 180px;
+
+    pointer-events: none;
+
+    border: 1px solid rgba(96, 165, 250, 0.18);
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 60px rgba(59, 130, 246, 0.14),
+        inset 0 0 40px rgba(139, 92, 246, 0.10);
+}
+
+
+/* =========================================================
+   27. CATEGORÍAS CON REDIRECCIÓN AL CATÁLOGO
+   ========================================================= */
+
+.seccion-categorias {
+    border-color: rgba(59, 130, 246, 0.30);
+}
+
+.categorias-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 18px;
+
+    margin: 22px 0 0 !important;
+
+    list-style: none;
+}
+
+.categorias-grid li {
+    margin: 0;
+}
+
+.categorias-grid a {
+    display: flex;
+    flex-direction: column;
+
+    min-height: 170px;
+
+    padding: 22px;
+
+    color: var(--gris-claro);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(139, 92, 246, 0.10),
+            rgba(59, 130, 246, 0.04)
+        );
+
+    border: 1px solid var(--borde);
+    border-radius: 14px;
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        background-color 0.3s ease;
+}
+
+.categorias-grid a:hover {
+    border-color: var(--azul-claro);
+
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 12px 28px rgba(0, 0, 0, 0.34),
+        0 0 22px rgba(59, 130, 246, 0.14);
+}
+
+.categorias-grid strong {
+    margin-bottom: 6px;
+
+    color: var(--blanco);
+
+    font-size: 1.15rem;
+}
+
+.categorias-grid span:last-child {
+    color: var(--gris);
+
+    font-size: 0.92rem;
+}
+
+.categoria-icono {
+    margin-bottom: 18px;
+
+    font-size: 1.8rem;
+}
+
+
+/* =========================================================
+   28. DESTACADOS Y CTA DEL CATÁLOGO
+   ========================================================= */
+
+.destacados-principal {
+    border-color: rgba(139, 92, 246, 0.40);
+}
+
+.seccion-encabezado {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: end;
+
+    gap: 28px;
+
+    margin-bottom: 24px;
+}
+
+.seccion-encabezado h2 {
+    margin-bottom: 0;
+}
+
+.seccion-encabezado > p {
+    max-width: 420px;
+
+    margin: 0;
+
+    text-align: right;
+}
+
+
+
+.badge-producto {
+    display: inline-block;
+
+    width: fit-content;
+
+    margin-bottom: 12px;
+
+    padding: 6px 9px;
+
+    color: var(--blanco);
+
+    background-color: rgba(139, 92, 246, 0.90);
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 999px;
+
+    font-size: 0.67rem;
+    font-weight: 900;
+    letter-spacing: 0.8px;
+}
+
+.badge-azul {
+    background-color: rgba(59, 130, 246, 0.92);
+}
+
+.badge-verde {
+    background-color: rgba(34, 197, 94, 0.82);
+}
+
+.precio-destacado {
+    margin-top: auto;
+}
+
+.cta-catalogo {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 28px;
+
+    margin-top: 28px;
+
+    padding: 24px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(139, 92, 246, 0.12),
+            rgba(59, 130, 246, 0.08),
+            rgba(34, 197, 94, 0.06)
+        );
+
+    border: 1px solid rgba(96, 165, 250, 0.24);
+    border-radius: 12px;
+}
+
+.cta-catalogo h3 {
+    margin-bottom: 6px;
+
+    color: var(--blanco);
+
+    font-size: 1.35rem;
+}
+
+.cta-catalogo p {
+    margin-bottom: 0;
+}
+
+.cta-catalogo .boton {
+    flex-shrink: 0;
+
+    margin-top: 0;
+}
+
+
+/* =========================================================
+   29. FOOTER FLEXBOX - SEMANA 4
+   ========================================================= */
+
+.footer-contenido {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-start;
+
+    gap: 50px;
+
+    max-width: 1200px;
+
+    margin: 0 auto;
+}
+
+.footer-bloque {
+    flex: 1;
+}
+
+.redes-sociales {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    margin-top: 12px !important;
+}
+
+.redes-sociales li {
+    margin: 0;
+}
+
+.redes-sociales a {
+    display: inline-block;
+
+    padding: 8px 12px;
+
+    background-color: rgba(34, 197, 94, 0.05);
+
+    border: 1px solid rgba(74, 222, 128, 0.22);
+    border-radius: 8px;
+}
+
+.footer-inferior {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 20px;
+
+    max-width: 1200px;
+
+    margin: 26px auto 0;
+
+    padding-top: 18px;
+
+    border-top: 1px solid var(--borde);
+}
+
+
+/* =========================================================
+   30. PÁGINA CATÁLOGO - HERO INDEPENDIENTE
+   ========================================================= */
+
+.pagina-catalogo {
+    background:
+        radial-gradient(
+            circle at 50% -10%,
+            rgba(59, 130, 246, 0.08),
+            transparent 35%
+        ),
+        var(--negro);
+}
+
+.catalogo-hero {
+    grid-template-columns:
+        minmax(220px, 300px)
+        minmax(420px, 760px);
+
+    min-height: 460px;
+
+    padding-top: 55px;
+    padding-bottom: 55px;
+
+    background:
+        radial-gradient(
+            circle at 16% 38%,
+            rgba(139, 92, 246, 0.28) 0%,
+            transparent 42%
+        ),
+        radial-gradient(
+            circle at 72% 32%,
+            rgba(59, 130, 246, 0.16) 0%,
+            transparent 42%
+        ),
+        linear-gradient(
+            135deg,
+            #10101a,
+            #0b0b10 62%,
+            #0e1416
+        );
+}
+
+.catalogo-marca {
+    align-self: stretch;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.catalogo-marca a {
+    display: inline-block;
+}
+
+.catalogo-marca .etiqueta-seccion {
+    margin: 20px 0 0;
+}
+
+.catalogo-hero-contenido {
+    max-width: 760px;
+}
+
+.catalogo-kicker {
+    margin-bottom: 14px;
+
+    color: var(--azul-claro) !important;
+
+    font-size: 0.78rem !important;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.catalogo-hero h1 {
+    margin-bottom: 20px;
+
+    font-size: clamp(2.4rem, 5vw, 4.6rem);
+    line-height: 1.02;
+    letter-spacing: -2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--blanco),
+            var(--morado-claro),
+            var(--azul-claro),
+            var(--verde-claro)
+        );
+
+    background-clip: text;
+    -webkit-background-clip: text;
+
+    color: transparent;
+}
+
+.catalogo-hero-contenido > p:not(.catalogo-kicker) {
+    max-width: 680px;
+
+    color: var(--gris-claro);
+
+    font-size: 1.05rem;
+    line-height: 1.75;
+}
+
+.catalogo-estadisticas {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 14px;
+
+    margin-top: 30px;
+}
+
+.catalogo-estadisticas div {
+    padding: 15px;
+
+    background-color: rgba(255, 255, 255, 0.025);
+
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+}
+
+.catalogo-estadisticas strong {
+    display: block;
+
+    color: var(--blanco);
+
+    font-size: 1.35rem;
+}
+
+.catalogo-estadisticas span {
+    color: var(--gris);
+
+    font-size: 0.82rem;
+}
+
+.nav-catalogo {
+    margin-top: 22px;
+}
+
+.catalogo-main {
+    max-width: 1320px;
+}
+
+
+/* =========================================================
+   31. CATÁLOGO DE VIDEOJUEGOS
+   ========================================================= */
+
+.catalogo-seccion,
+.vault-seccion,
+.figuras-seccion,
+.regreso-principal {
+    position: relative;
+
+    overflow: hidden;
+}
+
+.catalogo-grid {
+    margin: 0;
+}
+
+.catalogo-grid > [class*="col-"] {
+    display: flex;
+}
+
+.catalog-card {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+
+    margin: 0;
+    padding: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(27, 27, 37, 0.99),
+            rgba(17, 17, 24, 0.99)
+        );
+
+    border-top: 1px solid var(--borde);
+
+
+    width: 100%;
+
+    color: var(--blanco);
+}
+
+.catalog-card > .badge-producto {
+    position: absolute;
+
+    top: 14px;
+    left: 14px;
+
+    z-index: 4;
+
+    margin: 0;
+}
+
+.catalog-card figure {
+    overflow: hidden;
+
+    height: 235px;
+
+    margin: 0;
+
+    background-color: #111118;
+}
+
+.catalog-card figure img {
+    width: 100%;
+    max-width: none;
+    height: 100%;
+
+    margin: 0;
+
+    object-fit: cover;
+
+    border: 0;
+    border-radius: 0;
+}
+
+.catalog-card:hover figure img {
+    transform: scale(1.055);
+}
+
+.catalog-card-contenido {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+
+    padding: 22px;
+}
+
+.catalog-card h3 {
+    margin-bottom: 10px;
+
+    color: var(--blanco);
+
+    font-size: 1.35rem;
+}
+
+.catalog-card p {
+    color: var(--gris);
+}
+
+.producto-genero {
+    margin-bottom: 6px !important;
+
+    color: var(--azul-claro) !important;
+
+    font-size: 0.76rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.producto-meta {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 12px;
+
+    margin-top: auto;
+
+    padding-top: 18px;
+
+    border-top: 1px solid var(--borde);
+}
+
+.producto-meta strong {
+    color: var(--blanco);
+
+    font-size: 1.18rem;
+}
+
+.producto-meta span {
+    position: relative;
+
+    padding-left: 14px;
+
+    color: var(--verde-claro);
+
+    font-size: 0.78rem;
+}
+
+.producto-meta span::before {
+    content: "";
+
+    position: absolute;
+
+    top: 50%;
+    left: 0;
+
+    width: 7px;
+    height: 7px;
+
+    transform: translateY(-50%);
+
+    background-color: var(--verde);
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 8px rgba(34, 197, 94, 0.80);
+}
+
+
+/* =========================================================
+   32. COLLECTOR'S VAULT
+   ========================================================= */
+
+.vault-seccion {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(16, 13, 24, 0.98),
+            rgba(13, 16, 24, 0.98)
+        );
+
+    border-color: rgba(167, 139, 250, 0.30);
+}
+
+.vault-cabecera {
+    max-width: 760px;
+
+    margin-bottom: 30px;
+}
+
+.vault-cabecera h2 {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+
+    border-bottom: 0;
+}
+
+.vault-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 22px;
+}
+
+.vault-card {
+    overflow: hidden;
+
+    margin: 0;
+    padding: 0;
+
+    border-top: 1px solid rgba(167, 139, 250, 0.38);
+}
+
+.vault-card-imagen {
+    display: flex;
+
+    align-items: flex-end;
+
+    min-height: 210px;
+
+    padding: 24px;
+
+    background-color: #14141d;
+
+    border-bottom: 1px solid var(--borde);
+}
+
+.vault-card-imagen span {
+    color: rgba(255, 255, 255, 0.88);
+
+    font-size: 1.45rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+
+    text-shadow:
+        0 0 14px rgba(255, 255, 255, 0.18);
+}
+
+.vault-elden {
+    background:
+        radial-gradient(
+            circle at 50% 42%,
+            rgba(212, 175, 55, 0.25),
+            transparent 28%
+        ),
+        linear-gradient(
+            145deg,
+            #1d1710,
+            #0b0b10
+        );
+}
+
+.vault-cyber {
+    background:
+        linear-gradient(
+            130deg,
+            rgba(250, 225, 0, 0.18),
+            transparent 42%
+        ),
+        radial-gradient(
+            circle at 80% 20%,
+            rgba(59, 130, 246, 0.20),
+            transparent 34%
+        ),
+        #0d1115;
+}
+
+.vault-witcher {
+    background:
+        radial-gradient(
+            circle at 65% 28%,
+            rgba(168, 45, 45, 0.26),
+            transparent 32%
+        ),
+        linear-gradient(
+            145deg,
+            #191416,
+            #0b0b10
+        );
+}
+
+.vault-card-contenido {
+    padding: 22px;
+}
+
+.vault-card h3 {
+    margin: 14px 0;
+
+    color: var(--blanco);
+}
+
+.vault-card ul {
+    margin: 12px 0 18px 18px;
+}
+
+.vault-card li {
+    color: var(--gris-claro);
+
+    font-size: 0.9rem;
+}
+
+.precio-premium {
+    margin: 0 !important;
+
+    color: var(--verde-claro) !important;
+
+    font-size: 1.3rem;
+    font-weight: 900;
+}
+
+
+/* =========================================================
+   33. FIGURAS PREMIUM
+   ========================================================= */
+
+.figuras-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 22px;
+}
+
+.figura-card {
+    position: relative;
+
+    overflow: hidden;
+
+    margin: 0;
+    padding: 26px;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.025),
+            rgba(255, 255, 255, 0.010)
+        ),
+        rgba(20, 20, 28, 0.98);
+}
+
+.figura-silueta {
+    display: grid;
+
+    place-items: center;
+
+    width: 112px;
+    height: 112px;
+
+    margin: 5px auto 24px;
+
+    color: var(--blanco);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(139, 92, 246, 0.24),
+            rgba(59, 130, 246, 0.07) 48%,
+            transparent 70%
+        );
+
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    border-radius: 50%;
+
+    font-size: 3.3rem;
+    font-weight: 900;
+
+    box-shadow:
+        0 0 34px rgba(139, 92, 246, 0.12);
+}
+
+.figura-malenia .figura-silueta {
+    background:
+        radial-gradient(
+            circle,
+            rgba(196, 73, 73, 0.24),
+            rgba(139, 92, 246, 0.08) 48%,
+            transparent 70%
+        );
+}
+
+.figura-geralt .figura-silueta {
+    background:
+        radial-gradient(
+            circle,
+            rgba(96, 165, 250, 0.20),
+            rgba(34, 197, 94, 0.07) 48%,
+            transparent 70%
+        );
+}
+
+.figura-card h3 {
+    color: var(--blanco);
+}
+
+.figura-card strong {
+    display: inline-block;
+
+    margin-top: 10px;
+
+    color: var(--morado-claro);
+
+    font-size: 0.82rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   34. SELECTORES AVANZADOS - SEMANA 4
+   ========================================================= */
+
+.catalogo-grid > [class*="col-"]:nth-child(3n + 1) .catalog-card {
+    border-top-color: var(--morado);
+}
+
+.catalogo-grid > [class*="col-"]:nth-child(3n + 2) .catalog-card {
+    border-top-color: var(--azul);
+}
+
+.catalogo-grid > [class*="col-"]:nth-child(3n + 3) .catalog-card {
+    border-top-color: var(--verde);
+}
+
+/* Hover cromático del catálogo: coincide con el color de cada badge */
+
+.catalogo-grid > [class*="col-"]:nth-child(3n + 1) .catalog-card:hover {
+    border-color: var(--morado);
+
+    box-shadow:
+        0 0 12px rgba(139, 92, 246, 0.72),
+        0 0 28px rgba(139, 92, 246, 0.28);
+}
+
+.catalogo-grid > [class*="col-"]:nth-child(3n + 2) .catalog-card:hover {
+    border-color: var(--azul-claro);
+
+    box-shadow:
+        0 0 12px rgba(96, 165, 250, 0.72),
+        0 0 28px rgba(59, 130, 246, 0.28);
+}
+
+.catalogo-grid > [class*="col-"]:nth-child(3n + 3) .catalog-card:hover {
+    border-color: var(--verde);
+
+    box-shadow:
+        0 0 12px rgba(34, 197, 94, 0.68),
+        0 0 28px rgba(34, 197, 94, 0.25);
+}
+
+
+.figuras-grid .figura-card:nth-child(2) {
+    transform: translateY(14px);
+}
+
+.figuras-grid .figura-card:nth-child(2):hover {
+    transform: translateY(7px);
+}
+
+.regreso-principal {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 28px;
+
+    border-color: rgba(34, 197, 94, 0.24);
+}
+
+.regreso-principal h2 {
+    margin-bottom: 8px;
+}
+
+.regreso-principal p {
+    margin-bottom: 0;
+}
+
+.regreso-principal .boton {
+    flex-shrink: 0;
+
+    margin: 0;
+}
+
+
+/* =========================================================
+   35. RESPONSIVIDAD SEMANA 4 - TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .categorias-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .categorias-grid li:last-child {
+        grid-column: 1 / -1;
+    }
+
+    .seccion-encabezado {
+        align-items: flex-start;
+        flex-direction: column;
+
+        gap: 12px;
+    }
+
+    .seccion-encabezado > p {
+        max-width: 100%;
+
+        text-align: left;
+    }
+
+    .footer-contenido {
+        gap: 30px;
+    }
+
+    .catalogo-hero {
+        grid-template-columns:
+            minmax(190px, 235px)
+            minmax(320px, 1fr);
+
+        min-height: 420px;
+
+        padding-top: 42px;
+        padding-bottom: 42px;
+    }
+
+    .catalogo-hero h1 {
+        font-size: clamp(2.2rem, 6vw, 3.5rem);
+    }
+
+
+    .vault-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .vault-card {
+        display: grid;
+
+        grid-template-columns: 0.85fr 1.15fr;
+    }
+
+    .vault-card-imagen {
+        min-height: 100%;
+    }
+
+    .figuras-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .figuras-grid .figura-card:last-child {
+        grid-column: 1 / -1;
+    }
+}
+
+
+/* =========================================================
+   36. RESPONSIVIDAD SEMANA 4 - MÓVIL
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .categorias-grid,
+    .figuras-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .categorias-grid li:last-child,
+    .figuras-grid .figura-card:last-child {
+        grid-column: auto;
+    }
+
+    .categorias-grid a {
+        min-height: 0;
+    }
+
+    .regreso-principal,
+    .footer-contenido,
+    .footer-inferior {
+        align-items: flex-start;
+        flex-direction: column;
+
+        gap: 18px;
+    }
+
+    .redes-sociales {
+        gap: 8px;
+    }
+
+    .catalogo-hero {
+        grid-template-columns: 1fr;
+
+        min-height: 0;
+    }
+
+    .catalogo-marca {
+        gap: 22px;
+    }
+
+    .catalogo-hero h1 {
+        font-size: clamp(2.25rem, 13vw, 3.6rem);
+        letter-spacing: -1px;
+    }
+
+    .catalogo-estadisticas {
+        grid-template-columns: 1fr;
+    }
+
+    .catalog-card figure {
+        height: 220px;
+    }
+
+    .vault-card {
+        display: block;
+    }
+
+    .vault-card-imagen {
+        min-height: 190px;
+    }
+
+    .figuras-grid .figura-card:nth-child(2) {
+        transform: none;
+    }
+
+    .figuras-grid .figura-card:nth-child(2):hover {
+        transform: translateY(-7px);
+    }
+}
+
+
+/* =========================================================
+   37. ACCESIBILIDAD - ELEMENTOS NUEVOS
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .categorias-grid a,
+    .catalog-card,
+    .catalog-card figure img,
+    .vault-card,
+    .figura-card,
+    .regreso-principal {
+        transition: none;
+    }
+
+    .figuras-grid .figura-card:nth-child(2),
+    .figuras-grid .figura-card:nth-child(2):hover {
+        transform: none;
+    }
+}
+
+
+/* El encabezado de destacados de la portada queda limpio, sin CTA lateral */
+.pagina-inicio .destacados-principal .seccion-encabezado {
+    justify-content: flex-start;
+}
+
+
+/* =========================================================
+   38. PULIDO VISUAL - DESTACADOS
+   El color del hover pertenece a la tarjeta, no a la imagen.
+   ========================================================= */
+
+.productos-destacados-grid figure img,
+.productos-destacados-grid figure img:hover,
+.productos-destacados-grid article:hover figure img {
+    border: none;
+
+    box-shadow: none;
+}
+
+.productos-destacados-grid figure img:hover,
+.productos-destacados-grid article:hover figure img {
+    transform: none;
+}
+
+/* =========================================================
+   39. CATÁLOGO - CIELO PROFUNDO RGB CON PARALLAX
+   Tres profundidades de estrellas + fugaces ocasionales.
+   ========================================================= */
+
+body.pagina-catalogo {
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(26, 32, 52, 0.38),
+            transparent 42%
+        ),
+        radial-gradient(
+            circle at 12% 72%,
+            rgba(139, 92, 246, 0.055),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 88% 64%,
+            rgba(59, 130, 246, 0.050),
+            transparent 30%
+        ),
+        #07070d;
+}
+
+
+/* Capa 1: estrellas pequeñas y lejanas */
+
+body.pagina-catalogo::before {
+    content: "";
+
+    position: fixed;
+
+    inset: -20%;
+
+    z-index: 0;
+
+    pointer-events: none;
+
+    border-radius: 0;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(248, 250, 252, 0.58) 0 0.9px,
+            transparent 1.35px
+        ),
+        radial-gradient(
+            circle,
+            rgba(167, 139, 250, 0.52) 0 0.9px,
+            transparent 1.4px
+        ),
+        radial-gradient(
+            circle,
+            rgba(96, 165, 250, 0.48) 0 0.85px,
+            transparent 1.35px
+        );
+
+    background-size:
+        118px 132px,
+        164px 176px,
+        214px 226px;
+
+    background-position:
+        14px 18px,
+        63px 92px,
+        105px 42px;
+
+    box-shadow: none;
+
+    filter: none;
+
+    opacity: 0.72;
+
+    will-change: transform;
+
+    animation:
+        estrellasLejanas 42s linear infinite;
+}
+
+
+/* Capa 2: estrellas medianas RGB */
+
+body.pagina-catalogo::after {
+    content: "";
+
+    position: fixed;
+
+    inset: -22%;
+
+    z-index: 0;
+
+    pointer-events: none;
+
+    border-radius: 0;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(167, 139, 250, 0.95) 0 1.45px,
+            rgba(167, 139, 250, 0.22) 1.7px,
+            transparent 2.6px
+        ),
+        radial-gradient(
+            circle,
+            rgba(96, 165, 250, 0.92) 0 1.35px,
+            rgba(96, 165, 250, 0.18) 1.65px,
+            transparent 2.5px
+        ),
+        radial-gradient(
+            circle,
+            rgba(74, 222, 128, 0.80) 0 1.2px,
+            rgba(74, 222, 128, 0.15) 1.5px,
+            transparent 2.35px
+        );
+
+    background-size:
+        286px 304px,
+        372px 396px,
+        468px 492px;
+
+    background-position:
+        38px 54px,
+        176px 144px,
+        92px 286px;
+
+    box-shadow: none;
+
+    filter:
+        drop-shadow(0 0 4px rgba(139, 92, 246, 0.48))
+        drop-shadow(0 0 5px rgba(59, 130, 246, 0.20));
+
+    opacity: 0.82;
+
+    will-change:
+        transform,
+        opacity;
+
+    animation:
+        estrellasMedias 30s linear infinite,
+        respiracionEstelar 5.5s ease-in-out infinite alternate;
+}
+
+
+/* Capa 3: estrellas grandes, escasas y brillantes */
+
+.cielo-catalogo {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+}
+
+.cielo-catalogo::before {
+    content: "";
+
+    position: absolute;
+
+    inset: -10%;
+
+    background:
+        radial-gradient(
+            circle at 9% 18%,
+            rgba(167, 139, 250, 0.98) 0 2px,
+            rgba(167, 139, 250, 0.24) 2.8px,
+            transparent 5px
+        ),
+        radial-gradient(
+            circle at 27% 67%,
+            rgba(96, 165, 250, 0.94) 0 1.8px,
+            rgba(96, 165, 250, 0.20) 2.7px,
+            transparent 4.8px
+        ),
+        radial-gradient(
+            circle at 53% 28%,
+            rgba(74, 222, 128, 0.88) 0 1.75px,
+            rgba(74, 222, 128, 0.17) 2.5px,
+            transparent 4.6px
+        ),
+        radial-gradient(
+            circle at 72% 82%,
+            rgba(167, 139, 250, 0.92) 0 1.9px,
+            rgba(167, 139, 250, 0.21) 2.8px,
+            transparent 5px
+        ),
+        radial-gradient(
+            circle at 91% 39%,
+            rgba(96, 165, 250, 0.96) 0 2px,
+            rgba(96, 165, 250, 0.22) 2.8px,
+            transparent 5px
+        ),
+        radial-gradient(
+            circle at 39% 89%,
+            rgba(248, 250, 252, 0.80) 0 1.6px,
+            rgba(248, 250, 252, 0.14) 2.3px,
+            transparent 4px
+        );
+
+    filter:
+        drop-shadow(0 0 6px rgba(139, 92, 246, 0.26))
+        drop-shadow(0 0 8px rgba(59, 130, 246, 0.18));
+
+    opacity: 0.88;
+
+    will-change:
+        transform,
+        opacity;
+
+    animation:
+        estrellasCercanas 23s ease-in-out infinite alternate,
+        parpadeoEstrellas 4.2s ease-in-out infinite alternate;
+}
+
+
+/* =========================================================
+   ESTRELLAS FUGACES
+   ========================================================= */
+
+.estrella-fugaz {
+    position: absolute;
+
+    width: 150px;
+    height: 2px;
+
+    border-radius: 999px;
+
+    opacity: 0;
+
+    transform:
+        rotate(-28deg)
+        translate3d(0, 0, 0);
+
+    transform-origin: right center;
+
+    will-change:
+        transform,
+        opacity;
+}
+
+.estrella-fugaz::after {
+    content: "";
+
+    position: absolute;
+
+    right: -1px;
+    top: 50%;
+
+    width: 6px;
+    height: 6px;
+
+    transform: translateY(-50%);
+
+    border-radius: 50%;
+}
+
+.estrella-fugaz-morada {
+    top: 16%;
+    left: 78%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(167, 139, 250, 0.18),
+            rgba(167, 139, 250, 0.90)
+        );
+
+    filter:
+        drop-shadow(0 0 6px rgba(139, 92, 246, 0.68));
+
+    animation:
+        fugazMorada 12s ease-in infinite;
+}
+
+.estrella-fugaz-morada::after {
+    background: var(--morado-claro);
+
+    box-shadow:
+        0 0 9px rgba(167, 139, 250, 0.92);
+}
+
+.estrella-fugaz-azul {
+    top: 46%;
+    left: 88%;
+
+    width: 130px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(96, 165, 250, 0.16),
+            rgba(96, 165, 250, 0.90)
+        );
+
+    filter:
+        drop-shadow(0 0 6px rgba(59, 130, 246, 0.62));
+
+    animation:
+        fugazAzul 16s ease-in infinite;
+}
+
+.estrella-fugaz-azul::after {
+    background: var(--azul-claro);
+
+    box-shadow:
+        0 0 9px rgba(96, 165, 250, 0.90);
+}
+
+.estrella-fugaz-verde {
+    top: 74%;
+    left: 74%;
+
+    width: 105px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(74, 222, 128, 0.13),
+            rgba(74, 222, 128, 0.78)
+        );
+
+    filter:
+        drop-shadow(0 0 5px rgba(34, 197, 94, 0.52));
+
+    animation:
+        fugazVerde 19s ease-in infinite;
+}
+
+.estrella-fugaz-verde::after {
+    background: var(--verde-claro);
+
+    box-shadow:
+        0 0 8px rgba(74, 222, 128, 0.82);
+}
+
+
+/* =========================================================
+   ANIMACIONES DE PROFUNDIDAD
+   ========================================================= */
+
+@keyframes estrellasLejanas {
+    from {
+        transform:
+            translate3d(0, 0, 0);
+    }
+
+    to {
+        transform:
+            translate3d(-3vw, 6vh, 0);
+    }
+}
+
+@keyframes estrellasMedias {
+    from {
+        transform:
+            translate3d(0, 0, 0);
+    }
+
+    to {
+        transform:
+            translate3d(4vw, 10vh, 0);
+    }
+}
+
+@keyframes estrellasCercanas {
+    from {
+        transform:
+            translate3d(-1.5vw, -1vh, 0)
+            scale(1);
+    }
+
+    to {
+        transform:
+            translate3d(2vw, 2.5vh, 0)
+            scale(1.025);
+    }
+}
+
+@keyframes respiracionEstelar {
+    from {
+        opacity: 0.64;
+    }
+
+    to {
+        opacity: 0.88;
+    }
+}
+
+@keyframes parpadeoEstrellas {
+    from {
+        opacity: 0.70;
+    }
+
+    to {
+        opacity: 0.94;
+    }
+}
+
+
+/* Las fugaces solo aparecen durante una fracción del ciclo */
+
+@keyframes fugazMorada {
+    0%,
+    66% {
+        opacity: 0;
+
+        transform:
+            rotate(-28deg)
+            translate3d(0, 0, 0);
+    }
+
+    69% {
+        opacity: 0.92;
+    }
+
+    78% {
+        opacity: 0;
+
+        transform:
+            rotate(-28deg)
+            translate3d(-72vw, 46vh, 0);
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes fugazAzul {
+    0%,
+    38% {
+        opacity: 0;
+
+        transform:
+            rotate(-31deg)
+            translate3d(0, 0, 0);
+    }
+
+    41% {
+        opacity: 0.88;
+    }
+
+    49% {
+        opacity: 0;
+
+        transform:
+            rotate(-31deg)
+            translate3d(-78vw, 43vh, 0);
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes fugazVerde {
+    0%,
+    78% {
+        opacity: 0;
+
+        transform:
+            rotate(-24deg)
+            translate3d(0, 0, 0);
+    }
+
+    81% {
+        opacity: 0.75;
+    }
+
+    89% {
+        opacity: 0;
+
+        transform:
+            rotate(-24deg)
+            translate3d(-68vw, 36vh, 0);
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+/* =========================================================
+   40. COLLECTOR'S VAULT - IMÁGENES Y ATMÓSFERA PREMIUM
+   ========================================================= */
+
+.pagina-catalogo .vault-seccion {
+    background:
+        radial-gradient(
+            circle at 16% 24%,
+            rgba(212, 175, 55, 0.075),
+            transparent 26%
+        ),
+        radial-gradient(
+            circle at 85% 76%,
+            rgba(139, 92, 246, 0.10),
+            transparent 30%
+        ),
+        linear-gradient(
+            145deg,
+            rgba(16, 13, 24, 0.985),
+            rgba(13, 16, 24, 0.985)
+        );
+
+    border-color: rgba(188, 159, 255, 0.28);
+
+    box-shadow:
+        0 16px 40px rgba(0, 0, 0, 0.26),
+        inset 0 0 70px rgba(139, 92, 246, 0.025);
+}
+
+.pagina-catalogo .vault-card {
+    border-color: rgba(255, 255, 255, 0.10);
+
+    box-shadow:
+        0 10px 26px rgba(0, 0, 0, 0.24);
+}
+
+.pagina-catalogo .vault-card:hover {
+    transform: translateY(-7px);
+}
+
+.pagina-catalogo .vault-grid .vault-card:nth-child(1):hover {
+    border-color: rgba(212, 175, 55, 0.56);
+
+    box-shadow:
+        0 0 16px rgba(212, 175, 55, 0.20),
+        0 18px 32px rgba(0, 0, 0, 0.34);
+}
+
+.pagina-catalogo .vault-grid .vault-card:nth-child(2):hover {
+    border-color: rgba(96, 165, 250, 0.62);
+
+    box-shadow:
+        0 0 16px rgba(59, 130, 246, 0.24),
+        0 18px 32px rgba(0, 0, 0, 0.34);
+}
+
+.pagina-catalogo .vault-grid .vault-card:nth-child(3):hover {
+    border-color: rgba(74, 222, 128, 0.52);
+
+    box-shadow:
+        0 0 16px rgba(34, 197, 94, 0.20),
+        0 18px 32px rgba(0, 0, 0, 0.34);
+}
+
+.pagina-catalogo .vault-card-imagen {
+    position: relative;
+
+    display: block;
+
+    min-height: 255px;
+    height: 255px;
+
+    margin: 0;
+    padding: 0;
+
+    overflow: hidden;
+
+    background: #0c0c12;
+
+    border-bottom: 1px solid var(--borde);
+}
+
+.pagina-catalogo .vault-card-imagen::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            180deg,
+            transparent 62%,
+            rgba(8, 8, 13, 0.42) 100%
+        );
+}
+
+.pagina-catalogo .vault-card-imagen img {
+    display: block;
+
+    width: 100%;
+    max-width: none;
+    height: 100%;
+
+    margin: 0;
+
+    object-fit: cover;
+    object-position: center;
+
+    border: 0;
+    border-radius: 0;
+
+    box-shadow: none;
+
+    filter:
+        saturate(0.94)
+        contrast(1.03);
+
+    transition:
+        transform 0.45s ease,
+        filter 0.45s ease;
+}
+
+.pagina-catalogo .vault-card:hover .vault-card-imagen img {
+    transform: scale(1.035);
+
+    filter:
+        saturate(1.03)
+        contrast(1.05)
+        brightness(1.025);
+}
+
+.pagina-catalogo .vault-cyber img {
+    object-position: center 56%;
+}
+
+.pagina-catalogo .vault-witcher img {
+    object-fit: contain;
+
+    padding: 12px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #111118,
+            #17171e
+        );
+}
+
+
+/* =========================================================
+   41. FIGURAS PREMIUM - VITRINA OSCURA CON IMAGEN REAL
+   ========================================================= */
+
+.pagina-catalogo .figuras-seccion {
+    background:
+        linear-gradient(
+            180deg,
+            rgba(27, 27, 36, 0.965),
+            rgba(16, 16, 23, 0.98)
+        );
+
+    border-color: rgba(96, 165, 250, 0.20);
+
+    box-shadow:
+        0 14px 38px rgba(0, 0, 0, 0.25);
+}
+
+.pagina-catalogo .figura-card {
+    padding-top: 18px;
+
+    border-color: rgba(255, 255, 255, 0.10);
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.026),
+            rgba(255, 255, 255, 0.008)
+        ),
+        rgba(18, 18, 26, 0.985);
+}
+
+.pagina-catalogo .figura-imagen {
+    position: relative;
+
+    display: block;
+
+    width: 100%;
+    height: 280px;
+
+    margin: 0 auto 24px;
+
+    overflow: hidden;
+
+    border: 0;
+    border-radius: 13px;
+
+    background:
+        radial-gradient(
+            circle at 50% 55%,
+            rgba(139, 92, 246, 0.14),
+            transparent 56%
+        ),
+        #0f0f16;
+
+    box-shadow: none;
+}
+
+.pagina-catalogo .figura-imagen::before {
+    content: "";
+
+    position: absolute;
+    inset: 10% 12%;
+
+    z-index: 0;
+
+    border-radius: 50%;
+
+    filter: blur(22px);
+
+    opacity: 0.40;
+}
+
+.pagina-catalogo .figura-imagen-kratos::before {
+    background:
+        radial-gradient(
+            circle,
+            rgba(139, 92, 246, 0.64),
+            rgba(59, 130, 246, 0.20) 48%,
+            transparent 72%
+        );
+}
+
+.pagina-catalogo .figura-imagen-malenia::before {
+    background:
+        radial-gradient(
+            circle,
+            rgba(180, 67, 52, 0.64),
+            rgba(212, 175, 55, 0.19) 48%,
+            transparent 72%
+        );
+}
+
+.pagina-catalogo .figura-imagen-geralt::before {
+    background:
+        radial-gradient(
+            circle,
+            rgba(59, 130, 246, 0.55),
+            rgba(34, 197, 94, 0.16) 48%,
+            transparent 72%
+        );
+}
+
+.pagina-catalogo .figura-imagen img {
+    position: relative;
+
+    z-index: 1;
+
+    display: block;
+
+    width: 100%;
+    max-width: none;
+    height: 100%;
+
+    margin: 0;
+
+    object-fit: contain;
+    object-position: center;
+
+    border: 0;
+    border-radius: 0;
+
+    background: transparent;
+
+    box-shadow: none;
+
+    transition:
+        transform 0.42s ease,
+        filter 0.42s ease;
+}
+
+.pagina-catalogo .figura-card:hover .figura-imagen img {
+    transform: scale(1.035);
+
+    filter: brightness(1.055);
+}
+
+.pagina-catalogo .figura-card:nth-child(1):hover {
+    border-color: rgba(139, 92, 246, 0.55);
+
+    box-shadow:
+        0 0 16px rgba(139, 92, 246, 0.18),
+        0 16px 30px rgba(0, 0, 0, 0.32);
+}
+
+.pagina-catalogo .figura-card:nth-child(2):hover {
+    border-color: rgba(199, 126, 73, 0.58);
+
+    box-shadow:
+        0 0 16px rgba(180, 67, 52, 0.18),
+        0 16px 30px rgba(0, 0, 0, 0.32);
+}
+
+.pagina-catalogo .figura-card:nth-child(3):hover {
+    border-color: rgba(74, 167, 205, 0.55);
+
+    box-shadow:
+        0 0 16px rgba(59, 130, 246, 0.17),
+        0 16px 30px rgba(0, 0, 0, 0.32);
+}
+
+
+/* =========================================================
+   42. RESPONSIVIDAD DEL PULIDO VISUAL
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .pagina-catalogo .vault-card-imagen {
+        min-height: 260px;
+        height: 260px;
+    }
+
+    .pagina-catalogo .figura-imagen {
+        height: 260px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    body.pagina-catalogo::before {
+        background-size: 48px 48px;
+
+        opacity: 0.44;
+    }
+
+    body.pagina-catalogo::after {
+        opacity: 0.72;
+    }
+
+    .pagina-catalogo .vault-card-imagen {
+        min-height: 230px;
+        height: 230px;
+    }
+
+    .pagina-catalogo .figura-imagen {
+        height: 300px;
+    }
+}
+
+
+/* =========================================================
+   43. ACCESIBILIDAD DEL FONDO Y LAS NUEVAS IMÁGENES
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    body.pagina-catalogo::before,
+    body.pagina-catalogo::after {
+        animation: none;
+    }
+
+    .pagina-catalogo .vault-card-imagen img,
+    .pagina-catalogo .figura-imagen img {
+        transition: none;
+    }
+}
+
+/* =========================================================
+   44. PORTADA - IMÁGENES DESTACADAS UNIFORMES
+   Replica la presentación homogénea usada en el catálogo.
+   ========================================================= */
+
+.pagina-inicio .productos-destacados-grid figure {
+    overflow: hidden;
+}
+
+.pagina-inicio .productos-destacados-grid figure img {
+    display: block;
+
+    width: 100%;
+    max-width: none;
+    height: 300px;
+
+    object-fit: cover;
+    object-position: center;
+
+    border: none;
+
+    box-shadow: none;
+}
+
+.pagina-inicio .productos-destacados-grid > li:nth-child(1) figure img {
+    object-position: center 34%;
+}
+
+.pagina-inicio .productos-destacados-grid > li:nth-child(2) figure img {
+    object-position: center 34%;
+}
+
+.pagina-inicio .productos-destacados-grid > li:nth-child(3) figure img {
+    object-position: center;
+}
+
+@media (max-width: 900px) {
+
+    .pagina-inicio .productos-destacados-grid figure img {
+        height: 260px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .pagina-inicio .productos-destacados-grid figure img {
+        height: 240px;
+    }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+
+    body.pagina-catalogo::before,
+    body.pagina-catalogo::after {
+        animation: none;
+
+        transform: none;
+    }
+}
+
+/* =========================================================
+   45. COLLECTOR'S VAULT - CARRUSEL BOOTSTRAP 5
+   Mantiene la estética NatGamez y delega a Bootstrap el
+   avance automático, los controles y la interacción táctil.
+   ========================================================= */
+
+.pagina-catalogo .vault-carrusel-bootstrap {
+    position: relative;
+
+    width: 100%;
+
+    margin-top: 8px;
+}
+
+
+.pagina-catalogo .vault-carousel-inner {
+    overflow: hidden;
+
+    border-radius: 14px;
+}
+
+
+.pagina-catalogo .vault-carrusel-bootstrap .carousel-item {
+    transition:
+        transform 0.58s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+
+.pagina-catalogo .vault-carrusel-bootstrap .vault-card {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.08fr)
+        minmax(330px, 0.92fr);
+
+    width: 100%;
+    min-height: 430px;
+
+    margin: 0;
+    padding: 0;
+
+    overflow: hidden;
+
+    border: 1px solid rgba(255, 255, 255, 0.11);
+    border-radius: 14px;
+
+    box-shadow:
+        0 16px 34px rgba(0, 0, 0, 0.28);
+}
+
+
+.pagina-catalogo .vault-carrusel-bootstrap .vault-card-imagen {
+    width: 100%;
+    min-height: 430px;
+    height: 430px;
+
+    margin: 0;
+    padding: 0;
+
+    overflow: hidden;
+
+    border-right: 1px solid var(--borde);
+    border-bottom: 0;
+
+    background:
+        linear-gradient(
+            145deg,
+            #101018,
+            #171720
+        );
+}
+
+
+.pagina-catalogo .vault-carrusel-bootstrap .vault-card-imagen img {
+    display: block;
+
+    width: 100%;
+    max-width: none;
+    height: 100%;
+
+    margin: 0;
+    padding: 22px;
+
+    object-fit: contain;
+    object-position: center;
+
+    border: 0;
+    border-radius: 0;
+
+    background: transparent;
+
+    box-shadow: none;
+}
+
+
+.pagina-catalogo .vault-carrusel-bootstrap .vault-card-contenido {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    min-width: 0;
+    height: 100%;
+
+    padding: clamp(28px, 4vw, 46px);
+}
+
+
+.pagina-catalogo .vault-carrusel-bootstrap .vault-card h3 {
+    margin: 18px 0 16px;
+
+    font-size: clamp(1.55rem, 2.5vw, 2.15rem);
+    line-height: 1.18;
+}
+
+
+.pagina-catalogo .vault-carrusel-bootstrap .vault-card ul {
+    margin: 4px 0 22px 20px;
+}
+
+
+.pagina-catalogo .vault-carrusel-bootstrap .vault-card li {
+    margin-bottom: 8px;
+
+    font-size: 0.98rem;
+}
+
+
+.pagina-catalogo .vault-carrusel-bootstrap .precio-premium {
+    margin-top: auto !important;
+
+    font-size: 1.5rem;
+}
+
+
+/* Hover cromático coherente con cada edición */
+
+.pagina-catalogo .vault-carrusel-bootstrap .carousel-item:nth-child(1) .vault-card:hover {
+    border-color: rgba(212, 175, 55, 0.60);
+
+    box-shadow:
+        0 0 18px rgba(212, 175, 55, 0.20),
+        0 20px 38px rgba(0, 0, 0, 0.34);
+}
+
+
+.pagina-catalogo .vault-carrusel-bootstrap .carousel-item:nth-child(2) .vault-card:hover {
+    border-color: rgba(96, 165, 250, 0.66);
+
+    box-shadow:
+        0 0 18px rgba(59, 130, 246, 0.24),
+        0 20px 38px rgba(0, 0, 0, 0.34);
+}
+
+
+.pagina-catalogo .vault-carrusel-bootstrap .carousel-item:nth-child(3) .vault-card:hover {
+    border-color: rgba(74, 222, 128, 0.58);
+
+    box-shadow:
+        0 0 18px rgba(34, 197, 94, 0.20),
+        0 20px 38px rgba(0, 0, 0, 0.34);
+}
+
+
+/* ---------------------------------------------------------
+   CONTROLES LATERALES
+   --------------------------------------------------------- */
+
+.pagina-catalogo .vault-carrusel-bootstrap .vault-control {
+    top: 50%;
+    bottom: auto;
+
+    width: 46px;
+    height: 46px;
+
+    margin: 0;
+    padding: 0;
+
+    transform: translateY(-50%);
+
+    opacity: 0.78;
+
+    background-color: rgba(11, 11, 16, 0.72);
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 50%;
+
+    box-shadow:
+        0 8px 22px rgba(0, 0, 0, 0.30);
+
+    transition:
+        opacity 0.25s ease,
+        background-color 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.pagina-catalogo .vault-carrusel-bootstrap .vault-control-prev {
+    left: 14px;
+}
+
+
+.pagina-catalogo .vault-carrusel-bootstrap .vault-control-next {
+    right: 14px;
+}
+
+
+.pagina-catalogo .vault-carrusel-bootstrap .vault-control:hover {
+    transform: translateY(-50%);
+
+    opacity: 1;
+
+    background-color: rgba(20, 20, 30, 0.92);
+
+    border-color: var(--morado-claro);
+
+    box-shadow:
+        0 0 14px rgba(139, 92, 246, 0.34),
+        0 10px 24px rgba(0, 0, 0, 0.34);
+}
+
+
+.pagina-catalogo .vault-carrusel-bootstrap .vault-control:focus-visible {
+    outline: 2px solid var(--verde-claro);
+    outline-offset: 3px;
+
+    opacity: 1;
+}
+
+
+.pagina-catalogo .vault-carrusel-bootstrap .carousel-control-prev-icon,
+.pagina-catalogo .vault-carrusel-bootstrap .carousel-control-next-icon {
+    width: 1.35rem;
+    height: 1.35rem;
+}
+
+
+/* ---------------------------------------------------------
+   INDICADORES ● ○ ○
+   --------------------------------------------------------- */
+
+.pagina-catalogo .vault-carrusel-bootstrap .vault-indicadores-bootstrap {
+    position: static;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 12px;
+
+    margin: 22px 0 0;
+    padding: 0;
+}
+
+
+.pagina-catalogo .vault-carrusel-bootstrap .vault-indicadores-bootstrap [data-bs-slide-to] {
+    box-sizing: border-box;
+
+    flex: 0 0 12px;
+
+    width: 12px;
+    height: 12px;
+
+    margin: 0;
+    padding: 0;
+
+    opacity: 1;
+
+    background: transparent;
+
+    border: 1.6px solid rgba(248, 250, 252, 0.72);
+    border-radius: 50%;
+
+    box-shadow: none;
+
+    transition:
+        transform 0.25s ease,
+        background-color 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.pagina-catalogo .vault-carrusel-bootstrap .vault-indicadores-bootstrap [data-bs-slide-to]:hover {
+    transform: scale(1.24);
+
+    background-color: rgba(248, 250, 252, 0.18);
+}
+
+
+.pagina-catalogo .vault-carrusel-bootstrap .vault-indicadores-bootstrap button:nth-child(1).active {
+    background-color: var(--morado-claro);
+
+    border-color: var(--morado-claro);
+
+    box-shadow:
+        0 0 10px rgba(167, 139, 250, 0.80);
+}
+
+
+.pagina-catalogo .vault-carrusel-bootstrap .vault-indicadores-bootstrap button:nth-child(2).active {
+    background-color: var(--azul-claro);
+
+    border-color: var(--azul-claro);
+
+    box-shadow:
+        0 0 10px rgba(96, 165, 250, 0.80);
+}
+
+
+.pagina-catalogo .vault-carrusel-bootstrap .vault-indicadores-bootstrap button:nth-child(3).active {
+    background-color: var(--verde-claro);
+
+    border-color: var(--verde-claro);
+
+    box-shadow:
+        0 0 10px rgba(74, 222, 128, 0.76);
+}
+
+
+.pagina-catalogo .vault-carrusel-bootstrap .vault-indicadores-bootstrap [data-bs-slide-to]:focus-visible {
+    outline: 2px solid var(--verde-claro);
+    outline-offset: 4px;
+}
+
+
+/* =========================================================
+   46. RESPONSIVIDAD DEL CARRUSEL BOOTSTRAP
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .pagina-catalogo .vault-carrusel-bootstrap .vault-card {
+        grid-template-columns:
+            minmax(0, 0.95fr)
+            minmax(300px, 1.05fr);
+
+        min-height: 390px;
+    }
+
+
+    .pagina-catalogo .vault-carrusel-bootstrap .vault-card-imagen {
+        min-height: 390px;
+        height: 390px;
+    }
+
+
+    .pagina-catalogo .vault-carrusel-bootstrap .vault-card-imagen img {
+        padding: 18px;
+    }
+
+
+    .pagina-catalogo .vault-carrusel-bootstrap .vault-control {
+        width: 42px;
+        height: 42px;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .pagina-catalogo .vault-carrusel-bootstrap .vault-card {
+        display: flex;
+        flex-direction: column;
+
+        min-height: 0;
+        height: auto;
+    }
+
+
+    .pagina-catalogo .vault-carrusel-bootstrap .vault-card-imagen {
+        flex: 0 0 255px;
+
+        min-height: 255px;
+        height: 255px;
+
+        border-right: 0;
+        border-bottom: 1px solid var(--borde);
+    }
+
+
+    .pagina-catalogo .vault-carrusel-bootstrap .vault-card-imagen img {
+        padding: 14px;
+    }
+
+
+    .pagina-catalogo .vault-carrusel-bootstrap .vault-card-contenido {
+        flex: 1;
+
+        padding: 24px 20px 26px;
+    }
+
+
+    .pagina-catalogo .vault-carrusel-bootstrap .vault-card h3 {
+        font-size: 1.42rem;
+    }
+
+
+    .pagina-catalogo .vault-carrusel-bootstrap .vault-control {
+        top: 128px;
+
+        width: 38px;
+        height: 38px;
+    }
+
+
+    .pagina-catalogo .vault-carrusel-bootstrap .vault-control-prev {
+        left: 9px;
+    }
+
+
+    .pagina-catalogo .vault-carrusel-bootstrap .vault-control-next {
+        right: 9px;
+    }
+
+
+    .pagina-catalogo .vault-carrusel-bootstrap .vault-indicadores-bootstrap {
+        margin-top: 20px;
+    }
+
+
+    body.pagina-catalogo::before {
+        opacity: 0.86;
+    }
+
+
+    body.pagina-catalogo::after {
+        opacity: 0.48;
+    }
+
+}
+
+
+/* =========================================================
+   47. ACCESIBILIDAD - REDUCCIÓN DE MOVIMIENTO DEL CARRUSEL
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .pagina-catalogo .vault-carrusel-bootstrap .carousel-item,
+    .pagina-catalogo .vault-carrusel-bootstrap .vault-control,
+    .pagina-catalogo .vault-carrusel-bootstrap .vault-indicadores-bootstrap [data-bs-slide-to] {
+        transition: none;
+    }
+
+}
+
+/* =========================================================
+   48. CIELO PROFUNDO - RESPONSIVIDAD Y ACCESIBILIDAD
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    body.pagina-catalogo::before {
+        opacity: 0.64;
+    }
+
+    body.pagina-catalogo::after {
+        opacity: 0.76;
+    }
+
+    .cielo-catalogo::before {
+        opacity: 0.76;
+    }
+
+    .estrella-fugaz {
+        transform-origin: right center;
+    }
+}
+
+@media (max-width: 600px) {
+
+    body.pagina-catalogo::before {
+        opacity: 0.54;
+    }
+
+    body.pagina-catalogo::after {
+        opacity: 0.68;
+    }
+
+    .cielo-catalogo::before {
+        opacity: 0.66;
+    }
+
+    .estrella-fugaz {
+        width: 88px;
+    }
+
+    .estrella-fugaz-morada {
+        top: 18%;
+        left: 84%;
+    }
+
+    .estrella-fugaz-azul {
+        top: 50%;
+        left: 90%;
+    }
+
+    .estrella-fugaz-verde {
+        top: 78%;
+        left: 82%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    body.pagina-catalogo::before,
+    body.pagina-catalogo::after,
+    .cielo-catalogo::before,
+    .estrella-fugaz {
+        animation: none !important;
+    }
+
+    .estrella-fugaz {
+        display: none;
+    }
+}
+
+/* =========================================================
+   49. INTEGRACIÓN NAVBAR BOOTSTRAP - SEMANA 4
+   ========================================================= */
+
+/*
+   Bootstrap aporta únicamente el comportamiento de colapso.
+   La apariencia continúa dependiendo de los estilos originales
+   de navegación de NatGamez definidos anteriormente.
+*/
+
+.navbar-natgamez-bootstrap {
+    display: block;
+}
+
+
+.nav-cabecera-bootstrap {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+
+    gap: 20px;
+}
+
+
+.nav-cabecera-bootstrap--catalogo {
+    justify-content: flex-end;
+}
+
+
+.navbar-natgamez-bootstrap .navbar-toggler {
+    margin: 0 0 18px auto;
+
+    padding: 8px 10px;
+
+    background-color: rgba(139, 92, 246, 0.08);
+
+    border: 1px solid var(--morado);
+    border-radius: 8px;
+
+    transform: none;
+
+    box-shadow: none;
+
+    transition:
+        background-color 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.navbar-natgamez-bootstrap .navbar-toggler:hover {
+    background-color: rgba(139, 92, 246, 0.18);
+
+    border-color: var(--azul-claro);
+
+    transform: none;
+
+    box-shadow:
+        0 0 10px rgba(139, 92, 246, 0.45),
+        0 0 16px rgba(59, 130, 246, 0.20);
+}
+
+
+.navbar-natgamez-bootstrap .navbar-toggler:focus {
+    outline: 2px solid var(--verde-claro);
+    outline-offset: 3px;
+
+    box-shadow: none;
+}
+
+
+.nav-collapse-bootstrap {
+    width: 100%;
+}
+
+
+.nav-collapse-bootstrap > ul {
+    width: 100%;
+}
+
+/* =========================================================
+   50. GRID + CARDS BOOTSTRAP - CATÁLOGO SEMANA 4
+   ========================================================= */
+
+/*
+   La cuadrícula visible usa Bootstrap:
+   col-12 = 1 columna móvil
+   col-md-6 = 2 columnas tablet
+   col-lg-4 = 3 columnas escritorio
+*/
+
+.catalogo-grid .card-body {
+    color: var(--gris-claro);
+}
+
+
+.plataformas-juego {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 7px;
+
+    margin-bottom: 14px;
+}
+
+
+.plataforma-chip {
+    padding: 6px 9px;
+
+    color: var(--gris-claro);
+
+    background-color: rgba(96, 165, 250, 0.08);
+
+    border: 1px solid rgba(96, 165, 250, 0.26);
+    border-radius: 999px;
+
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.35px;
+}
+
+
+.producto-datos-rapidos {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-top: auto;
+    margin-bottom: 13px;
+}
+
+
+.producto-rating {
+    color: #f5c451;
+
+    font-size: 0.84rem;
+    font-weight: 800;
+
+    text-shadow:
+        0 0 8px rgba(245, 196, 81, 0.18);
+}
+
+
+.producto-modalidad {
+    color: var(--gris);
+
+    font-size: 0.76rem;
+}
+
+
+.producto-meta .estado-disponible::before {
+    background-color: var(--verde);
+}
+
+
+.producto-meta .estado-alerta {
+    color: #f5c451;
+}
+
+
+.producto-meta .estado-alerta::before {
+    background-color: #f5c451;
+
+    box-shadow:
+        0 0 8px rgba(245, 196, 81, 0.72);
+}
+
+
+.btn-detalles-juego {
+    width: 100%;
+
+    margin-top: 16px;
+    padding: 10px 16px;
+
+    color: var(--blanco);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(139, 92, 246, 0.20),
+            rgba(59, 130, 246, 0.13)
+        );
+
+    border: 1px solid rgba(167, 139, 250, 0.54);
+    border-radius: 9px;
+
+    font-weight: 700;
+
+    transition:
+        color 0.25s ease,
+        background-color 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+.btn-detalles-juego:hover {
+    color: var(--blanco);
+
+    background-color: rgba(139, 92, 246, 0.28);
+
+    border-color: var(--azul-claro);
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 0 12px rgba(139, 92, 246, 0.36),
+        0 0 22px rgba(59, 130, 246, 0.16);
+}
+
+
+.btn-detalles-juego:focus-visible {
+    outline: 2px solid var(--verde-claro);
+    outline-offset: 3px;
+
+    box-shadow: none;
+}
+
+
+/* =========================================================
+   51. MODAL BOOTSTRAP - DETALLE DE VIDEOJUEGO
+   ========================================================= */
+
+.modal-natgamez .modal-content {
+    color: var(--blanco);
+
+    background:
+        radial-gradient(
+            circle at 10% 0%,
+            rgba(139, 92, 246, 0.14),
+            transparent 36%
+        ),
+        linear-gradient(
+            145deg,
+            #171720,
+            #101016
+        );
+
+    border: 1px solid rgba(167, 139, 250, 0.34);
+    border-radius: 16px;
+
+    box-shadow:
+        0 22px 70px rgba(0, 0, 0, 0.62),
+        0 0 30px rgba(139, 92, 246, 0.10);
+}
+
+
+.modal-natgamez .modal-header,
+.modal-natgamez .modal-footer {
+    border-color: var(--borde);
+}
+
+
+.modal-natgamez .modal-header {
+    align-items: flex-start;
+}
+
+
+.modal-natgamez .modal-title {
+    color: var(--blanco);
+
+    font-size: clamp(1.45rem, 3vw, 2.15rem);
+}
+
+
+.modal-juego-imagen {
+    display: block;
+
+    width: 100%;
+    min-height: 250px;
+    max-height: 420px;
+
+    object-fit: cover;
+
+    background-color: #0b0b10;
+
+    border: 1px solid rgba(96, 165, 250, 0.26);
+    border-radius: 12px;
+}
+
+
+.modal-juego-descripcion {
+    margin-bottom: 22px;
+
+    color: var(--gris-claro);
+
+    line-height: 1.75;
+}
+
+
+.modal-ficha-juego {
+    display: grid;
+
+    gap: 10px;
+
+    margin: 0 0 24px;
+}
+
+
+.modal-ficha-juego > div {
+    display: grid;
+    grid-template-columns: minmax(120px, 0.7fr) minmax(0, 1.3fr);
+
+    gap: 14px;
+
+    padding-bottom: 10px;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+
+.modal-ficha-juego dt {
+    color: var(--azul-claro);
+
+    font-size: 0.82rem;
+    font-weight: 800;
+}
+
+
+.modal-ficha-juego dd {
+    margin: 0;
+
+    color: var(--gris-claro);
+}
+
+
+.modal-juego-precio {
+    margin: 0;
+
+    color: var(--verde-claro);
+
+    font-size: 1.55rem;
+    font-weight: 900;
+}
+
+
+.boton-modal-cerrar {
+    min-width: 120px;
+
+    color: var(--blanco);
+
+    background-color: rgba(139, 92, 246, 0.22);
+
+    border: 1px solid var(--morado-claro);
+}
+
+
+.boton-modal-cerrar:hover {
+    color: var(--blanco);
+
+    background-color: var(--morado);
+}
+
+
+/* =========================================================
+   52. CONTADOR + PAUSA DEL COLLECTOR'S VAULT
+   ========================================================= */
+
+.vault-navegacion-inferior {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+    gap: 18px 28px;
+
+    margin-top: 22px;
+}
+
+
+.pagina-catalogo .vault-carrusel-bootstrap .vault-navegacion-inferior .vault-indicadores-bootstrap {
+    margin: 0;
+}
+
+
+.vault-utilidades {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+}
+
+
+.vault-contador {
+    min-width: 58px;
+
+    color: var(--gris-claro);
+
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+
+.vault-pausa {
+    margin: 0;
+    padding: 7px 11px;
+
+    color: var(--gris-claro);
+
+    background-color: rgba(255, 255, 255, 0.025);
+
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 999px;
+
+    font-size: 0.78rem;
+    font-weight: 700;
+}
+
+
+.vault-pausa:hover {
+    color: var(--blanco);
+
+    background-color: rgba(139, 92, 246, 0.14);
+
+    border-color: var(--morado-claro);
+
+    transform: none;
+
+    box-shadow:
+        0 0 10px rgba(139, 92, 246, 0.24);
+}
+
+
+.vault-pausa:focus-visible {
+    outline: 2px solid var(--verde-claro);
+    outline-offset: 3px;
+
+    box-shadow: none;
+}
+
+
+/* =========================================================
+   53. RESPONSIVIDAD DE CARDS, MODAL Y CONTROLES EXTRA
+   ========================================================= */
+
+@media (max-width: 767.98px) {
+
+    .modal-ficha-juego > div {
+        grid-template-columns: 1fr;
+
+        gap: 3px;
+    }
+
+
+    .modal-juego-imagen {
+        min-height: 220px;
+        max-height: 320px;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .producto-datos-rapidos,
+    .producto-meta {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+
+    .vault-navegacion-inferior {
+        gap: 14px 18px;
+    }
+
+
+    .vault-utilidades {
+        justify-content: center;
+
+        width: 100%;
+    }
+
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+
+    .btn-detalles-juego,
+    .vault-pausa {
+        transition: none;
+    }
+
+}
+
+/* =========================================================
+   54. ACCESIBILIDAD Y NAVEGACIÓN POR TECLADO - SEMANA 4
+   ========================================================= */
+
+/*
+   El enlace permanece fuera de la vista hasta recibir foco.
+   Permite saltar la navegación repetitiva y llegar al
+   contenido principal usando únicamente el teclado.
+*/
+.salto-contenido {
+    position: fixed;
+
+    top: 12px;
+    left: 12px;
+
+    z-index: 9999;
+
+    padding: 10px 16px;
+
+    color: var(--blanco);
+
+    background-color: var(--negro-secundario);
+
+    border: 2px solid var(--verde-claro);
+    border-radius: 8px;
+
+    font-weight: 700;
+
+    text-decoration: none;
+
+    transform: translateY(-180%);
+
+    transition: transform 0.2s ease;
+}
+
+.salto-contenido:focus,
+.salto-contenido:focus-visible {
+    color: var(--blanco);
+
+    transform: translateY(0);
+
+    outline: 2px solid var(--azul-claro);
+    outline-offset: 3px;
+
+    box-shadow:
+        0 0 12px rgba(34, 197, 94, 0.45),
+        0 0 20px rgba(59, 130, 246, 0.20);
+}
+
+/*
+   Indicador de foco consistente para controles interactivos.
+   Las reglas específicas de cada componente pueden ampliar
+   este estilo sin perder visibilidad al navegar con Tab.
+*/
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible {
+    outline: 2px solid var(--verde-claro);
+    outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .salto-contenido {
+        transition: none;
+    }
+}

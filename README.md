@@ -28,7 +28,7 @@ Tienda gamer ficticia · DOM · Eventos · Fetch API · Bootstrap 5 · Responsiv
 <td width="25%" align="center"><b>🎮 9</b><br><sub>Videojuegos del catálogo</sub></td>
 <td width="25%" align="center"><b>✨ 3</b><br><sub>Recomendaciones dinámicas</sub></td>
 <td width="25%" align="center"><b>💎 3</b><br><sub>Ediciones Collector</sub></td>
-<td width="25%" align="center"><b>🌐 3</b><br><sub>Navegadores de prueba</sub></td>
+<td width="25%" align="center"><b>🌐 2</b><br><sub>Navegadores de prueba</sub></td>
 </tr>
 </table>
 
@@ -94,7 +94,7 @@ Carousel Bootstrap automático e interactivo
 
 06 · Responsive + navegadores
 
-Desktop, tablet, móvil, Brave, Firefox y Chrome
+Desktop, tablet, móvil, Brave y Firefox
 
 07 · Accesibilidad y buenas prácticas
 
@@ -477,7 +477,6 @@ Navegadores utilizados
 
 Brave
 Firefox
-Google Chrome
 
 07 · ACCESIBILIDAD Y BUENAS PRÁCTICAS
 
@@ -604,17 +603,18 @@ Se verifican los siguientes puntos antes de la entrega:
 ✅ Responsive
 ✅ Brave
 ✅ Firefox
-✅ Google Chrome
 ✅ GitHub
 ✅ GitHub Pages
 
 📸 Evidencias
 
-Las capturas de Semana 5 se almacenan en:
+La documentación final de capturas de Semana 5 se encuentra en:
 
-Semana 5/capturas/
+📄 Abrir Documentación_Capturas.pdf
 
-La documentación de capturas se mantiene intencionalmente breve: las imágenes demuestran el funcionamiento y este README contiene la explicación técnica del proyecto.
+Las capturas demuestran el funcionamiento del DOM dinámico, los eventos, la responsividad, la compatibilidad entre navegadores y la publicación mediante GitHub Pages.
+
+La documentación se mantiene intencionalmente breve: las imágenes demuestran el funcionamiento y este README contiene la explicación técnica del proyecto.
 
 09 · ESTRUCTURA DEL REPOSITORIO
 

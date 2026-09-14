@@ -1,25 +1,19 @@
 <div align="center">
 
-<img src="Semana%204/logo_natgamez.png" alt="Logo de NatGamez" width="250">
+<img src="Semana%205/logo_natgamez.png" alt="Logo de NatGamez" width="250">
 
 NATGAMEZ
 
-DESARROLLO FRONTEND I · PFY2201 · SEMANA 4
+DESARROLLO FRONTEND I · PFY2201 · SEMANA 5
 
-Tienda gamer ficticia · Bootstrap 5 · Responsive Design · Accesibilidad
-
-<br>
-
-
-
-
-
+Tienda gamer ficticia · DOM · Eventos · Fetch API · Bootstrap 5 · Responsive Design
 
 <br>
 
 🌐 Ver sitio ·
-📸 Evidencias ·
-🧩 Semana 4
+🎮 Abrir Semana 5 ·
+📁 Repositorio ·
+📸 Evidencias
 
 </div>
 
@@ -31,21 +25,42 @@ Tienda gamer ficticia · Bootstrap 5 · Responsive Design · Accesibilidad
 
 <table>
 <tr>
-<td width="25%" align="center"><b>🎮 9</b><br><sub>Videojuegos</sub></td>
+<td width="25%" align="center"><b>🎮 9</b><br><sub>Videojuegos del catálogo</sub></td>
+<td width="25%" align="center"><b>✨ 3</b><br><sub>Recomendaciones dinámicas</sub></td>
 <td width="25%" align="center"><b>💎 3</b><br><sub>Ediciones Collector</sub></td>
-<td width="25%" align="center"><b>🏆 3</b><br><sub>Figuras Premium</sub></td>
-<td width="25%" align="center"><b>📱 3</b><br><sub>Breakpoints principales</sub></td>
+<td width="25%" align="center"><b>🌐 3</b><br><sub>Navegadores de prueba</sub></td>
 </tr>
 </table>
 
 NatGamez es una tienda ficticia de videojuegos construida progresivamente durante la asignatura Desarrollo Frontend I (PFY2201).
-En la Semana 4 se incorpora Bootstrap 5 como soporte estructural y funcional, manteniendo la identidad visual oscura, gamer y RGB desarrollada en las semanas anteriores.
+
+En la Semana 5 el proyecto evoluciona desde una interfaz basada principalmente en HTML, CSS y Bootstrap hacia una página con comportamiento dinámico mediante JavaScript, incorporando manipulación del DOM, eventos, consumo de datos mediante Fetch API, validaciones y manejo de errores.
+
+La versión mantiene las funcionalidades construidas previamente —Navbar, Grid, Cards, Modal y Carousel Bootstrap— y añade una sección interactiva de recomendaciones cargadas desde un archivo JSON.
 
 Objetivo de esta versión
 
-Integrar componentes Bootstrap reales —Navbar, Grid, Cards, Carousel y Modal— sin convertir el proyecto en una plantilla genérica del framework.
+Aplicar JavaScript sobre el proyecto existente para:
 
-Bootstrap aporta la estructura. NatGamez conserva la personalidad.
+manipular el DOM dinámicamente;
+
+utilizar createElement() y appendChild();
+
+implementar eventos click, mouseover y submit;
+
+cargar datos mediante Fetch API;
+
+mostrar información externa de forma dinámica;
+
+validar entradas del usuario;
+
+manejar errores de carga;
+
+organizar el código mediante funciones reutilizables;
+
+mantener una experiencia responsive y accesible.
+
+Bootstrap aporta la estructura. JavaScript aporta la interacción. NatGamez conserva la personalidad.
 
 <div align="center">
 
@@ -57,141 +72,220 @@ Sección
 
 Contenido
 
-01 · Implementación Bootstrap
+01 · DOM + Fetch API
 
-Navbar, Grid, Cards, Modal y Carousel
+Recomendaciones dinámicas desde JSON
 
-02 · Catálogo
+02 · Eventos e interacción
+
+mouseover, submit y click
+
+03 · Formulario y validaciones
+
+Recomendación por plataforma y manejo de errores
+
+04 · Catálogo + Modal
 
 9 videojuegos y ficha ampliada
 
-03 · Collector's Vault
+05 · Collector's Vault
 
-Carousel automático y controles
+Carousel Bootstrap automático e interactivo
 
-04 · Responsive
+06 · Responsive + navegadores
 
-Desktop, tablet, móvil y breakpoint 992 px
+Desktop, tablet, móvil, Brave, Firefox y Chrome
 
-05 · Accesibilidad
+07 · Accesibilidad y buenas prácticas
 
-ARIA, teclado y reducción de movimiento
+ARIA, foco, feedback y funciones reutilizables
 
-06 · QA y evidencias
+08 · QA y evidencias
 
-Pruebas, consola y documentación
+Pruebas funcionales y capturas
 
-07 · Estructura
+09 · Estructura del repositorio
 
-Organización del proyecto
+Organización de Semana 5
 
-08 · Tecnologías
+10 · Tecnologías
 
 Stack utilizado
 
-01 · IMPLEMENTACIÓN BOOTSTRAP
+01 · DOM + FETCH API
 
-<table>
-<tr>
-<td width="50%" valign="top">
+<div align="center">
 
-🧭 Navbar
+✨ RECOMENDACIONES NATGAMEZ
 
-navbar-expand-lg
+</div>
 
-Collapse responsive
+La sección Recomendaciones NatGamez se construye dinámicamente mediante JavaScript.
 
-Botón hamburguesa
+Los datos provienen de:
 
-Navegación mediante teclado
+Semana 5/juegos_recomendados.json
 
-Atributos aria-*
+La carga utiliza Fetch API y valida que la respuesta sea correcta antes de procesar el JSON.
 
-Cambio verificado en 991 / 992 px
+Fetch API
+   ↓
+juegos_recomendados.json
+   ↓
+Validación de respuesta
+   ↓
+Creación dinámica de elementos
+   ↓
+Inserción en el DOM
 
-</td>
-<td width="50%" valign="top">
+Métodos DOM utilizados
 
-🧱 Grid
+document.createElement()
+appendChild()
 
-container
+Cada recomendación se construye desde JavaScript y se inserta dinámicamente en la página.
 
-row
+Recomendaciones cargadas
 
-col-12
+#
 
-col-md-6
-
-col-lg-4
-
-Distribución 1 · 2 · 3 columnas
-
-</td>
-</tr>
-
-<tr>
-<td width="50%" valign="top">
-
-🃏 Cards
-
-9 videojuegos
-
-Imagen, género y descripción
-
-Chips de plataforma
-
-Rating
-
-Disponibilidad
-
-Precio
-
-Acción Ver detalles
-
-</td>
-<td width="50%" valign="top">
-
-🪟 Modal
-
-Modal Bootstrap reutilizable
-
-Contenido dinámico
-
-Imagen y descripción ampliada
+Videojuego
 
 Plataformas
 
-Modalidad
+01
 
-Rating, estado y precio
+Hades II
+
+PC
+
+02
+
+Sekiro: Shadows Die Twice
+
+PS4 · Xbox · PC
+
+03
+
+DOOM Eternal
+
+PS5 · Xbox · Switch · PC
+
+Las Cards dinámicas reutilizan la identidad visual del catálogo y permiten abrir el mismo Modal Bootstrap utilizado por los videojuegos estáticos.
+
+02 · EVENTOS E INTERACCIÓN
+
+<div align="center">
+
+🖱️ CLICK · MOUSEOVER · SUBMIT
+
+</div>
+
+La Semana 5 incorpora los tres eventos solicitados en la actividad.
+
+<table>
+<tr>
+<td width="33%" valign="top">
+
+🖱️ mouseover
+
+Al pasar el cursor sobre una recomendación dinámica, el estado de exploración cambia para informar qué videojuego está siendo observado.
 
 </td>
-</tr>
+<td width="33%" valign="top">
 
-<tr>
-<td colspan="2" valign="top">
+📋 submit
 
-🎠 Carousel
+El formulario procesa el nombre y la plataforma seleccionada sin recargar la página.
 
-3 ediciones Collector
+La recomendación se genera únicamente cuando los datos son válidos.
 
-Autoplay cada 3000 ms
+</td>
+<td width="33%" valign="top">
 
-Flechas anterior / siguiente
+🎲 click
 
-Indicadores
-
-Swipe táctil
-
-Contador 01 / 03
-
-Pausar / Reproducir
+El botón Sorpréndeme selecciona aleatoriamente una recomendación compatible con la plataforma elegida.
 
 </td>
 </tr>
 </table>
 
-02 · CATÁLOGO
+Las interacciones modifican dinámicamente el contenido y los estilos visibles de la interfaz.
+
+03 · FORMULARIO Y VALIDACIONES
+
+<div align="center">
+
+🎯 ENCUENTRA TU PRÓXIMA PARTIDA
+
+</div>
+
+El formulario permite generar recomendaciones según la plataforma del usuario.
+
+Acción Recomendar
+
+Requiere:
+
+nombre válido;
+
+plataforma seleccionada;
+
+datos cargados correctamente.
+
+Acción 🎲 Sorpréndeme
+
+Requiere:
+
+plataforma seleccionada;
+
+datos cargados correctamente.
+
+El nombre no es obligatorio para esta acción.
+
+Compatibilidad actual
+
+Plataforma
+
+Recomendaciones disponibles
+
+PC
+
+Hades II · Sekiro · DOOM Eternal
+
+PS5
+
+DOOM Eternal
+
+PS4
+
+Sekiro
+
+Xbox
+
+Sekiro · DOOM Eternal
+
+Switch
+
+DOOM Eternal
+
+La selección aleatoria se realiza después de filtrar por compatibilidad, evitando recomendar videojuegos que no estén disponibles para la plataforma escogida.
+
+Validaciones implementadas
+
+feedback visual para campos inválidos;
+
+aria-describedby asociado a mensajes de error;
+
+validación del nombre;
+
+validación de plataforma permitida;
+
+botones deshabilitados mientras los datos no estén disponibles;
+
+limpieza automática de estados al corregir los campos.
+
+04 · CATÁLOGO + MODAL
 
 <div align="center">
 
@@ -259,32 +353,27 @@ Mortal Kombat 1: Definitive Edition
 
 Lucha
 
-Cada Card contiene una ficha compacta y un botón Ver detalles que abre el Modal Bootstrap con información ampliada.
+Cada Card incluye información resumida y un botón Ver detalles.
 
-<details>
-<summary><b>📋 ¿Qué información muestra cada Card?</b></summary>
+El Modal Bootstrap reutilizable muestra:
 
-<br>
+imagen ampliada;
 
-Categoría o género
+descripción;
 
-Plataformas
+plataformas;
 
-Valoración
+modalidad;
 
-Modalidad
+valoración;
 
-Disponibilidad
+disponibilidad;
 
-Precio
+precio.
 
-Descripción breve
+Durante la Semana 5 también se ajustó la presentación de las imágenes para evitar recortes innecesarios y mantener una visualización completa dentro del Modal.
 
-Acceso al Modal de detalle
-
-</details>
-
-03 · COLLECTOR'S VAULT
+05 · COLLECTOR'S VAULT
 
 <div align="center">
 
@@ -300,15 +389,37 @@ Acceso al Modal de detalle
 </tr>
 </table>
 
-El carrusel fue migrado desde una solución CSS de la versión anterior a un Carousel Bootstrap 5 real.
+El Collector's Vault mantiene el Carousel Bootstrap 5 incorporado en la Semana 4.
 
 Controles disponibles
 
 ‹ anterior · ● indicadores · 01 / 03 · ⏸ pausar · ▶ reproducir · siguiente ›
 
-El cambio automático está configurado en 3 segundos y puede detenerse manualmente para mejorar la experiencia y la accesibilidad.
+Características:
 
-04 · RESPONSIVE
+autoplay cada 3000 ms;
+
+flechas anterior / siguiente;
+
+indicadores;
+
+contador;
+
+pausa / reproducción;
+
+interacción táctil compatible con Bootstrap.
+
+Mantenimiento CSS
+
+Como mejora de mantenimiento se depuraron estilos heredados de versiones anteriores.
+
+Se eliminaron reglas obsoletas asociadas a la antigua implementación de .vault-grid y se consolidaron los estilos utilizados por el carrusel actual bajo .vault-carrusel-bootstrap.
+
+También se consolidaron reglas repetidas del Modal para evitar mantener versiones antiguas y nuevas del mismo componente.
+
+El objetivo fue conservar exactamente el comportamiento visual actual reduciendo redefiniciones innecesarias.
+
+06 · RESPONSIVE + NAVEGADORES
 
 <a id="responsive"></a>
 
@@ -320,46 +431,55 @@ El cambio automático está configurado en 3 segundos y puede detenerse manualme
 
 Vista
 
-Navbar
+Resolución de prueba
 
-Grid de videojuegos
+Distribución
 
 🖥️ Desktop
 
-Expandida
+1440 × 900
 
-3 columnas
+Vista completa
 
 💻 Tablet
 
-Colapsable
+768 × 1024
 
-2 columnas
+Distribución adaptada
 
 📱 Móvil
 
-Hamburguesa
+390 × 844
 
-1 columna
+Contenido en una columna
 
-Breakpoint validado
+La interfaz conserva los breakpoints y comportamiento responsive desarrollados anteriormente con Bootstrap y CSS personalizado.
 
-991 px  →  Navbar colapsada   ☰
-992 px  →  Navbar expandida   Inicio · Destacados · Catálogo · Contacto
+Durante QA se verifica especialmente:
 
-El sitio también fue revisado para evitar:
+ausencia de scroll horizontal accidental;
 
-scroll horizontal accidental;
+Cards sin deformaciones;
 
-cards deformadas;
+imágenes dentro de proporción;
 
-imágenes fuera de proporción;
+navegación accesible;
 
-controles inaccesibles;
+formulario usable;
 
-colisiones entre texto y componentes.
+recomendaciones correctamente distribuidas;
 
-05 · ACCESIBILIDAD
+Modal adaptado;
+
+Collector's Vault funcional.
+
+Navegadores utilizados
+
+Brave
+Firefox
+Google Chrome
+
+07 · ACCESIBILIDAD Y BUENAS PRÁCTICAS
 
 <table>
 <tr>
@@ -398,6 +518,8 @@ aria-labelledby
 
 aria-describedby
 
+feedback accesible
+
 foco visible
 
 navegación con teclado
@@ -410,9 +532,49 @@ prefers-reduced-motion
 </tr>
 </table>
 
-El Carousel dispone además de un control manual para detener su movimiento automático.
+Organización JavaScript
 
-06 · QA Y EVIDENCIAS
+La lógica se distribuye en funciones reutilizables para evitar código repetitivo.
+
+Entre ellas se encuentran funciones encargadas de:
+
+crear elementos dinámicos;
+
+construir Cards de recomendaciones;
+
+cargar información mediante Fetch;
+
+validar formularios;
+
+filtrar recomendaciones compatibles;
+
+seleccionar una recomendación aleatoria;
+
+actualizar estados de interfaz;
+
+controlar el Modal;
+
+controlar el Collector's Vault.
+
+Las funciones principales incluyen comentarios que explican su propósito y flujo de trabajo.
+
+Manejo de errores
+
+La carga dinámica contempla:
+
+comprobación de response.ok;
+
+try / catch;
+
+validación de estructura del JSON;
+
+botón Reintentar ante fallos;
+
+fallback de imágenes;
+
+bloqueo temporal de controles mientras no existen datos válidos.
+
+08 · QA Y EVIDENCIAS
 
 <div align="center">
 
@@ -420,102 +582,91 @@ El Carousel dispone además de un control manual para detener su movimiento auto
 
 </div>
 
-Se verificó manualmente:
+Se verifican los siguientes puntos antes de la entrega:
 
-✅ Bootstrap CSS cargado
-
-✅ Bootstrap Bundle JS cargado
-
-✅ Navbar expandida y colapsada
-
-✅ Breakpoint 991 / 992 px
-
-✅ Grid 3 / 2 / 1
-
-✅ 9 Cards operativas
-
+✅ HTML Semana 5 disponible
+✅ CSS Semana 5 disponible
+✅ JavaScript Semana 5 disponible
+✅ JSON válido
+✅ JavaScript válido
+✅ DOM dinámico
+✅ createElement()
+✅ appendChild()
+✅ Fetch API
+✅ Evento mouseover
+✅ Evento submit
+✅ Evento click
+✅ Validación de formulario
+✅ Compatibilidad por plataforma
+✅ Manejo de errores Fetch
 ✅ Modal dinámico
+✅ Collector's Vault
+✅ Responsive
+✅ Brave
+✅ Firefox
+✅ Google Chrome
+✅ GitHub
+✅ GitHub Pages
 
-✅ Carousel automático
+📸 Evidencias
 
-✅ Controles del Carousel
+Las capturas de Semana 5 se almacenan en:
 
-✅ Pausa / reproducción
+Semana 5/capturas/
 
-✅ Navegación mediante teclado
+La documentación de capturas se mantiene intencionalmente breve: las imágenes demuestran el funcionamiento y este README contiene la explicación técnica del proyecto.
 
-✅ Consola sin errores propios
-
-✅ Publicación mediante GitHub Pages
-
-📸 Documentación
-
-La evidencia completa se encuentra en:
-
-📄 Abrir Documentación_Capturas.pdf
-
-<details>
-<summary><b>Ver índice de las 17 evidencias</b></summary>
-
-<br>
-
-Inicio desktop
-
-Navbar desktop
-
-Navbar móvil cerrada
-
-Navbar móvil abierta
-
-Grid desktop
-
-Grid tablet
-
-Grid móvil
-
-Modal de detalles
-
-Carousel desktop
-
-Carousel móvil
-
-Carousel pausado
-
-Figuras premium
-
-Consola sin errores
-
-Breakpoint 991 px
-
-Breakpoint 992 px
-
-Repositorio GitHub
-
-GitHub Pages
-
-</details>
-
-07 · ESTRUCTURA DEL REPOSITORIO
+09 · ESTRUCTURA DEL REPOSITORIO
 
 NatGamez/
 │
 ├── Semana 1/
 ├── Semana 2/
 ├── Semana 3/
-│
 ├── Semana 4/
+│
+├── Semana 5/
 │   ├── capturas/
-│   │   └── Documentación_Capturas.pdf
-│   │
-│   ├── Exp1_S4_Natalia_Alvarado.html
-│   ├── catalogo.html
-│   ├── Natalia_Alvarado_PFY2201_CSS_Semana4.css
-│   └── logo_natgamez.png
+│   ├── juegos_recomendados.json
+│   ├── logo_natgamez.png
+│   ├── Natalia_Alvarado_PFY2201_CSS_Semana5.css
+│   ├── Natalia_Alvarado_PFY2201_DOM_Semana5.html
+│   └── Natalia_Alvarado_PFY2201_DOM_Semana5.js
 │
 ├── index.html
 └── README.md
 
-08 · TECNOLOGÍAS
+Archivos principales de Semana 5
+
+Archivo
+
+Función
+
+Natalia_Alvarado_PFY2201_DOM_Semana5.html
+
+Estructura principal e integración de componentes
+
+Natalia_Alvarado_PFY2201_CSS_Semana5.css
+
+Identidad visual, responsive y estilos
+
+Natalia_Alvarado_PFY2201_DOM_Semana5.js
+
+DOM, eventos, Fetch, validación e interacción
+
+juegos_recomendados.json
+
+Fuente de datos para recomendaciones dinámicas
+
+logo_natgamez.png
+
+Identidad visual de NatGamez
+
+capturas/
+
+Evidencias de funcionamiento
+
+10 · TECNOLOGÍAS
 
 <div align="center">
 
@@ -523,6 +674,7 @@ NatGamez/
 <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3">
 <img src="https://img.shields.io/badge/Bootstrap_5-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white" alt="Bootstrap 5">
 <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript">
+<img src="https://img.shields.io/badge/JSON-000000?style=for-the-badge&logo=json&logoColor=white" alt="JSON">
 <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" alt="Git">
 <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub">
 
@@ -534,7 +686,7 @@ NatGamez/
 
 Negro · Morado · Azul · Verde · RGB
 
-Fondos oscuros · brillos suaves · cards translúcidas · animaciones · detalles gamer
+Fondos oscuros · brillos suaves · Cards translúcidas · animaciones · detalles gamer
 
 <br>
 
@@ -545,6 +697,6 @@ Desarrollo Frontend I · PFY2201 · 2026
 
 <br>
 
-
+NatGamez · Semana 5
 
 </div>

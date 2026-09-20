@@ -5,8 +5,8 @@
 // Catálogo dinámico + Fetch API + búsqueda + carrito.
 // ======================================================
 
-const RUTA_PRODUCTOS = "assets/data/productos.json";
-const RUTA_LOGO_NATGAMEZ = "logo_natgamez.png";
+const RUTA_PRODUCTOS = "../data/productos.json";
+const RUTA_LOGO_NATGAMEZ = "../img/logo_natgamez.png";
 
 const MEDIA_HOVER_REAL = "(hover: hover) and (pointer: fine)";
 const DURACION_FEEDBACK_TOUCH_MS = 1900;

@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="Semana%206/logo_natgamez.png" alt="Logo de NatGamez" width="250">
+<img src="Semana%206/assets/img/logo_natgamez.png" alt="Logo de NatGamez" width="250">
 
 # NATGAMEZ
 
@@ -8,7 +8,7 @@
 
 Tienda gamer ficticia · DOM · Eventos · Fetch API · Bootstrap 5 · Responsive Design · Carrito · Comprobante de compra
 
-[🌐 Sitio publicado](https://ladyred145.github.io/NatGamez/) · [🎮 Abrir catálogo Semana 6](Semana%206/Natalia_Alvarado_PFY2201_DOM_Semana6.html) · [📁 Repositorio](https://github.com/LadyRed145/NatGamez)
+[🌐 Sitio publicado](https://ladyred145.github.io/NatGamez/) · [🎮 Abrir catálogo Semana 6](Semana%206/assets/html/Natalia_Alvarado_PFY2201_DOM_Semana6.html) · [📁 Repositorio](https://github.com/LadyRed145/NatGamez)
 
 </div>
 
@@ -265,17 +265,19 @@ NatGamez/
 ├── Semana 5/                  # respaldo histórico estable
 │
 └── Semana 6/
-    ├── Natalia_Alvarado_PFY2201_DOM_Semana6.html
-    ├── Natalia_Alvarado_PFY2201_CSS_Semana6.css
-    ├── Natalia_Alvarado_PFY2201_DOM_Semana6.js
-    ├── logo_natgamez.png
-    │
-    ├── assets/
-    │   └── data/
-    │       └── productos.json
-    │
-    └── capturas/
-        └── Documentación_Capturas.pdf
+    └── assets/
+        ├── css/
+        │   └── Natalia_Alvarado_PFY2201_CSS_Semana6.css
+        ├── data/
+        │   └── productos.json
+        ├── html/
+        │   └── Natalia_Alvarado_PFY2201_DOM_Semana6.html
+        ├── img/
+        │   ├── logo_natgamez.png
+        │   └── capturas/
+        │       └── Documentación_Capturas.pdf
+        └── js/
+            └── Natalia_Alvarado_PFY2201_DOM_Semana6.js
 ```
 
 `juegos_recomendados.json` ya no se utiliza en Semana 6: las recomendaciones consumen el catálogo maestro `productos.json`. La copia de Semana 5 se mantiene únicamente como respaldo histórico de la entrega anterior.
@@ -284,15 +286,15 @@ NatGamez/
 
 ## ◆ Archivos principales de Semana 6
 
-### `Natalia_Alvarado_PFY2201_DOM_Semana6.html`
+### `assets/html/Natalia_Alvarado_PFY2201_DOM_Semana6.html`
 
 Estructura del catálogo, navegación, secciones principales, Collector's Vault, figuras, formulario, Modal y puntos de inserción para contenido dinámico.
 
-### `Natalia_Alvarado_PFY2201_CSS_Semana6.css`
+### `assets/css/Natalia_Alvarado_PFY2201_CSS_Semana6.css`
 
 Identidad visual, Grid, Cards, efectos, responsive design, carrito Offcanvas, figuras premium, Collector's Vault y estilos del comprobante.
 
-### `Natalia_Alvarado_PFY2201_DOM_Semana6.js`
+### `assets/js/Natalia_Alvarado_PFY2201_DOM_Semana6.js`
 
 Fetch API, validaciones, render dinámico, buscador, recomendaciones, eventos, carrito, compra, productos especiales y generación del comprobante.
 
@@ -313,7 +315,7 @@ python3 -m http.server 8765
 Abrir en el navegador:
 
 ```text
-http://localhost:8765/Natalia_Alvarado_PFY2201_DOM_Semana6.html
+http://localhost:8765/assets/html/Natalia_Alvarado_PFY2201_DOM_Semana6.html
 ```
 
 No se recomienda abrir el HTML directamente con `file://`, porque Fetch API requiere servir los archivos mediante HTTP para funcionar correctamente.

@@ -1,672 +1,347 @@
 <div align="center">
 
-<img src="Semana%205/logo_natgamez.png" alt="Logo de NatGamez" width="250">
+<img src="Semana%206/logo_natgamez.png" alt="Logo de NatGamez" width="250">
 
-NATGAMEZ
+# NATGAMEZ
 
-DESARROLLO FRONTEND I · PFY2201 · SEMANA 5
+**DESARROLLO FRONTEND I · PFY2201 · SEMANA 6**
 
-Tienda gamer ficticia · DOM · Eventos · Fetch API · Bootstrap 5 · Responsive Design
+Tienda gamer ficticia · DOM · Eventos · Fetch API · Bootstrap 5 · Responsive Design · Carrito · Comprobante de compra
 
-<br>
-
-🌐 Ver sitio ·
-🎮 Abrir Semana 5 ·
-📁 Repositorio ·
-📸 Evidencias
+[🌐 Sitio publicado](https://ladyred145.github.io/NatGamez/) · [🎮 Abrir catálogo Semana 6](Semana%206/Natalia_Alvarado_PFY2201_DOM_Semana6.html) · [📁 Repositorio](https://github.com/LadyRed145/NatGamez)
 
 </div>
 
-<div align="center">
+---
 
-◆ VISIÓN GENERAL
+## ◆ Visión general
 
-</div>
+| Catálogo | Collector's Vault | Figuras premium | Productos comprables |
+|---:|---:|---:|---:|
+| 🎮 **12 videojuegos** | 💎 **3 ediciones** | 🏆 **6 figuras** | 🛒 **21 productos** |
 
-<table>
-<tr>
-<td width="25%" align="center"><b>🎮 9</b><br><sub>Videojuegos del catálogo</sub></td>
-<td width="25%" align="center"><b>✨ 3</b><br><sub>Recomendaciones dinámicas</sub></td>
-<td width="25%" align="center"><b>💎 3</b><br><sub>Ediciones Collector</sub></td>
-<td width="25%" align="center"><b>🌐 2</b><br><sub>Navegadores de prueba</sub></td>
-</tr>
-</table>
+NatGamez es una tienda ficticia de videojuegos desarrollada progresivamente durante la asignatura **Desarrollo Frontend I (PFY2201)**. La **Semana 6** consolida el trabajo anterior y convierte el catálogo en una experiencia de compra interactiva: datos cargados mediante Fetch API, búsqueda dinámica, recomendaciones por plataforma, carrito unificado, productos coleccionables, figuras premium, comprobante de compra y adaptación responsive para escritorio, tablet y celular.
 
-NatGamez es una tienda ficticia de videojuegos construida progresivamente durante la asignatura Desarrollo Frontend I (PFY2201).
+La versión actual conserva la identidad visual construida en semanas anteriores, pero la implementación activa de la entrega se encuentra completamente organizada bajo **Semana 6**.
 
-En la Semana 5 el proyecto evoluciona desde una interfaz basada principalmente en HTML, CSS y Bootstrap hacia una página con comportamiento dinámico mediante JavaScript, incorporando manipulación del DOM, eventos, consumo de datos mediante Fetch API, validaciones y manejo de errores.
+---
 
-La versión mantiene las funcionalidades construidas previamente —Navbar, Grid, Cards, Modal y Carousel Bootstrap— y añade una sección interactiva de recomendaciones cargadas desde un archivo JSON.
+## ◆ Funcionalidades de Semana 6
 
-Objetivo de esta versión
+### 🎮 Catálogo dinámico
 
-Aplicar JavaScript sobre el proyecto existente para:
+Los **12 videojuegos** se cargan desde:
 
-manipular el DOM dinámicamente;
+```text
+Semana 6/assets/data/productos.json
+```
 
-utilizar createElement() y appendChild();
+El archivo JavaScript consume el JSON mediante **Fetch API**, valida su estructura y genera las Cards dinámicamente con `document.createElement()`, `appendChild()` y `replaceChildren()`.
 
-implementar eventos click, mouseover y submit;
+Cada videojuego incluye:
 
-cargar datos mediante Fetch API;
+- título;
+- género y categoría;
+- plataformas;
+- modalidad;
+- rating;
+- disponibilidad;
+- precio;
+- descripción;
+- imagen;
+- Modal Bootstrap con información ampliada;
+- botón de compra integrado al carrito.
 
-mostrar información externa de forma dinámica;
+### 🔎 Búsqueda
 
-validar entradas del usuario;
+El botón **Buscar** se integra directamente en la navegación del catálogo. Permite filtrar por:
 
-manejar errores de carga;
+- título;
+- género;
+- categoría;
+- modalidad;
+- plataforma;
+- estado.
 
-organizar el código mediante funciones reutilizables;
+El resultado se actualiza dinámicamente sin recargar la página y entrega feedback cuando no existen coincidencias.
 
-mantener una experiencia responsive y accesible.
+### 🎯 Recomendaciones
 
-Bootstrap aporta la estructura. JavaScript aporta la interacción. NatGamez conserva la personalidad.
+La sección de recomendaciones reutiliza los mismos **12 videojuegos del catálogo maestro**, evitando mantener fuentes de datos duplicadas.
 
-<div align="center">
+Incluye:
 
-◆ NAVEGACIÓN RÁPIDA
+- formulario por nombre y plataforma;
+- validaciones visuales;
+- acción **Recomendar** mediante `submit`;
+- acción **🎲 Sorpréndeme** mediante `click`;
+- selección aleatoria compatible con la plataforma escogida;
+- manejo de errores cuando el catálogo no puede cargarse.
 
-</div>
+### 🛒 Carrito unificado
 
-Sección
+Videojuegos, ediciones Collector y figuras premium utilizan **el mismo carrito**.
 
-Contenido
+El carrito permite:
 
-01 · DOM + Fetch API
+- agregar productos;
+- aumentar cantidades;
+- disminuir cantidades;
+- eliminar productos;
+- vaciar el carrito;
+- calcular subtotales y total general;
+- visualizar el contador desde la navegación;
+- abrir un panel lateral Bootstrap Offcanvas;
+- finalizar una compra simulada.
 
-Recomendaciones dinámicas desde JSON
+Los botones de compra de las Cards utilizan `mouseover` / `mouseout` en escritorio para ampliar su descripción, mientras que en dispositivos táctiles permanecen utilizables sin depender del hover.
 
-02 · Eventos e interacción
+### 💎 Collector's Vault
 
-mouseover, submit y click
+El carrusel contiene **3 ediciones especiales comprables**:
 
-03 · Formulario y validaciones
+1. Elden Ring Collector's Edition;
+2. Cyberpunk 2077 5th Anniversary Collector's Set;
+3. The Witcher 3 Collector's Edition.
 
-Recomendación por plataforma y manejo de errores
+Cada edición se integra al mismo carrito del catálogo y muestra su botón de compra alineado con el precio.
 
-04 · Catálogo + Modal
+### 🏆 Figuras premium
 
-9 videojuegos y ficha ampliada
+La tienda contiene **6 figuras comprables**:
 
-05 · Collector's Vault
+1. Kratos · Estatua Premium;
+2. Malenia · Blade of Miquella;
+3. Geralt & Roach · Deluxe Statue;
+4. Trevor Philips · GTA V;
+5. Dante · ARTFX J DMC5;
+6. Bayonetta · Climax Action 1/7.
 
-Carousel Bootstrap automático e interactivo
+Dante y Bayonetta incorporan acentos visuales propios manteniendo la estética general de NatGamez.
 
-06 · Responsive + navegadores
+### 🧾 Comprobante de compra
 
-Desktop, tablet, móvil, Brave y Firefox
+Al finalizar la compra se genera un **Comprobante de compra NatGamez** independiente de la página principal.
 
-07 · Accesibilidad y buenas prácticas
+Incluye:
 
-ARIA, foco, feedback y funciones reutilizables
+- logo NatGamez en la esquina superior derecha;
+- folio generado dinámicamente;
+- fecha y hora;
+- estado de compra;
+- método de pago simulado;
+- tipo de entrega;
+- cantidad total de unidades;
+- listado ordenado de productos;
+- cantidad, precio y subtotal por producto;
+- total pagado;
+- aviso de transacción académica simulada;
+- opción de guardar o imprimir mediante el diálogo del navegador.
 
-08 · QA y evidencias
+El comprobante utiliza un documento de impresión aislado para evitar imprimir el DOM completo de la tienda o dividir incorrectamente los productos.
 
-Pruebas funcionales y capturas
+---
 
-09 · Estructura del repositorio
+## ◆ Eventos utilizados
 
-Organización de Semana 5
+| Evento / mecanismo | Uso |
+|---|---|
+| `click` | carrito, buscador, recomendaciones, controles, compra y comprobante |
+| `submit` | búsqueda y formulario de recomendaciones |
+| `mouseover` | expansión visual de botones de compra en escritorio |
+| `mouseout` | restauración visual de botones |
+| `focusin / focusout` | equivalencia accesible para navegación por teclado |
+| eventos Bootstrap | Modal, Carousel y Offcanvas |
+| `DOMContentLoaded` | inicialización de NatGamez |
+| `Fetch API` + `async/await` | carga no bloqueante de `productos.json` |
 
-10 · Tecnologías
+---
 
-Stack utilizado
+## ◆ Responsive Design
 
-01 · DOM + FETCH API
+La Semana 6 está adaptada para los tres escenarios principales.
 
-<div align="center">
+### 🖥️ Escritorio
 
-✨ RECOMENDACIONES NATGAMEZ
+- catálogo en varias columnas;
+- efectos hover completos;
+- carrito Offcanvas lateral;
+- Collector's Vault horizontal;
+- comprobante amplio y ordenado.
 
-</div>
+### 📱 Tablet
 
-La sección Recomendaciones NatGamez se construye dinámicamente mediante JavaScript.
+- reducción progresiva de columnas;
+- controles táctiles accesibles;
+- Collector's Vault reorganizado cuando el espacio lo requiere;
+- carrito y Modal adaptados al ancho disponible.
 
-Los datos provienen de:
+### 📱 Celular
 
-Semana 5/juegos_recomendados.json
+- Cards en una columna;
+- botones de compra visibles sin depender del hover;
+- navegación Bootstrap colapsable;
+- panel de carrito optimizado para pantalla pequeña;
+- Collector's Vault apilado;
+- figuras y comprobante adaptados al viewport.
 
-La carga utiliza Fetch API y valida que la respuesta sea correcta antes de procesar el JSON.
+---
 
+## ◆ Arquitectura de datos y estado
+
+### Fuente persistente del catálogo
+
+```text
+productos.json
+      ↓
 Fetch API
-   ↓
-juegos_recomendados.json
-   ↓
-Validación de respuesta
-   ↓
-Creación dinámica de elementos
-   ↓
-Inserción en el DOM
+      ↓
+validación
+      ↓
+productosCargados[]
+      ↓
+DOM dinámico
+```
 
-Métodos DOM utilizados
+Las ediciones Collector y las figuras premium se registran en JavaScript como productos especiales y comparten la misma lógica de carrito.
 
-document.createElement()
-appendChild()
+### Estado del carrito
 
-Cada recomendación se construye desde JavaScript y se inserta dinámicamente en la página.
+El carrito se administra mediante un `Map` en memoria:
 
-Recomendaciones cargadas
+```javascript
+const carrito = new Map();
+```
 
-#
+Esto permite mantener cantidades sin duplicar físicamente objetos dentro del estado de la sesión actual.
 
-Videojuego
+> **Importante:** el carrito es persistente únicamente mientras la página permanece cargada. Al recargar o cerrar la pestaña, su contenido se pierde porque esta versión no utiliza `localStorage`, `sessionStorage`, base de datos ni backend.
 
-Plataformas
+---
 
-01
+## ◆ Asincronía, idempotencia y persistencia
 
-Hades II
+Estos conceptos describen propiedades diferentes de la aplicación.
 
-PC
+| Propiedad | Estado actual | Explicación |
+|---|---|---|
+| **Asincronía** | ✅ Parcial | `Fetch API` se ejecuta con `async/await` y no bloquea la página. Los eventos del usuario y Bootstrap son dirigidos por eventos. Las operaciones normales del carrito y renderizado son síncronas. |
+| **Idempotencia** | ⚠️ Parcial | Renderizar nuevamente la misma lista produce el mismo resultado gracias a `replaceChildren()` y existen guardas para no duplicar buscador, carrito ni listeners. Sin embargo, **Agregar al carrito** aumenta la cantidad y por definición no es idempotente; tampoco lo son la recomendación aleatoria ni la generación de folios. |
+| **Persistencia** | ⚠️ Solo datos estáticos | `productos.json`, HTML, CSS y JS permanecen como archivos. El estado del carrito y la compra están en memoria y se reinician al recargar la página. |
 
-02
+Por lo tanto, **NatGamez no es completamente asíncrono, idempotente ni persistente**, ni sería correcto que todas sus acciones lo fueran. Cada característica aplica donde técnicamente tiene sentido.
 
-Sekiro: Shadows Die Twice
+---
 
-PS4 · Xbox · PC
+## ◆ Manejo de errores y buenas prácticas
 
-03
+- validación de respuesta HTTP antes de procesar JSON;
+- validación de tipos y propiedades de productos;
+- control de IDs duplicados;
+- fallback del logo NatGamez cuando una imagen externa falla;
+- mensajes de error accesibles;
+- `aria-live` para feedback dinámico;
+- labels y `aria-label` en controles interactivos;
+- navegación por teclado;
+- delegación de eventos para elementos creados dinámicamente;
+- funciones reutilizables;
+- separación de estructura, estilos, datos y comportamiento;
+- guardas para evitar registrar listeners o componentes dinámicos más de una vez.
 
-DOOM Eternal
+---
 
-PS5 · Xbox · Switch · PC
+## ◆ Estructura actual del repositorio
 
-Las Cards dinámicas reutilizan la identidad visual del catálogo y permiten abrir el mismo Modal Bootstrap utilizado por los videojuegos estáticos.
-
-02 · EVENTOS E INTERACCIÓN
-
-<div align="center">
-
-🖱️ CLICK · MOUSEOVER · SUBMIT
-
-</div>
-
-La Semana 5 incorpora los tres eventos solicitados en la actividad.
-
-<table>
-<tr>
-<td width="33%" valign="top">
-
-🖱️ mouseover
-
-Al pasar el cursor sobre una recomendación dinámica, el estado de exploración cambia para informar qué videojuego está siendo observado.
-
-</td>
-<td width="33%" valign="top">
-
-📋 submit
-
-El formulario procesa el nombre y la plataforma seleccionada sin recargar la página.
-
-La recomendación se genera únicamente cuando los datos son válidos.
-
-</td>
-<td width="33%" valign="top">
-
-🎲 click
-
-El botón Sorpréndeme selecciona aleatoriamente una recomendación compatible con la plataforma elegida.
-
-</td>
-</tr>
-</table>
-
-Las interacciones modifican dinámicamente el contenido y los estilos visibles de la interfaz.
-
-03 · FORMULARIO Y VALIDACIONES
-
-<div align="center">
-
-🎯 ENCUENTRA TU PRÓXIMA PARTIDA
-
-</div>
-
-El formulario permite generar recomendaciones según la plataforma del usuario.
-
-Acción Recomendar
-
-Requiere:
-
-nombre válido;
-
-plataforma seleccionada;
-
-datos cargados correctamente.
-
-Acción 🎲 Sorpréndeme
-
-Requiere:
-
-plataforma seleccionada;
-
-datos cargados correctamente.
-
-El nombre no es obligatorio para esta acción.
-
-Compatibilidad actual
-
-Plataforma
-
-Recomendaciones disponibles
-
-PC
-
-Hades II · Sekiro · DOOM Eternal
-
-PS5
-
-DOOM Eternal
-
-PS4
-
-Sekiro
-
-Xbox
-
-Sekiro · DOOM Eternal
-
-Switch
-
-DOOM Eternal
-
-La selección aleatoria se realiza después de filtrar por compatibilidad, evitando recomendar videojuegos que no estén disponibles para la plataforma escogida.
-
-Validaciones implementadas
-
-feedback visual para campos inválidos;
-
-aria-describedby asociado a mensajes de error;
-
-validación del nombre;
-
-validación de plataforma permitida;
-
-botones deshabilitados mientras los datos no estén disponibles;
-
-limpieza automática de estados al corregir los campos.
-
-04 · CATÁLOGO + MODAL
-
-<div align="center">
-
-🎮 BIBLIOTECA NATGAMEZ
-
-</div>
-
-#
-
-Videojuego
-
-Enfoque
-
-01
-
-God of War Ragnarök
-
-Acción · Aventura
-
-02
-
-Cyberpunk 2077
-
-RPG · Mundo abierto
-
-03
-
-Elden Ring
-
-RPG · Fantasía
-
-04
-
-The Witcher 3
-
-RPG · Fantasía
-
-05
-
-Resident Evil 4
-
-Survival horror · Acción
-
-06
-
-Baldur's Gate 3
-
-RPG · Estrategia
-
-07
-
-Devil May Cry 5
-
-Hack & Slash · Acción
-
-08
-
-Tiny Tina's Wonderlands
-
-Looter Shooter · Fantasía
-
-09
-
-Mortal Kombat 1: Definitive Edition
-
-Lucha
-
-Cada Card incluye información resumida y un botón Ver detalles.
-
-El Modal Bootstrap reutilizable muestra:
-
-imagen ampliada;
-
-descripción;
-
-plataformas;
-
-modalidad;
-
-valoración;
-
-disponibilidad;
-
-precio.
-
-Durante la Semana 5 también se ajustó la presentación de las imágenes para evitar recortes innecesarios y mantener una visualización completa dentro del Modal.
-
-05 · COLLECTOR'S VAULT
-
-<div align="center">
-
-💎 EDICIONES ESPECIALES
-
-</div>
-
-<table>
-<tr>
-<td align="center"><b>Elden Ring</b><br><sub>Collector's Edition</sub></td>
-<td align="center"><b>Cyberpunk 2077</b><br><sub>5th Anniversary Collector's Set</sub></td>
-<td align="center"><b>The Witcher 3</b><br><sub>Collector's Edition</sub></td>
-</tr>
-</table>
-
-El Collector's Vault mantiene el Carousel Bootstrap 5 incorporado en la Semana 4.
-
-Controles disponibles
-
-‹ anterior · ● indicadores · 01 / 03 · ⏸ pausar · ▶ reproducir · siguiente ›
-
-Características:
-
-autoplay cada 3000 ms;
-
-flechas anterior / siguiente;
-
-indicadores;
-
-contador;
-
-pausa / reproducción;
-
-interacción táctil compatible con Bootstrap.
-
-Mantenimiento CSS
-
-Como mejora de mantenimiento se depuraron estilos heredados de versiones anteriores.
-
-Se eliminaron reglas obsoletas asociadas a la antigua implementación de .vault-grid y se consolidaron los estilos utilizados por el carrusel actual bajo .vault-carrusel-bootstrap.
-
-También se consolidaron reglas repetidas del Modal para evitar mantener versiones antiguas y nuevas del mismo componente.
-
-El objetivo fue conservar exactamente el comportamiento visual actual reduciendo redefiniciones innecesarias.
-
-06 · RESPONSIVE + NAVEGADORES
-
-<a id="responsive"></a>
-
-<div align="center">
-
-📱 DESKTOP · TABLET · MÓVIL
-
-</div>
-
-Vista
-
-Resolución de prueba
-
-Distribución
-
-🖥️ Desktop
-
-1440 × 900
-
-Vista completa
-
-💻 Tablet
-
-768 × 1024
-
-Distribución adaptada
-
-📱 Móvil
-
-390 × 844
-
-Contenido en una columna
-
-La interfaz conserva los breakpoints y comportamiento responsive desarrollados anteriormente con Bootstrap y CSS personalizado.
-
-Durante QA se verifica especialmente:
-
-ausencia de scroll horizontal accidental;
-
-Cards sin deformaciones;
-
-imágenes dentro de proporción;
-
-navegación accesible;
-
-formulario usable;
-
-recomendaciones correctamente distribuidas;
-
-Modal adaptado;
-
-Collector's Vault funcional.
-
-Navegadores utilizados
-
-Brave
-Firefox
-
-07 · ACCESIBILIDAD Y BUENAS PRÁCTICAS
-
-<table>
-<tr>
-<td width="50%" valign="top">
-
-♿ Semántica
-
-lang="es"
-
-HTML semántico
-
-header
-
-nav
-
-main
-
-section
-
-article
-
-footer
-
-textos alt
-
-</td>
-<td width="50%" valign="top">
-
-⌨️ Interacción
-
-aria-label
-
-aria-controls
-
-aria-labelledby
-
-aria-describedby
-
-feedback accesible
-
-foco visible
-
-navegación con teclado
-
-enlace Saltar al contenido
-
-prefers-reduced-motion
-
-</td>
-</tr>
-</table>
-
-Organización JavaScript
-
-La lógica se distribuye en funciones reutilizables para evitar código repetitivo.
-
-Entre ellas se encuentran funciones encargadas de:
-
-crear elementos dinámicos;
-
-construir Cards de recomendaciones;
-
-cargar información mediante Fetch;
-
-validar formularios;
-
-filtrar recomendaciones compatibles;
-
-seleccionar una recomendación aleatoria;
-
-actualizar estados de interfaz;
-
-controlar el Modal;
-
-controlar el Collector's Vault.
-
-Las funciones principales incluyen comentarios que explican su propósito y flujo de trabajo.
-
-Manejo de errores
-
-La carga dinámica contempla:
-
-comprobación de response.ok;
-
-try / catch;
-
-validación de estructura del JSON;
-
-botón Reintentar ante fallos;
-
-fallback de imágenes;
-
-bloqueo temporal de controles mientras no existen datos válidos.
-
-08 · QA Y EVIDENCIAS
-
-<div align="center">
-
-🧪 VALIDACIÓN TÉCNICA
-
-</div>
-
-Se verifican los siguientes puntos antes de la entrega:
-
-✅ HTML Semana 5 disponible
-✅ CSS Semana 5 disponible
-✅ JavaScript Semana 5 disponible
-✅ JSON válido
-✅ JavaScript válido
-✅ DOM dinámico
-✅ createElement()
-✅ appendChild()
-✅ Fetch API
-✅ Evento mouseover
-✅ Evento submit
-✅ Evento click
-✅ Validación de formulario
-✅ Compatibilidad por plataforma
-✅ Manejo de errores Fetch
-✅ Modal dinámico
-✅ Collector's Vault
-✅ Responsive
-✅ Brave
-✅ Firefox
-✅ GitHub
-✅ GitHub Pages
-
-📸 Evidencias
-
-La documentación final de capturas de Semana 5 se encuentra en:
-
-📄 Abrir Documentación_Capturas.pdf
-
-Las capturas demuestran el funcionamiento del DOM dinámico, los eventos, la responsividad, la compatibilidad entre navegadores y la publicación mediante GitHub Pages.
-
-La documentación se mantiene intencionalmente breve: las imágenes demuestran el funcionamiento y este README contiene la explicación técnica del proyecto.
-
-09 · ESTRUCTURA DEL REPOSITORIO
-
+```text
 NatGamez/
+├── index.html
+├── README.md
+├── .gitignore
 │
 ├── Semana 1/
 ├── Semana 2/
 ├── Semana 3/
 ├── Semana 4/
+├── Semana 5/                  # respaldo histórico estable
 │
-├── Semana 5/
-│   ├── capturas/
-│   ├── juegos_recomendados.json
-│   ├── logo_natgamez.png
-│   ├── Natalia_Alvarado_PFY2201_CSS_Semana5.css
-│   ├── Natalia_Alvarado_PFY2201_DOM_Semana5.html
-│   └── Natalia_Alvarado_PFY2201_DOM_Semana5.js
-│
-├── index.html
-└── README.md
+└── Semana 6/
+    ├── Natalia_Alvarado_PFY2201_DOM_Semana6.html
+    ├── Natalia_Alvarado_PFY2201_CSS_Semana6.css
+    ├── Natalia_Alvarado_PFY2201_DOM_Semana6.js
+    ├── logo_natgamez.png
+    │
+    ├── assets/
+    │   └── data/
+    │       └── productos.json
+    │
+    └── capturas/
+        └── Documentación_Capturas.pdf
+```
 
-Archivos principales de Semana 5
+`juegos_recomendados.json` ya no se utiliza en Semana 6: las recomendaciones consumen el catálogo maestro `productos.json`. La copia de Semana 5 se mantiene únicamente como respaldo histórico de la entrega anterior.
 
-Archivo
+---
 
-Función
+## ◆ Archivos principales de Semana 6
 
-Natalia_Alvarado_PFY2201_DOM_Semana5.html
+### `Natalia_Alvarado_PFY2201_DOM_Semana6.html`
 
-Estructura principal e integración de componentes
+Estructura del catálogo, navegación, secciones principales, Collector's Vault, figuras, formulario, Modal y puntos de inserción para contenido dinámico.
 
-Natalia_Alvarado_PFY2201_CSS_Semana5.css
+### `Natalia_Alvarado_PFY2201_CSS_Semana6.css`
 
-Identidad visual, responsive y estilos
+Identidad visual, Grid, Cards, efectos, responsive design, carrito Offcanvas, figuras premium, Collector's Vault y estilos del comprobante.
 
-Natalia_Alvarado_PFY2201_DOM_Semana5.js
+### `Natalia_Alvarado_PFY2201_DOM_Semana6.js`
 
-DOM, eventos, Fetch, validación e interacción
+Fetch API, validaciones, render dinámico, buscador, recomendaciones, eventos, carrito, compra, productos especiales y generación del comprobante.
 
-juegos_recomendados.json
+### `assets/data/productos.json`
 
-Fuente de datos para recomendaciones dinámicas
+Fuente de datos única para los 12 videojuegos del catálogo y las recomendaciones.
 
-logo_natgamez.png
+---
 
-Identidad visual de NatGamez
+## ◆ Ejecución local
 
-capturas/
+Desde la carpeta `Semana 6`:
 
-Evidencias de funcionamiento
+```bash
+python3 -m http.server 8765
+```
 
-10 · TECNOLOGÍAS
+Abrir en el navegador:
+
+```text
+http://localhost:8765/Natalia_Alvarado_PFY2201_DOM_Semana6.html
+```
+
+No se recomienda abrir el HTML directamente con `file://`, porque Fetch API requiere servir los archivos mediante HTTP para funcionar correctamente.
+
+---
+
+## ◆ Pruebas sugeridas
+
+1. Confirmar que carguen los **12 videojuegos**.
+2. Buscar por título, género y plataforma.
+3. Probar una búsqueda sin resultados.
+4. Probar **Recomendar** y **Sorpréndeme**.
+5. Agregar un videojuego, una Collector y una figura.
+6. Aumentar y reducir cantidades.
+7. Eliminar un producto.
+8. Confirmar contador y total del carrito.
+9. Finalizar compra y revisar el comprobante.
+10. Guardar/imprimir el comprobante.
+11. Probar navegación por teclado.
+12. Revisar escritorio, tablet y celular.
+13. En tablet/celular, confirmar el botón flotante **Comprar**, abrir el carrito y verificar que **Finalizar compra** permanezca visible al hacer scroll.
+14. En pantalla táctil, comprobar el feedback visual al tocar **Agregar al carrito** y **Comprar** (equivalente táctil del hover).
+15. Finalizar una compra desde tablet/celular y comprobar que se muestre el comprobante NatGamez con logo, productos y total.
+16. Confirmar consola sin errores propios del proyecto.
+
+---
+
+## ◆ Tecnologías
 
 <div align="center">
 
@@ -680,23 +355,64 @@ Evidencias de funcionamiento
 
 </div>
 
+---
+
 <div align="center">
 
-◆ IDENTIDAD VISUAL
+**NatGamez · Semana 6 · Desarrollo Frontend I · PFY2201**
 
-Negro · Morado · Azul · Verde · RGB
-
-Fondos oscuros · brillos suaves · Cards translúcidas · animaciones · detalles gamer
-
-<br>
-
-👩‍💻 Natalia Alvarado
-
-Analista Programador Computacional
-Desarrollo Frontend I · PFY2201 · 2026
-
-<br>
-
-NatGamez · Semana 5
+Natalia Alvarado · 2026
 
 </div>
+
+## Paridad funcional PC · Tablet · Celular
+
+La versión final de Semana 6 mantiene el mismo flujo funcional en los tres tipos de dispositivo:
+
+- catálogo dinámico y búsqueda;
+- recomendaciones;
+- compra de videojuegos, Collector's Vault y figuras premium;
+- carrito lateral con cantidades, eliminación y vaciado;
+- checkout accesible con **Total, Finalizar compra y Vaciar carrito**;
+- generación del comprobante NatGamez;
+- vista imprimible/guardable del comprobante;
+- navegación completa hasta el footer después de cerrar overlays.
+
+### Interacción de compra por dispositivo
+
+- **PC:** conserva `mouseover` / `mouseout` y el comportamiento visual aprobado.
+- **Tablet y celular:** utiliza Pointer Events como equivalente táctil. Los botones parten compactos, se expanden al tocar y conservan el estado visual aproximadamente **1,9 segundos después de soltar**.
+- En videojuegos el botón compacto permanece centrado y se expande de forma simétrica.
+- En Collector's Vault y Figuras premium el botón mantiene un ancho proporcional para no desplazar el precio ni cortar el texto.
+
+### Carrito responsive
+
+En tablet y celular el Offcanvas se divide físicamente en tres zonas:
+
+1. cabecera;
+2. lista de productos con scroll vertical propio;
+3. checkout independiente del scroll.
+
+De esta forma, una lista extensa no puede empujar fuera de pantalla el botón **Finalizar compra**.
+
+## Limpieza técnica final
+
+Antes de cerrar Semana 6 se realizó una pasada de calidad conservadora, sin cambiar el diseño aprobado:
+
+- CSS validado por parser, sin bloques mal serializados.
+- Una sola capa final de compatibilidad tablet/celular, eliminando parches responsive superpuestos.
+- Cero propiedades duplicadas dentro de una misma regla CSS.
+- Temporizadores táctiles gestionados con `WeakMap`, sin usar atributos `data-*` como almacenamiento interno.
+- Hover real separado de Pointer Events para evitar estados pegados en pantallas táctiles.
+- Comprobante generado mediante un documento temporal `Blob`, evitando `document.write()`.
+- Duraciones de interacción centralizadas en constantes.
+- JSDoc y casts DOM mínimos para mejorar autocompletado y análisis estático sin convertir el proyecto a TypeScript.
+- Checkout separado físicamente de la lista scrolleable del carrito.
+
+### Validaciones de calidad
+
+- JavaScript validado con `node --check`.
+- JavaScript revisado con `tsc --allowJs --checkJs --noEmit` sin errores.
+- CSS validado con PostCSS sin errores de sintaxis.
+- JSON del catálogo válido.
+- Referencias locales HTML → CSS / JS / imágenes verificadas.

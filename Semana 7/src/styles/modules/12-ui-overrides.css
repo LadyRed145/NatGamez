@@ -214,25 +214,50 @@
   }
 }
 
-
 /* =========================================================
-   FIGURAS PREMIUM · PRECIO + BOTÓN ESTABLE EN ESCRITORIO
+   FIGURAS PREMIUM · LAYOUT FINAL Y ESTABLE EN ESCRITORIO
 
-   Precio y acción mantienen espacios independientes.
-   El botón conserva expansión, glow y hover de la card,
-   pero ajusta su contenido interno para evitar cortes.
+   Este módulo es la única autoridad de escritorio para la fila
+   precio + botón de las figuras premium.
+
+   Objetivos:
+   - conservar hover, glow, zoom y expansión;
+   - impedir que precio y botón se empujen o se superpongan;
+   - mostrar completo "Agregar al carrito";
+   - evitar diferencias según el tipo de puntero;
+   - mantener intactos tablet, celular y Collector's Vault.
    ========================================================= */
 
-@media (hover: hover) and (pointer: fine) and (min-width: 1200px) {
+/*
+ * En escritorios más estrechos, dos columnas dan a cada card
+ * espacio suficiente para conservar precio y botón completos.
+ */
+@media (min-width: 1200px) and (max-width: 1359.98px) {
+  .pagina-catalogo .figuras-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+
+/*
+ * A partir de 1200 px, precio y acción ocupan columnas propias.
+ * Esta regla NO depende de hover/pointer: el resultado es el mismo
+ * en local y en GitHub Pages.
+ */
+@media (min-width: 1200px) {
   .figura-compra-linea {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 180px;
+    grid-template-columns: minmax(0, 1fr) 190px;
     align-items: center;
-    column-gap: 12px;
+
+    width: auto;
+
+    column-gap: 10px;
   }
 
   .figura-compra-linea .precio-especial-bloque {
     min-width: 0;
+    width: auto;
   }
 
   .figura-compra-linea .precio-especial-normal,
@@ -240,7 +265,7 @@
     white-space: nowrap;
   }
 
-  /* Estado compacto. */
+  /* Botón compacto: conserva el icono y su posición original. */
   .figura-compra-linea .btn-agregar-carrito {
     box-sizing: border-box;
 
@@ -253,25 +278,38 @@
     margin: 0;
     padding-inline: 10px;
 
-    gap: 6px;
+    gap: 0;
 
     white-space: nowrap;
   }
 
-  /* Estado expandido: cabe completo dentro de la columna reservada. */
+  .figura-compra-linea .btn-agregar-carrito .btn-carrito-texto {
+    max-width: 0;
+
+    margin-left: 0;
+
+    opacity: 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  /*
+   * Expansión completa dentro de los 190 px que ya están reservados.
+   * Como la columna existe desde reposo, el precio nunca se mueve.
+   */
   .figura-compra-linea .btn-agregar-carrito.is-hover,
   .figura-compra-linea .btn-agregar-carrito.is-touching,
   .figura-compra-linea .btn-agregar-carrito:hover,
   .figura-compra-linea .btn-agregar-carrito:focus-visible {
-    width: 180px;
-    min-width: 180px;
-    max-width: 180px;
+    width: 190px;
+    min-width: 190px;
+    max-width: 190px;
 
-    padding-inline: 8px;
+    padding-inline: 9px;
 
     gap: 6px;
 
-    font-size: 0.9rem;
+    font-size: 0.88rem;
 
     white-space: nowrap;
   }
@@ -280,7 +318,13 @@
   .figura-compra-linea .btn-agregar-carrito.is-touching .btn-carrito-texto,
   .figura-compra-linea .btn-agregar-carrito:hover .btn-carrito-texto,
   .figura-compra-linea .btn-agregar-carrito:focus-visible .btn-carrito-texto {
-    max-width: 145px;
-    margin-left: 6px;
+    max-width: 150px;
+
+    margin-left: 0;
+
+    opacity: 1;
+    overflow: visible;
+
+    transform: translateX(0);
   }
 }

@@ -1,65 +1,87 @@
 <div align="center">
 
-<img src="Semana%207/assets/img/logo_natgamez.png" alt="Logo de NatGamez" width="230">
+<img src="Semana%207/assets/img/logo_natgamez.png" alt="Logo de NatGamez" width="240">
 
-🎮 NATGAMEZ
-Desarrollo Frontend I · PFY2201 · Semana 7
-eCommerce gamer interactivo construido con React + Vite
+<h1>🎮 NATGAMEZ</h1>
 
-<img src="https://img.shields.io/badge/React-18.3.1-61DAFB?style=flat-square&logo=react&logoColor=black" alt="React">
-<img src="https://img.shields.io/badge/Vite-5.4.14-646CFF?style=flat-square&logo=vite&logoColor=white" alt="Vite">
-<img src="https://img.shields.io/badge/Bootstrap-5-7952B3?style=flat-square&logo=bootstrap&logoColor=white" alt="Bootstrap 5">
-<img src="https://img.shields.io/badge/Responsive-PC%20%C2%B7%20Tablet%20%C2%B7%20Mobile-22C55E?style=flat-square" alt="Responsive">
-<img src="https://img.shields.io/badge/GitHub%20Pages-Deployado-222222?style=flat-square&logo=githubpages&logoColor=white" alt="GitHub Pages">
+<h3>Desarrollo Frontend I · PFY2201 · Semana 7</h3>
 
+<p><strong>eCommerce gamer interactivo desarrollado con React + Vite</strong></p>
 
+<p>
+  <a href="https://ladyred145.github.io/NatGamez/">🌐 Ver sitio</a>
+  &nbsp;·&nbsp;
+  <a href="Semana%207/">⚛️ Código Semana 7</a>
+  &nbsp;·&nbsp;
+  <a href="https://github.com/LadyRed145/NatGamez">📁 Repositorio</a>
+</p>
 
-
-🌐 Ver sitio  · 
-[⚛️ **Código Semana 7**](Semana 7/)  · 
-📁 Repositorio
 </div>
 
-✦ Vista rápida
-🏠 Portada	🎮 Videojuegos	💎 Collector's Vault	🏆 Figuras premium	🛒 Productos comprables
-React	12	3	6	21
+---
 
+## ✦ Visión general
 
-NatGamez es una tienda ficticia de videojuegos desarrollada progresivamente durante la asignatura Desarrollo Frontend I (PFY2201).
-En Semana 7, la aplicación evoluciona a una arquitectura React + Vite sin perder la identidad visual construida anteriormente. La experiencia completa se reorganiza mediante componentes funcionales, Hooks personalizados, props, eventos React y renderizado condicional.
-Lo que integra esta versión
-- 🏠 Portada principal en React.
-- 🎮 Catálogo dinámico de 12 videojuegos.
+**NatGamez** es una tienda ficticia de videojuegos desarrollada progresivamente durante la asignatura **Desarrollo Frontend I (PFY2201)**.
+
+En **Semana 7**, el proyecto evoluciona a una arquitectura **React + Vite**, conservando la identidad visual construida en las semanas anteriores y reorganizando la aplicación mediante componentes funcionales, Hooks personalizados, props, eventos React y renderizado condicional.
+
+| 🏠 Portada | 🎮 Videojuegos | 💎 Collector's Vault | 🏆 Figuras premium | 🛒 Productos comprables |
+|:---:|:---:|:---:|:---:|:---:|
+| **React** | **12** | **3** | **6** | **21** |
+
+### Esta versión incorpora
+
+- 🏠 Portada principal completamente integrada en React.
+- 🎮 Catálogo dinámico de **12 videojuegos**.
+- 💰 Precio normal y precio oferta.
 - 🔎 Búsqueda por múltiples criterios.
-- 🎯 Recomendaciones y modo Sorpréndeme.
-- 🛒 Carrito unificado.
+- 🎯 Recomendaciones y modo **Sorpréndeme**.
+- 🛒 Carrito unificado para todos los productos.
 - 💎 Collector's Vault.
 - 🏆 Figuras premium.
 - 🧾 Comprobante de compra.
 - 📱 Paridad funcional en PC, tablet y celular.
 - 🚀 Publicación mediante GitHub Pages.
-🏠 Portada principal
-La portada mantiene la estética histórica de NatGamez, pero ahora forma parte de la misma aplicación React.
+
+---
+
+## 🏠 Portada principal
+
+La portada mantiene la estética histórica de NatGamez y ahora forma parte de la misma aplicación React.
+
 Incluye:
+
 - hero principal con logo;
-- navegación;
+- menú de navegación;
 - bloque de bienvenida;
-- sección Explora NatGamez;
-- acceso directo a Videojuegos, Collector's Vault y Figuras premium;
+- sección **Explora NatGamez**;
+- acceso directo a **Videojuegos**, **Collector's Vault** y **Figuras premium**;
 - productos destacados;
 - footer con contacto y comunidad.
-⭐ Productos destacados
-Producto	Precio oferta
-God of War Ragnarök	$19.990
-Cyberpunk 2077	$39.990
-Elden Ring	$44.990
 
+### ⭐ Productos destacados
 
-🎮 Catálogo React
-Los 12 videojuegos se obtienen desde una única fuente de datos:
+| Producto | Precio oferta |
+|---|---:|
+| God of War Ragnarök | **$19.990** |
+| Cyberpunk 2077 | **$39.990** |
+| Elden Ring | **$44.990** |
+
+---
+
+## 🎮 Catálogo React
+
+Los **12 videojuegos** se cargan desde una única fuente de datos:
+
+```text
 Semana 7/assets/data/productos.json
-La carga se realiza con Fetch API y es administrada por useCatalog.js.
-Cada producto presenta:
+```
+
+La carga se realiza mediante **Fetch API** y es administrada por `useCatalog.js`.
+
+Cada videojuego presenta:
+
 - nombre;
 - género y categoría;
 - plataformas;
@@ -70,9 +92,12 @@ Cada producto presenta:
 - precio oferta;
 - descripción;
 - imagen;
-- detalle en Modal;
+- detalle en Modal Bootstrap;
 - acción de compra.
-Flujo de renderizado
+
+### Flujo de renderizado
+
+```text
 productos.json
       ↓
 Fetch API
@@ -84,38 +109,65 @@ CatalogSection
 ProductGrid
       ↓
 ProductCard
-💰 Precio normal y oferta
+```
+
+### 💰 Precio normal y precio oferta
+
+Cada producto utiliza tres valores relacionados con el precio:
+
+```json
 {
   "precioNormal": 49990,
   "precioOferta": 39990,
   "precio": 39990
 }
-Campo	Función
-precioNormal	Valor original del producto
-precioOferta	Valor promocional visible
-precio	Valor efectivo utilizado por carrito y comprobante
+```
 
+| Campo | Función |
+|---|---|
+| `precioNormal` | Valor original del producto |
+| `precioOferta` | Valor promocional mostrado al usuario |
+| `precio` | Valor efectivo utilizado por carrito y comprobante |
 
-🔎 Búsqueda + 🎯 Recomendaciones
-Búsqueda
-Permite filtrar por:
-título · género · categoría · modalidad · plataforma · estado
-Se utilizan eventos React como onChange y onSubmit, junto con renderizado condicional para mostrar resultados o estados sin coincidencias.
-Recomendaciones
+---
+
+## 🔎 Búsqueda y recomendaciones
+
+### Búsqueda
+
+La búsqueda permite filtrar por:
+
+`título` · `género` · `categoría` · `modalidad` · `plataforma` · `estado`
+
+Utiliza eventos React como `onChange` y `onSubmit`, junto con renderizado condicional para mostrar resultados o estados sin coincidencias.
+
+### 🎯 Recomendaciones
+
 La sección reutiliza el mismo catálogo maestro y permite:
-- ingresar nombre del jugador;
-- escoger plataforma preferida;
-- ejecutar Recomendar;
-- ejecutar 🎲 Sorpréndeme;
+
+- ingresar el nombre del jugador;
+- escoger una plataforma preferida;
+- ejecutar **Recomendar**;
+- ejecutar **🎲 Sorpréndeme**;
 - validar el formulario;
 - manejar errores;
 - seleccionar resultados compatibles con la plataforma elegida.
-🛒 Carrito unificado
+
+---
+
+## 🛒 Carrito de compras
+
 Videojuegos, Collector's Vault y figuras premium comparten el mismo estado mediante:
+
+```text
 useCart.js
+```
+
 El carrito permite:
+
 - agregar productos;
-- aumentar o disminuir cantidades;
+- aumentar cantidades;
+- disminuir cantidades;
 - eliminar productos;
 - vaciar el carrito;
 - mostrar contador total;
@@ -123,26 +175,50 @@ El carrito permite:
 - calcular total general;
 - finalizar una compra;
 - generar el comprobante.
-💎 Collector's Vault
-Incluye 3 ediciones especiales comprables:
+
+---
+
+## 💎 Collector's Vault
+
+Incluye **3 ediciones especiales comprables**:
+
 1. Elden Ring Collector's Edition
 2. Cyberpunk 2077 5th Anniversary Collector's Set
 3. The Witcher 3 Collector's Edition
+
+La sección se encuentra modularizada en:
+
+```text
 CollectorVault
 ├── CollectorCard
 └── VaultControls
-🏆 Figuras premium
-Incluye 6 figuras comprables:
+```
+
+---
+
+## 🏆 Figuras premium
+
+Incluye **6 figuras comprables**:
+
 1. Kratos · Estatua Premium
 2. Malenia · Blade of Miquella
 3. Geralt & Roach · Deluxe Statue
 4. Trevor Philips · GTA V
 5. Dante · ARTFX J DMC5
 6. Bayonetta · Climax Action 1/7
-Todas reutilizan:
+
+Todas reutilizan el componente:
+
+```text
 AddToCartButton
-🧾 Comprobante de compra
-Al finalizar la compra, NatGamez genera un comprobante con:
+```
+
+---
+
+## 🧾 Comprobante de compra
+
+Al finalizar una compra, NatGamez genera un comprobante con:
+
 - logo;
 - folio;
 - fecha y hora;
@@ -151,27 +227,48 @@ Al finalizar la compra, NatGamez genera un comprobante con:
 - total pagado;
 - información académica;
 - opción de imprimir o guardar.
+
+Su estructura se divide en:
+
+```text
 VoucherModal
       ↓
 VoucherContent
       ↓
 VoucherItem
-🧭 Navegación
+```
+
+---
+
+## 🧭 Navegación
+
 La aplicación utiliza dos vistas principales:
+
+```text
 App.jsx
 ├── HomePage.jsx
 └── CatalogPage.jsx
-Vista	Ruta
-🏠 Portada	/NatGamez/
-🎮 Catálogo	/NatGamez/?vista=catalogo
-🕹️ Videojuegos	/NatGamez/?vista=catalogo#videojuegos
-💎 Collector's Vault	/NatGamez/?vista=catalogo#coleccionistas
-🏆 Figuras	/NatGamez/?vista=catalogo#figuras
+```
 
+### Rutas disponibles
 
-La navegación utiliza URLSearchParams, por lo que funciona en GitHub Pages sin requerir React Router.
-⚛️ Componentes y Hooks
-Componentes
+| Vista | Ruta |
+|---|---|
+| 🏠 Portada | `/NatGamez/` |
+| 🎮 Catálogo | `/NatGamez/?vista=catalogo` |
+| 🕹️ Videojuegos | `/NatGamez/?vista=catalogo#videojuegos` |
+| 💎 Collector's Vault | `/NatGamez/?vista=catalogo#coleccionistas` |
+| 🏆 Figuras premium | `/NatGamez/?vista=catalogo#figuras` |
+
+La navegación utiliza `URLSearchParams`, por lo que funciona correctamente en GitHub Pages sin requerir React Router.
+
+---
+
+## ⚛️ Arquitectura React
+
+### Componentes principales
+
+```text
 Semana 7/src/components/
 ├── home/
 ├── layout/
@@ -181,59 +278,81 @@ Semana 7/src/components/
 ├── collector/
 ├── figures/
 └── voucher/
-Hooks personalizados
+```
+
+### Hooks personalizados
+
+```text
 Semana 7/src/hooks/
 ├── useCatalog.js
 ├── useCatalogSearch.js
 ├── useCart.js
 ├── useCollectorVault.js
 └── useRecommendations.js
-Hooks React utilizados
-Hook	Responsabilidad
-useState	Estado de interfaz, carrito y navegación
-useEffect	Carga de datos y efectos de navegación
-useLayoutEffect	Clase visual activa por página
-useMemo	Filtros, cálculos y totales
-useCallback	Operaciones reutilizables
+```
 
+### Hooks React utilizados
 
-⚡ Eventos y comportamiento dinámico
-Evento / mecanismo	Uso
-onClick	Navegación, carrito, botones y controles
-onChange	Búsqueda y formularios
-onSubmit	Búsqueda y recomendaciones
-onError	Fallback de imágenes
-Pointer Events	Interacción táctil
-Bootstrap Events	Modal, Carousel y Offcanvas
-Fetch API	Carga de productos.json
+| Hook | Responsabilidad |
+|---|---|
+| `useState` | Estado de interfaz, carrito y navegación |
+| `useEffect` | Carga de datos y efectos de navegación |
+| `useLayoutEffect` | Clase visual activa por página |
+| `useMemo` | Filtros, cálculos y totales |
+| `useCallback` | Operaciones reutilizables |
 
+---
 
-Renderizado condicional
-React modifica la interfaz según el estado de la aplicación:
+## ⚡ Eventos y comportamiento dinámico
+
+| Evento / mecanismo | Uso |
+|---|---|
+| `onClick` | Navegación, carrito, botones y controles |
+| `onChange` | Búsqueda y formularios |
+| `onSubmit` | Búsqueda y recomendaciones |
+| `onError` | Fallback de imágenes |
+| Pointer Events | Interacción táctil |
+| Bootstrap Events | Modal, Carousel y Offcanvas |
+| Fetch API | Carga de `productos.json` |
+
+### Renderizado condicional
+
+React modifica la interfaz según el estado actual:
+
 - portada o catálogo;
 - catálogo cargando;
 - error de carga;
 - resultados disponibles;
 - búsqueda sin coincidencias;
 - carrito vacío o con productos;
-- formulario con errores;
+- formularios con errores;
 - recomendación disponible;
 - comprobante generado.
-📱 Responsive Design
-🖥️ PC	📱 Tablet	📱 Celular
-Catálogo multicolumna	Columnas adaptadas	Una columna
-Hover completo	Interacción táctil	Interacción táctil
-Navbar horizontal	Navbar colapsable	Menú hamburguesa
-Offcanvas lateral	Offcanvas adaptado	Carrito flotante
-Vault horizontal	Vault responsive	Vault apilado
 
+---
 
-La funcionalidad principal se mantiene disponible en los tres escenarios.
-🗂️ Arquitectura del proyecto
+## 📱 Responsive Design
+
+NatGamez mantiene paridad funcional en los tres escenarios principales:
+
+| 🖥️ PC | 📱 Tablet | 📱 Celular |
+|---|---|---|
+| Catálogo multicolumna | Columnas adaptadas | Una columna |
+| Hover completo | Interacción táctil | Interacción táctil |
+| Navbar horizontal | Navbar colapsable | Menú hamburguesa |
+| Offcanvas lateral | Offcanvas adaptado | Carrito flotante |
+| Vault horizontal | Vault responsive | Vault apilado |
+
+---
+
+## 🗂️ Estructura del proyecto
+
 <details>
-<summary><strong>Ver estructura completa</strong></summary>
+<summary><strong>Ver estructura completa del repositorio</strong></summary>
 
+<br>
 
+```text
 NatGamez/
 ├── index.html
 ├── README.md
@@ -292,52 +411,95 @@ NatGamez/
                 ├── 10-react-core.css
                 ├── 11-pricing.css
                 └── 12-ui-overrides.css
+```
+
 </details>
 
-🚀 Ejecución local
-Desde la raíz del repositorio:
-npm install
-npm run dev
-Build de producción:
-npm run build
-Vista previa del build:
-npm run preview
-🌐 GitHub Pages
-Vite utiliza:
-base: '/NatGamez/'
-El build se genera en:
-dist/
-y se publica mediante la rama:
-gh-pages
-Sitio:
-https://ladyred145.github.io/NatGamez/
-✅ QA y validaciones
-Validación	Estado
-Portada principal	✅
-Navegación Inicio ↔ Catálogo	✅
-12 videojuegos cargados	✅
-Precio normal y oferta	✅
-Búsqueda	✅
-Recomendaciones	✅
-Sorpréndeme	✅
-Carrito y cantidades	✅
-Total del carrito	✅
-Collector's Vault	✅
-Figuras premium	✅
-Comprobante	✅
-Responsive PC	✅
-Responsive tablet	✅
-Responsive celular	✅
-Navegación hamburguesa	✅
-Imports relativos	✅
-Build de producción	✅
+---
 
+## ✅ QA y validaciones
 
-Validación técnica
+| Validación | Estado |
+|---|:---:|
+| Portada principal | ✅ |
+| Navegación Inicio ↔ Catálogo | ✅ |
+| 12 videojuegos cargados | ✅ |
+| Precio normal y oferta | ✅ |
+| Búsqueda | ✅ |
+| Recomendaciones | ✅ |
+| Sorpréndeme | ✅ |
+| Carrito y cantidades | ✅ |
+| Total del carrito | ✅ |
+| Collector's Vault | ✅ |
+| Figuras premium | ✅ |
+| Comprobante | ✅ |
+| Responsive PC | ✅ |
+| Responsive tablet | ✅ |
+| Responsive celular | ✅ |
+| Navegación hamburguesa | ✅ |
+| Imports relativos | ✅ |
+| Build de producción | ✅ |
+
+### Validación técnica
+
+```text
 0 imports rotos
 151 módulos transformados
 Build Vite correcto
-🧰 Tecnologías
+```
+
+---
+
+## 🚀 Ejecución local
+
+Desde la raíz del repositorio:
+
+```bash
+npm install
+npm run dev
+```
+
+Build de producción:
+
+```bash
+npm run build
+```
+
+Vista previa del build:
+
+```bash
+npm run preview
+```
+
+---
+
+## 🌐 GitHub Pages
+
+La configuración de Vite utiliza:
+
+```js
+base: '/NatGamez/'
+```
+
+El build se genera en:
+
+```text
+dist/
+```
+
+y se publica desde la rama:
+
+```text
+gh-pages
+```
+
+**Sitio publicado:**  
+https://ladyred145.github.io/NatGamez/
+
+---
+
+## 🧰 Tecnologías utilizadas
+
 <div align="center">
 
 <img src="https://img.shields.io/badge/React-18.3.1-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React">
@@ -352,12 +514,19 @@ Build Vite correcto
 
 </div>
 
+---
+
 <div align="center">
 
-🎮 NatGamez · Semana 7
-Desarrollo Frontend I · PFY2201
+### 🎮 NatGamez · Semana 7
+
+**Desarrollo Frontend I · PFY2201**
+
 Natalia Alvarado · 2026
 
-🌐 Sitio ·
-📁 Repositorio
+<br>
+
+[🌐 Sitio](https://ladyred145.github.io/NatGamez/) ·
+[📁 Repositorio](https://github.com/LadyRed145/NatGamez)
+
 </div>

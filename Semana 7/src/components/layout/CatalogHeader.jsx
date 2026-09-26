@@ -7,12 +7,14 @@
 import logoNatGamez from '../../../assets/img/logo_natgamez.png';
 
 function CatalogHeader() {
+  const inicio = import.meta.env.BASE_URL;
+
   return (
     <header className="catalogo-hero">
       <div className="catalogo-marca">
         <a
-          href="#top"
-          aria-label="Volver al inicio de NatGamez"
+          href={inicio}
+          aria-label="Volver a la página principal de NatGamez"
         >
           <img
             className="logo-natgamez"

@@ -5,6 +5,8 @@
  * Mantiene la llamada final de navegación separada del catálogo y de las secciones comerciales.
  */
 function ReturnHome() {
+  const inicio = import.meta.env.BASE_URL;
+
   return (
     <section
       className="regreso-principal"
@@ -26,7 +28,7 @@ function ReturnHome() {
 
       <a
         className="boton"
-        href="#top"
+        href={inicio}
       >
         Volver a NatGamez
       </a>

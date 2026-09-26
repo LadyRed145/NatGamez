@@ -16,6 +16,7 @@ function CatalogNavbar({
   // React controla el colapso de la navbar para evitar
   // desincronización con el plugin imperativo de Bootstrap.
   const [menuAbierto, setMenuAbierto] = useState(false);
+  const inicio = import.meta.env.BASE_URL;
 
   const alternarMenu = () => {
     setMenuAbierto((estadoActual) => !estadoActual);
@@ -81,7 +82,7 @@ function CatalogNavbar({
           </li>
 
           <li>
-            <a href="#top">
+            <a href={inicio}>
               Inicio
             </a>
           </li>

@@ -34,6 +34,10 @@ function Footer() {
             Comunidad
           </h2>
 
+          <p>
+            Síguenos en nuestras redes sociales:
+          </p>
+
           <ul className="redes-sociales">
             <li>
               <a

@@ -213,3 +213,61 @@
     padding: 0.85rem 1rem;
   }
 }
+
+
+/* =========================================================
+   FIGURAS PREMIUM · PRECIO + BOTÓN SIN SALTOS
+
+   En escritorio con mouse la fila de compra se divide en dos
+   columnas reales: una para el precio y otra para la acción.
+
+   El botón conserva su estado compacto, su expansión, glow y
+   animación; simplemente dispone desde el inicio del espacio que
+   necesitará al abrirse. De esta forma no empuja, comprime ni
+   invade el bloque de precio y la card mantiene todos sus efectos.
+   ========================================================= */
+
+@media (hover: hover) and (pointer: fine) and (min-width: 1200px) {
+  .figura-compra-linea {
+    display: grid;
+    grid-template-columns: minmax(145px, 1fr) 190px;
+    align-items: center;
+    column-gap: 20px;
+
+    width: 100%;
+  }
+
+  .figura-compra-linea .precio-especial-bloque {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .figura-compra-linea .precio-especial-normal,
+  .figura-compra-linea .precio-figura {
+    white-space: nowrap;
+  }
+
+  /*
+     La segunda columna siempre mide 190 px, pero el botón continúa
+     viéndose compacto en reposo. Al expandirse ocupa únicamente su
+     propia columna y no modifica la distribución de la fila.
+  */
+  .figura-compra-linea .btn-agregar-carrito {
+    justify-self: end;
+
+    width: 54px;
+    min-width: 54px;
+    max-width: 54px;
+
+    margin: 0;
+  }
+
+  .figura-compra-linea .btn-agregar-carrito.is-hover,
+  .figura-compra-linea .btn-agregar-carrito.is-touching,
+  .figura-compra-linea .btn-agregar-carrito:hover,
+  .figura-compra-linea .btn-agregar-carrito:focus-visible {
+    width: 190px;
+    min-width: 190px;
+    max-width: 190px;
+  }
+}

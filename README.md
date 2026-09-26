@@ -29,6 +29,8 @@ La versión actual integra:
 - comprobante de compra;
 - diseño responsive para PC, tablet y celular;
 - publicación mediante GitHub Pages.
+
+
 ◆ Portada principal
 La página de inicio conserva la identidad visual histórica de NatGamez y ahora está implementada completamente con React.
 Incluye:

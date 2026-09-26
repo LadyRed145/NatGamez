@@ -803,3 +803,44 @@
         transition: none !important;
     }
 }
+
+/* =========================================================
+   PORTADA · TABLET
+   Corrige el rango intermedio entre móvil y escritorio.
+   ========================================================= */
+
+@media (min-width: 601px) and (max-width: 1100px) {
+
+    /* Categorías y productos destacados pasan a dos columnas. */
+    .pagina-inicio .categorias-grid,
+    .pagina-inicio .productos-destacados-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        gap: 20px;
+    }
+
+    /*
+     * Al existir tres tarjetas, la última ocupa una segunda fila
+     * y se centra manteniendo el mismo ancho visual que las demás.
+     */
+    .pagina-inicio .categorias-grid > li:last-child,
+    .pagina-inicio .productos-destacados-grid > li:last-child {
+        grid-column: 1 / -1;
+
+        width: calc(50% - 10px);
+
+        justify-self: center;
+    }
+
+    /* Evita espacios desiguales debajo de las cards destacadas. */
+    .pagina-inicio .productos-destacados-grid article {
+        height: 100%;
+
+        margin-bottom: 0;
+    }
+
+    /* Tamaño intermedio de imagen pensado para tablet. */
+    .pagina-inicio .productos-destacados-grid figure img {
+        height: 280px;
+    }
+}

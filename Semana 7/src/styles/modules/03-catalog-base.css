@@ -1,0 +1,704 @@
+/* =========================================================
+   30. PÁGINA CATÁLOGO - HERO INDEPENDIENTE
+   ========================================================= */
+
+.pagina-catalogo {
+    background:
+        radial-gradient(
+            circle at 50% -10%,
+            rgba(59, 130, 246, 0.08),
+            transparent 35%
+        ),
+        var(--negro);
+}
+
+.catalogo-hero {
+    grid-template-columns:
+        minmax(220px, 300px)
+        minmax(420px, 760px);
+
+    min-height: 460px;
+
+    padding-top: 55px;
+    padding-bottom: 55px;
+
+    background:
+        radial-gradient(
+            circle at 16% 38%,
+            rgba(139, 92, 246, 0.28) 0%,
+            transparent 42%
+        ),
+        radial-gradient(
+            circle at 72% 32%,
+            rgba(59, 130, 246, 0.16) 0%,
+            transparent 42%
+        ),
+        linear-gradient(
+            135deg,
+            #10101a,
+            #0b0b10 62%,
+            #0e1416
+        );
+}
+
+.catalogo-marca {
+    align-self: stretch;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.catalogo-marca a {
+    display: inline-block;
+}
+
+.catalogo-marca .etiqueta-seccion {
+    margin: 20px 0 0;
+}
+
+.catalogo-hero-contenido {
+    max-width: 760px;
+}
+
+.catalogo-kicker {
+    margin-bottom: 14px;
+
+    color: var(--azul-claro) !important;
+
+    font-size: 0.78rem !important;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.catalogo-hero h1 {
+    margin-bottom: 20px;
+
+    font-size: clamp(2.4rem, 5vw, 4.6rem);
+    line-height: 1.02;
+    letter-spacing: -2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--blanco),
+            var(--morado-claro),
+            var(--azul-claro),
+            var(--verde-claro)
+        );
+
+    background-clip: text;
+    -webkit-background-clip: text;
+
+    color: transparent;
+}
+
+.catalogo-hero-contenido > p:not(.catalogo-kicker) {
+    max-width: 680px;
+
+    color: var(--gris-claro);
+
+    font-size: 1.05rem;
+    line-height: 1.75;
+}
+
+.catalogo-estadisticas {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 14px;
+
+    margin-top: 30px;
+}
+
+.catalogo-estadisticas div {
+    padding: 15px;
+
+    background-color: rgba(255, 255, 255, 0.025);
+
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+}
+
+.catalogo-estadisticas strong {
+    display: block;
+
+    color: var(--blanco);
+
+    font-size: 1.35rem;
+}
+
+.catalogo-estadisticas span {
+    color: var(--gris);
+
+    font-size: 0.82rem;
+}
+
+.nav-catalogo {
+    margin-top: 22px;
+}
+
+.catalogo-main {
+    max-width: 1320px;
+}
+
+
+/* =========================================================
+   31. CATÁLOGO DE VIDEOJUEGOS
+   ========================================================= */
+
+.catalogo-seccion,
+.vault-seccion,
+.figuras-seccion,
+.regreso-principal {
+    position: relative;
+
+    overflow: hidden;
+}
+
+.catalogo-grid {
+    margin: 0;
+}
+
+.catalogo-grid > [class*="col-"] {
+    display: flex;
+}
+
+.catalog-card {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+
+    margin: 0;
+    padding: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(27, 27, 37, 0.99),
+            rgba(17, 17, 24, 0.99)
+        );
+
+    border-top: 1px solid var(--borde);
+
+
+    width: 100%;
+
+    color: var(--blanco);
+}
+
+.catalog-card > .badge-producto {
+    position: absolute;
+
+    top: 14px;
+    left: 14px;
+
+    z-index: 4;
+
+    margin: 0;
+}
+
+.catalog-card figure {
+    overflow: hidden;
+
+    height: 235px;
+
+    margin: 0;
+
+    background-color: #111118;
+}
+
+.catalog-card figure img {
+    width: 100%;
+    max-width: none;
+    height: 100%;
+
+    margin: 0;
+
+    object-fit: cover;
+
+    border: 0;
+    border-radius: 0;
+}
+
+.catalog-card:hover figure img {
+    transform: scale(1.055);
+}
+
+.catalog-card-contenido {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+
+    padding: 22px;
+}
+
+.catalog-card h3 {
+    margin-bottom: 10px;
+
+    color: var(--blanco);
+
+    font-size: 1.35rem;
+}
+
+.catalog-card p {
+    color: var(--gris);
+}
+
+.producto-genero {
+    margin-bottom: 6px !important;
+
+    color: var(--azul-claro) !important;
+
+    font-size: 0.76rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.producto-meta {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 12px;
+
+    margin-top: auto;
+
+    padding-top: 18px;
+
+    border-top: 1px solid var(--borde);
+}
+
+.producto-meta strong {
+    color: var(--blanco);
+
+    font-size: 1.18rem;
+}
+
+.producto-meta span {
+    position: relative;
+
+    padding-left: 14px;
+
+    color: var(--verde-claro);
+
+    font-size: 0.78rem;
+}
+
+.producto-meta span::before {
+    content: "";
+
+    position: absolute;
+
+    top: 50%;
+    left: 0;
+
+    width: 7px;
+    height: 7px;
+
+    transform: translateY(-50%);
+
+    background-color: var(--verde);
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 8px rgba(34, 197, 94, 0.80);
+}
+
+
+/* =========================================================
+   32. COLLECTOR'S VAULT
+   ========================================================= */
+
+.vault-seccion {
+    background:
+        radial-gradient(
+            circle at 16% 24%,
+            rgba(212, 175, 55, 0.075),
+            transparent 26%
+        ),
+        radial-gradient(
+            circle at 85% 76%,
+            rgba(139, 92, 246, 0.10),
+            transparent 30%
+        ),
+        linear-gradient(
+            145deg,
+            rgba(16, 13, 24, 0.985),
+            rgba(13, 16, 24, 0.985)
+        );
+
+    border-color: rgba(188, 159, 255, 0.28);
+
+    box-shadow:
+        0 16px 40px rgba(0, 0, 0, 0.26),
+        inset 0 0 70px rgba(139, 92, 246, 0.025);
+}
+
+
+.vault-cabecera {
+    max-width: 760px;
+
+    margin-bottom: 30px;
+}
+
+.vault-cabecera h2 {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+
+    border-bottom: 0;
+}
+
+
+/* =========================================================
+   33. FIGURAS PREMIUM
+   ========================================================= */
+
+.figuras-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 22px;
+}
+
+.figura-card {
+    position: relative;
+
+    overflow: hidden;
+
+    margin: 0;
+    padding: 26px;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.025),
+            rgba(255, 255, 255, 0.010)
+        ),
+        rgba(20, 20, 28, 0.98);
+}
+
+.figura-silueta {
+    display: grid;
+
+    place-items: center;
+
+    width: 112px;
+    height: 112px;
+
+    margin: 5px auto 24px;
+
+    color: var(--blanco);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(139, 92, 246, 0.24),
+            rgba(59, 130, 246, 0.07) 48%,
+            transparent 70%
+        );
+
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    border-radius: 50%;
+
+    font-size: 3.3rem;
+    font-weight: 900;
+
+    box-shadow:
+        0 0 34px rgba(139, 92, 246, 0.12);
+}
+
+.figura-malenia .figura-silueta {
+    background:
+        radial-gradient(
+            circle,
+            rgba(196, 73, 73, 0.24),
+            rgba(139, 92, 246, 0.08) 48%,
+            transparent 70%
+        );
+}
+
+.figura-geralt .figura-silueta {
+    background:
+        radial-gradient(
+            circle,
+            rgba(96, 165, 250, 0.20),
+            rgba(34, 197, 94, 0.07) 48%,
+            transparent 70%
+        );
+}
+
+.figura-card h3 {
+    color: var(--blanco);
+}
+
+.figura-card strong {
+    display: inline-block;
+
+    margin-top: 10px;
+
+    color: var(--morado-claro);
+
+    font-size: 0.82rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   34. SELECTORES AVANZADOS - SEMANA 6
+   ========================================================= */
+
+.catalogo-grid > [class*="col-"]:nth-child(3n + 1) .catalog-card {
+    border-top-color: var(--morado);
+}
+
+.catalogo-grid > [class*="col-"]:nth-child(3n + 2) .catalog-card {
+    border-top-color: var(--azul);
+}
+
+.catalogo-grid > [class*="col-"]:nth-child(3n + 3) .catalog-card {
+    border-top-color: var(--verde);
+}
+
+/* Hover cromático del catálogo: coincide con el color de cada badge */
+
+.catalogo-grid > [class*="col-"]:nth-child(3n + 1) .catalog-card:hover {
+    border-color: var(--morado);
+
+    box-shadow:
+        0 0 12px rgba(139, 92, 246, 0.72),
+        0 0 28px rgba(139, 92, 246, 0.28);
+}
+
+.catalogo-grid > [class*="col-"]:nth-child(3n + 2) .catalog-card:hover {
+    border-color: var(--azul-claro);
+
+    box-shadow:
+        0 0 12px rgba(96, 165, 250, 0.72),
+        0 0 28px rgba(59, 130, 246, 0.28);
+}
+
+.catalogo-grid > [class*="col-"]:nth-child(3n + 3) .catalog-card:hover {
+    border-color: var(--verde);
+
+    box-shadow:
+        0 0 12px rgba(34, 197, 94, 0.68),
+        0 0 28px rgba(34, 197, 94, 0.25);
+}
+
+
+.figuras-grid .figura-card:nth-child(2) {
+    transform: translateY(14px);
+}
+
+.figuras-grid .figura-card:nth-child(2):hover {
+    transform: translateY(7px);
+}
+
+.regreso-principal {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 28px;
+
+    border-color: rgba(34, 197, 94, 0.24);
+}
+
+.regreso-principal h2 {
+    margin-bottom: 8px;
+}
+
+.regreso-principal p {
+    margin-bottom: 0;
+}
+
+.regreso-principal .boton {
+    flex-shrink: 0;
+
+    margin: 0;
+}
+
+
+/* =========================================================
+   35. RESPONSIVIDAD SEMANA 6 - TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .categorias-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .categorias-grid li:last-child {
+        grid-column: 1 / -1;
+    }
+
+    .seccion-encabezado {
+        align-items: flex-start;
+        flex-direction: column;
+
+        gap: 12px;
+    }
+
+    .seccion-encabezado > p {
+        max-width: 100%;
+
+        text-align: left;
+    }
+
+    .footer-contenido {
+        gap: 30px;
+    }
+
+    .catalogo-hero {
+        grid-template-columns:
+            minmax(190px, 235px)
+            minmax(320px, 1fr);
+
+        min-height: 420px;
+
+        padding-top: 42px;
+        padding-bottom: 42px;
+    }
+
+    .catalogo-hero h1 {
+        font-size: clamp(2.2rem, 6vw, 3.5rem);
+    }
+
+
+    .figuras-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .figuras-grid .figura-card:last-child {
+        grid-column: 1 / -1;
+    }
+}
+
+
+/* =========================================================
+   36. RESPONSIVIDAD SEMANA 6 - MÓVIL
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .categorias-grid,
+    .figuras-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .categorias-grid li:last-child,
+    .figuras-grid .figura-card:last-child {
+        grid-column: auto;
+    }
+
+    .categorias-grid a {
+        min-height: 0;
+    }
+
+    .regreso-principal,
+    .footer-contenido,
+    .footer-inferior {
+        align-items: flex-start;
+        flex-direction: column;
+
+        gap: 18px;
+    }
+
+    .redes-sociales {
+        gap: 8px;
+    }
+
+    .catalogo-hero {
+        grid-template-columns: 1fr;
+
+        min-height: 0;
+    }
+
+    .catalogo-marca {
+        gap: 22px;
+    }
+
+    .catalogo-hero h1 {
+        font-size: clamp(2.25rem, 13vw, 3.6rem);
+        letter-spacing: -1px;
+    }
+
+    .catalogo-estadisticas {
+        grid-template-columns: 1fr;
+    }
+
+    .catalog-card figure {
+        height: 220px;
+    }
+
+
+    .figuras-grid .figura-card:nth-child(2) {
+        transform: none;
+    }
+
+    .figuras-grid .figura-card:nth-child(2):hover {
+        transform: translateY(-7px);
+    }
+}
+
+
+/* =========================================================
+   37. ACCESIBILIDAD - ELEMENTOS NUEVOS
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .categorias-grid a,
+    .catalog-card,
+    .catalog-card figure img,
+    .vault-card,
+    .figura-card,
+    .regreso-principal {
+        transition: none;
+    }
+
+    .figuras-grid .figura-card:nth-child(2),
+    .figuras-grid .figura-card:nth-child(2):hover {
+        transform: none;
+    }
+}
+
+
+/* El encabezado de destacados de la portada queda limpio, sin CTA lateral */
+.pagina-inicio .destacados-principal .seccion-encabezado {
+    justify-content: flex-start;
+}
+
+
+/* =========================================================
+   38. PULIDO VISUAL - DESTACADOS
+   El color del hover pertenece a la tarjeta, no a la imagen.
+   ========================================================= */
+
+.productos-destacados-grid figure img,
+.productos-destacados-grid figure img:hover,
+.productos-destacados-grid article:hover figure img {
+    border: none;
+
+    box-shadow: none;
+}
+
+.productos-destacados-grid figure img:hover,
+.productos-destacados-grid article:hover figure img {
+    transform: none;
+}

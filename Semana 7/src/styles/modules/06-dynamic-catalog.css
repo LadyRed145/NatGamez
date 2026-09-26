@@ -1,0 +1,193 @@
+/* =========================================================
+   48. PULIDO VISUAL - RECOMENDACIONES DINÁMICAS SEMANA 7
+   Mantiene completas las imágenes panorámicas cargadas por Fetch
+   sin modificar las Cards originales del catálogo.
+   ========================================================= */
+
+#recomendacionesGrid .catalog-card figure {
+    height: auto;
+    aspect-ratio: 460 / 215;
+
+    background-color: #111118;
+}
+
+#recomendacionesGrid .catalog-card figure img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+    object-position: center;
+}
+
+#recomendacionesGrid .catalog-card:hover figure img {
+    transform: none;
+}
+
+@media (max-width: 767px) {
+
+    #recomendacionesGrid .catalog-card figure {
+        height: auto;
+        aspect-ratio: 460 / 215;
+    }
+}
+
+/* =========================================================
+   49. COLORES SEMÁNTICOS - RECOMENDACIONES DINÁMICAS
+   El borde de cada Card coincide con el color de su badge,
+   independientemente de la posición de la Card en el grid.
+   ========================================================= */
+
+#recomendacionesGrid .catalog-card.recomendacion-borde-verde {
+    border-top-color: var(--verde);
+}
+
+#recomendacionesGrid .catalog-card.recomendacion-borde-azul {
+    border-top-color: var(--azul);
+}
+
+#recomendacionesGrid .catalog-card.recomendacion-borde-morado {
+    border-top-color: var(--morado);
+}
+
+#recomendacionesGrid .catalog-card.recomendacion-borde-verde:hover {
+    border-color: var(--verde);
+
+    box-shadow:
+        0 0 12px rgba(34, 197, 94, 0.68),
+        0 0 28px rgba(34, 197, 94, 0.25);
+}
+
+#recomendacionesGrid .catalog-card.recomendacion-borde-azul:hover {
+    border-color: var(--azul-claro);
+
+    box-shadow:
+        0 0 12px rgba(96, 165, 250, 0.72),
+        0 0 28px rgba(59, 130, 246, 0.28);
+}
+
+#recomendacionesGrid .catalog-card.recomendacion-borde-morado:hover {
+    border-color: var(--morado);
+
+    box-shadow:
+        0 0 12px rgba(139, 92, 246, 0.72),
+        0 0 28px rgba(139, 92, 246, 0.28);
+}
+
+/* =========================================================
+   50. IMÁGENES COMPLETAS Y UNIFORMES - CATÁLOGO SEMANA 7
+   Todas las imágenes de la sección Videojuegos se muestran
+   completas, centradas y sin recorte. Esto evita cortar logos,
+   títulos o personajes aunque las fuentes tengan proporciones
+   distintas (verticales o panorámicas).
+   ========================================================= */
+
+#videojuegos .catalog-card figure {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 235px;
+
+    background-color: #111118;
+}
+
+#videojuegos .catalog-card figure img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+    object-position: center;
+
+    transform: none;
+}
+
+#videojuegos .catalog-card:hover figure img {
+    transform: none;
+}
+
+@media (max-width: 767px) {
+
+    #videojuegos .catalog-card figure {
+        height: 220px;
+    }
+}
+
+/* =========================================================
+   51. SINCRONIZACIÓN VISUAL CATÁLOGO + MODAL - SEMANA 7
+   1) Las portadas verticales de God of War y Cyberpunk usan
+      la misma imagen del modal, completa y sin recortes, con
+      un fondo difuminado que evita barras negras vacías.
+   2) Todas las imágenes del modal se muestran completas para
+      que títulos, logos y arte promocional no sean cortados.
+   ========================================================= */
+
+/* ---------- Portadas verticales integradas en Cards ---------- */
+
+#videojuegos .catalog-card figure.catalogo-imagen-portada {
+    position: relative;
+    isolation: isolate;
+
+    overflow: hidden;
+
+    background-color: #0b0b10;
+}
+
+#videojuegos .catalog-card figure.catalogo-imagen-portada::before {
+    content: "";
+
+    position: absolute;
+    inset: -16px;
+
+    z-index: -1;
+
+    background-image: var(--catalogo-portada-fondo);
+    background-position: center;
+    background-size: cover;
+
+    filter: blur(18px) brightness(0.46) saturate(0.9);
+
+    transform: scale(1.12);
+}
+
+#videojuegos .catalog-card figure.catalogo-imagen-portada-gow {
+    --catalogo-portada-fondo:
+        url("https://static.wikia.nocookie.net/godofwar/images/c/ca/Portada_God_of_War_Ragnarok.png/revision/latest?cb=20211008000423&path-prefix=es");
+}
+
+#videojuegos .catalog-card figure.catalogo-imagen-portada-cyberpunk {
+    --catalogo-portada-fondo:
+        url("https://upload.wikimedia.org/wikipedia/en/9/9f/Cyberpunk_2077_box_art.jpg");
+}
+
+#videojuegos .catalog-card figure.catalogo-imagen-portada img {
+    position: relative;
+    z-index: 1;
+
+    width: auto;
+    max-width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+    object-position: center;
+
+    box-shadow:
+        0 0 24px rgba(0, 0, 0, 0.42);
+
+    transform: none;
+}
+
+/* ---------- Imágenes completas dentro de "Ver detalles" ---------- */
+
+.modal-natgamez .modal-dialog {
+    --bs-modal-width: 1080px;
+}
+
+.modal-natgamez .modal-body .col-md-5 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

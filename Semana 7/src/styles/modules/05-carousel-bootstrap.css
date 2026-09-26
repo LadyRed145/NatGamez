@@ -1,0 +1,1062 @@
+/* =========================================================
+   45. COLLECTOR'S VAULT - CARRUSEL BOOTSTRAP 5
+   Mantiene la estética NatGamez y delega a Bootstrap el
+   avance automático, los controles y la interacción táctil.
+   ========================================================= */
+
+.pagina-catalogo .vault-carrusel-bootstrap {
+    position: relative;
+
+    width: 100%;
+
+    margin-top: 8px;
+}
+
+
+.pagina-catalogo .vault-carousel-inner {
+    overflow: hidden;
+
+    border-radius: 14px;
+}
+
+
+.pagina-catalogo .vault-carrusel-bootstrap .carousel-item {
+    transition:
+        transform 0.58s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+
+.pagina-catalogo .vault-carrusel-bootstrap .vault-card {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.08fr)
+        minmax(330px, 0.92fr);
+
+    width: 100%;
+    min-height: 430px;
+
+    margin: 0;
+    padding: 0;
+
+    overflow: hidden;
+
+    border: 1px solid rgba(255, 255, 255, 0.11);
+    border-radius: 14px;
+
+    box-shadow:
+        0 16px 34px rgba(0, 0, 0, 0.28);
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.pagina-catalogo .vault-carrusel-bootstrap .vault-card:hover {
+    transform: translateY(-7px);
+}
+
+
+.pagina-catalogo .vault-carrusel-bootstrap .vault-card-imagen {
+    position: relative;
+
+    width: 100%;
+    min-height: 430px;
+    height: 430px;
+
+    margin: 0;
+    padding: 0;
+
+    overflow: hidden;
+
+    border-right: 1px solid var(--borde);
+    border-bottom: 0;
+
+    background:
+        linear-gradient(
+            145deg,
+            #101018,
+            #171720
+        );
+}
+
+
+.pagina-catalogo .vault-carrusel-bootstrap .vault-card-imagen::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            180deg,
+            transparent 62%,
+            rgba(8, 8, 13, 0.42) 100%
+        );
+}
+
+
+.pagina-catalogo .vault-carrusel-bootstrap .vault-card-imagen img {
+    display: block;
+
+    width: 100%;
+    max-width: none;
+    height: 100%;
+
+    margin: 0;
+    padding: 22px;
+
+    object-fit: contain;
+    object-position: center;
+
+    border: 0;
+    border-radius: 0;
+
+    background: transparent;
+
+    box-shadow: none;
+
+    filter:
+        saturate(0.94)
+        contrast(1.03);
+
+    transition:
+        transform 0.45s ease,
+        filter 0.45s ease;
+}
+
+
+.pagina-catalogo .vault-carrusel-bootstrap .vault-card:hover .vault-card-imagen img {
+    transform: scale(1.035);
+
+    filter:
+        saturate(1.03)
+        contrast(1.05)
+        brightness(1.025);
+}
+
+
+.pagina-catalogo .vault-carrusel-bootstrap .vault-card-contenido {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    min-width: 0;
+    height: 100%;
+
+    padding: clamp(28px, 4vw, 46px);
+}
+
+
+.pagina-catalogo .vault-carrusel-bootstrap .vault-card h3 {
+    margin: 18px 0 16px;
+
+    color: var(--blanco);
+
+    font-size: clamp(1.55rem, 2.5vw, 2.15rem);
+    line-height: 1.18;
+}
+
+
+.pagina-catalogo .vault-carrusel-bootstrap .vault-card ul {
+    margin: 4px 0 22px 20px;
+}
+
+
+.pagina-catalogo .vault-carrusel-bootstrap .vault-card li {
+    margin-bottom: 8px;
+
+    color: var(--gris-claro);
+
+    font-size: 0.98rem;
+}
+
+
+.pagina-catalogo .vault-carrusel-bootstrap .precio-premium {
+    margin: auto 0 0 !important;
+
+    color: var(--verde-claro) !important;
+
+    font-size: 1.5rem;
+    font-weight: 900;
+}
+
+
+/* Hover cromático coherente con cada edición */
+
+.pagina-catalogo .vault-carrusel-bootstrap .carousel-item:nth-child(1) .vault-card:hover {
+    border-color: rgba(212, 175, 55, 0.60);
+
+    box-shadow:
+        0 0 18px rgba(212, 175, 55, 0.20),
+        0 20px 38px rgba(0, 0, 0, 0.34);
+}
+
+
+.pagina-catalogo .vault-carrusel-bootstrap .carousel-item:nth-child(2) .vault-card:hover {
+    border-color: rgba(96, 165, 250, 0.66);
+
+    box-shadow:
+        0 0 18px rgba(59, 130, 246, 0.24),
+        0 20px 38px rgba(0, 0, 0, 0.34);
+}
+
+
+.pagina-catalogo .vault-carrusel-bootstrap .carousel-item:nth-child(3) .vault-card:hover {
+    border-color: rgba(74, 222, 128, 0.58);
+
+    box-shadow:
+        0 0 18px rgba(34, 197, 94, 0.20),
+        0 20px 38px rgba(0, 0, 0, 0.34);
+}
+
+
+/* ---------------------------------------------------------
+   CONTROLES LATERALES
+   --------------------------------------------------------- */
+
+.pagina-catalogo .vault-carrusel-bootstrap .vault-control {
+    top: 50%;
+    bottom: auto;
+
+    width: 46px;
+    height: 46px;
+
+    margin: 0;
+    padding: 0;
+
+    transform: translateY(-50%);
+
+    opacity: 0.78;
+
+    background-color: rgba(11, 11, 16, 0.72);
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 50%;
+
+    box-shadow:
+        0 8px 22px rgba(0, 0, 0, 0.30);
+
+    transition:
+        opacity 0.25s ease,
+        background-color 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.pagina-catalogo .vault-carrusel-bootstrap .vault-control-prev {
+    left: 14px;
+}
+
+
+.pagina-catalogo .vault-carrusel-bootstrap .vault-control-next {
+    right: 14px;
+}
+
+
+.pagina-catalogo .vault-carrusel-bootstrap .vault-control:hover {
+    transform: translateY(-50%);
+
+    opacity: 1;
+
+    background-color: rgba(20, 20, 30, 0.92);
+
+    border-color: var(--morado-claro);
+
+    box-shadow:
+        0 0 14px rgba(139, 92, 246, 0.34),
+        0 10px 24px rgba(0, 0, 0, 0.34);
+}
+
+
+.pagina-catalogo .vault-carrusel-bootstrap .vault-control:focus-visible {
+    outline: 2px solid var(--verde-claro);
+    outline-offset: 3px;
+
+    opacity: 1;
+}
+
+
+.pagina-catalogo .vault-carrusel-bootstrap .carousel-control-prev-icon,
+.pagina-catalogo .vault-carrusel-bootstrap .carousel-control-next-icon {
+    width: 1.35rem;
+    height: 1.35rem;
+}
+
+
+/* ---------------------------------------------------------
+   INDICADORES ● ○ ○
+   --------------------------------------------------------- */
+
+.pagina-catalogo .vault-carrusel-bootstrap .vault-indicadores-bootstrap {
+    position: static;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 12px;
+
+    margin: 22px 0 0;
+    padding: 0;
+}
+
+
+.pagina-catalogo .vault-carrusel-bootstrap .vault-indicadores-bootstrap [data-bs-slide-to] {
+    box-sizing: border-box;
+
+    flex: 0 0 12px;
+
+    width: 12px;
+    height: 12px;
+
+    margin: 0;
+    padding: 0;
+
+    opacity: 1;
+
+    background: transparent;
+
+    border: 1.6px solid rgba(248, 250, 252, 0.72);
+    border-radius: 50%;
+
+    box-shadow: none;
+
+    transition:
+        transform 0.25s ease,
+        background-color 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.pagina-catalogo .vault-carrusel-bootstrap .vault-indicadores-bootstrap [data-bs-slide-to]:hover {
+    transform: scale(1.24);
+
+    background-color: rgba(248, 250, 252, 0.18);
+}
+
+
+.pagina-catalogo .vault-carrusel-bootstrap .vault-indicadores-bootstrap button:nth-child(1).active {
+    background-color: var(--morado-claro);
+
+    border-color: var(--morado-claro);
+
+    box-shadow:
+        0 0 10px rgba(167, 139, 250, 0.80);
+}
+
+
+.pagina-catalogo .vault-carrusel-bootstrap .vault-indicadores-bootstrap button:nth-child(2).active {
+    background-color: var(--azul-claro);
+
+    border-color: var(--azul-claro);
+
+    box-shadow:
+        0 0 10px rgba(96, 165, 250, 0.80);
+}
+
+
+.pagina-catalogo .vault-carrusel-bootstrap .vault-indicadores-bootstrap button:nth-child(3).active {
+    background-color: var(--verde-claro);
+
+    border-color: var(--verde-claro);
+
+    box-shadow:
+        0 0 10px rgba(74, 222, 128, 0.76);
+}
+
+
+.pagina-catalogo .vault-carrusel-bootstrap .vault-indicadores-bootstrap [data-bs-slide-to]:focus-visible {
+    outline: 2px solid var(--verde-claro);
+    outline-offset: 4px;
+}
+
+
+/* =========================================================
+   46. RESPONSIVIDAD DEL CARRUSEL BOOTSTRAP
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .pagina-catalogo .vault-carrusel-bootstrap .vault-card {
+        grid-template-columns:
+            minmax(0, 0.95fr)
+            minmax(300px, 1.05fr);
+
+        min-height: 390px;
+    }
+
+
+    .pagina-catalogo .vault-carrusel-bootstrap .vault-card-imagen {
+        min-height: 390px;
+        height: 390px;
+    }
+
+
+    .pagina-catalogo .vault-carrusel-bootstrap .vault-card-imagen img {
+        padding: 18px;
+    }
+
+
+    .pagina-catalogo .vault-carrusel-bootstrap .vault-control {
+        width: 42px;
+        height: 42px;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .pagina-catalogo .vault-carrusel-bootstrap .vault-card {
+        display: flex;
+        flex-direction: column;
+
+        min-height: 0;
+        height: auto;
+    }
+
+
+    .pagina-catalogo .vault-carrusel-bootstrap .vault-card-imagen {
+        flex: 0 0 255px;
+
+        min-height: 255px;
+        height: 255px;
+
+        border-right: 0;
+        border-bottom: 1px solid var(--borde);
+    }
+
+
+    .pagina-catalogo .vault-carrusel-bootstrap .vault-card-imagen img {
+        padding: 14px;
+    }
+
+
+    .pagina-catalogo .vault-carrusel-bootstrap .vault-card-contenido {
+        flex: 1;
+
+        padding: 24px 20px 26px;
+    }
+
+
+    .pagina-catalogo .vault-carrusel-bootstrap .vault-card h3 {
+        font-size: 1.42rem;
+    }
+
+
+    .pagina-catalogo .vault-carrusel-bootstrap .vault-control {
+        top: 128px;
+
+        width: 38px;
+        height: 38px;
+    }
+
+
+    .pagina-catalogo .vault-carrusel-bootstrap .vault-control-prev {
+        left: 9px;
+    }
+
+
+    .pagina-catalogo .vault-carrusel-bootstrap .vault-control-next {
+        right: 9px;
+    }
+
+
+    .pagina-catalogo .vault-carrusel-bootstrap .vault-indicadores-bootstrap {
+        margin-top: 20px;
+    }
+
+
+}
+
+
+/* =========================================================
+   47. ACCESIBILIDAD - REDUCCIÓN DE MOVIMIENTO DEL CARRUSEL
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .pagina-catalogo .vault-carrusel-bootstrap .carousel-item,
+    .pagina-catalogo .vault-carrusel-bootstrap .vault-control,
+    .pagina-catalogo .vault-carrusel-bootstrap .vault-indicadores-bootstrap [data-bs-slide-to] {
+        transition: none;
+    }
+
+}
+
+/* =========================================================
+   49. INTEGRACIÓN NAVBAR BOOTSTRAP - SEMANA 6
+   ========================================================= */
+
+/*
+   Bootstrap aporta únicamente el comportamiento de colapso.
+   La apariencia continúa dependiendo de los estilos originales
+   de navegación de NatGamez definidos anteriormente.
+*/
+
+.navbar-natgamez-bootstrap {
+    display: block;
+}
+
+
+.nav-cabecera-bootstrap {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+
+    gap: 20px;
+}
+
+
+.nav-cabecera-bootstrap--catalogo {
+    justify-content: flex-end;
+}
+
+
+.navbar-natgamez-bootstrap .navbar-toggler {
+    margin: 0 0 18px auto;
+
+    padding: 8px 10px;
+
+    background-color: rgba(139, 92, 246, 0.08);
+
+    border: 1px solid var(--morado);
+    border-radius: 8px;
+
+    transform: none;
+
+    box-shadow: none;
+
+    transition:
+        background-color 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.navbar-natgamez-bootstrap .navbar-toggler:hover {
+    background-color: rgba(139, 92, 246, 0.18);
+
+    border-color: var(--azul-claro);
+
+    transform: none;
+
+    box-shadow:
+        0 0 10px rgba(139, 92, 246, 0.45),
+        0 0 16px rgba(59, 130, 246, 0.20);
+}
+
+
+.navbar-natgamez-bootstrap .navbar-toggler:focus {
+    outline: 2px solid var(--verde-claro);
+    outline-offset: 3px;
+
+    box-shadow: none;
+}
+
+
+.nav-collapse-bootstrap {
+    width: 100%;
+}
+
+
+.nav-collapse-bootstrap > ul {
+    width: 100%;
+}
+
+/* =========================================================
+   50. GRID + CARDS BOOTSTRAP - CATÁLOGO SEMANA 6
+   ========================================================= */
+
+/*
+   La cuadrícula visible usa Bootstrap:
+   col-12 = 1 columna móvil
+   col-md-6 = 2 columnas tablet
+   col-lg-4 = 3 columnas escritorio
+*/
+
+.catalogo-grid .card-body {
+    color: var(--gris-claro);
+}
+
+
+.plataformas-juego {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 7px;
+
+    margin-bottom: 14px;
+}
+
+
+.plataforma-chip {
+    padding: 6px 9px;
+
+    color: var(--gris-claro);
+
+    background-color: rgba(96, 165, 250, 0.08);
+
+    border: 1px solid rgba(96, 165, 250, 0.26);
+    border-radius: 999px;
+
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.35px;
+}
+
+
+.producto-datos-rapidos {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-top: auto;
+    margin-bottom: 13px;
+}
+
+
+.producto-rating {
+    color: #f5c451;
+
+    font-size: 0.84rem;
+    font-weight: 800;
+
+    text-shadow:
+        0 0 8px rgba(245, 196, 81, 0.18);
+}
+
+
+.producto-modalidad {
+    color: var(--gris);
+
+    font-size: 0.76rem;
+}
+
+
+.producto-meta .estado-disponible::before {
+    background-color: var(--verde);
+}
+
+
+.producto-meta .estado-alerta {
+    color: #f5c451;
+}
+
+
+.producto-meta .estado-alerta::before {
+    background-color: #f5c451;
+
+    box-shadow:
+        0 0 8px rgba(245, 196, 81, 0.72);
+}
+
+
+.btn-detalles-juego {
+    width: 100%;
+
+    margin-top: 16px;
+    padding: 10px 16px;
+
+    color: var(--blanco);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(139, 92, 246, 0.20),
+            rgba(59, 130, 246, 0.13)
+        );
+
+    border: 1px solid rgba(167, 139, 250, 0.54);
+    border-radius: 9px;
+
+    font-weight: 700;
+
+    transition:
+        color 0.25s ease,
+        background-color 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+.btn-detalles-juego:hover {
+    color: var(--blanco);
+
+    background-color: rgba(139, 92, 246, 0.28);
+
+    border-color: var(--azul-claro);
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 0 12px rgba(139, 92, 246, 0.36),
+        0 0 22px rgba(59, 130, 246, 0.16);
+}
+
+
+.btn-detalles-juego:focus-visible {
+    outline: 2px solid var(--verde-claro);
+    outline-offset: 3px;
+
+    box-shadow: none;
+}
+
+
+/* =========================================================
+   51. MODAL BOOTSTRAP - DETALLE DE VIDEOJUEGO
+   ========================================================= */
+
+.modal-natgamez .modal-content {
+    color: var(--blanco);
+
+    background:
+        radial-gradient(
+            circle at 10% 0%,
+            rgba(139, 92, 246, 0.14),
+            transparent 36%
+        ),
+        linear-gradient(
+            145deg,
+            #171720,
+            #101016
+        );
+
+    border: 1px solid rgba(167, 139, 250, 0.34);
+    border-radius: 16px;
+
+    box-shadow:
+        0 22px 70px rgba(0, 0, 0, 0.62),
+        0 0 30px rgba(139, 92, 246, 0.10);
+}
+
+
+.modal-natgamez .modal-header,
+.modal-natgamez .modal-footer {
+    border-color: var(--borde);
+}
+
+
+.modal-natgamez .modal-header {
+    align-items: flex-start;
+}
+
+
+.modal-natgamez .modal-title {
+    color: var(--blanco);
+
+    font-size: clamp(1.45rem, 3vw, 2.15rem);
+}
+
+
+.modal-juego-imagen {
+    display: block;
+
+    width: 100%;
+    max-width: 520px;
+    height: auto;
+    max-height: 480px;
+    min-height: 0;
+
+    margin-inline: auto;
+
+    object-fit: contain;
+    object-position: center;
+
+    background-color: #0b0b10;
+
+    border: 1px solid rgba(96, 165, 250, 0.26);
+    border-radius: 12px;
+}
+
+
+.modal-juego-descripcion {
+    margin-bottom: 22px;
+
+    color: var(--gris-claro);
+
+    line-height: 1.75;
+}
+
+
+.modal-ficha-juego {
+    display: grid;
+
+    gap: 10px;
+
+    margin: 0 0 24px;
+}
+
+
+.modal-ficha-juego > div {
+    display: grid;
+    grid-template-columns: minmax(120px, 0.7fr) minmax(0, 1.3fr);
+
+    gap: 14px;
+
+    padding-bottom: 10px;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+
+.modal-ficha-juego dt {
+    color: var(--azul-claro);
+
+    font-size: 0.82rem;
+    font-weight: 800;
+}
+
+
+.modal-ficha-juego dd {
+    margin: 0;
+
+    color: var(--gris-claro);
+}
+
+
+.modal-juego-precio {
+    margin: 0;
+
+    color: var(--verde-claro);
+
+    font-size: 1.55rem;
+    font-weight: 900;
+}
+
+
+.boton-modal-cerrar {
+    min-width: 120px;
+
+    color: var(--blanco);
+
+    background-color: rgba(139, 92, 246, 0.22);
+
+    border: 1px solid var(--morado-claro);
+}
+
+
+.boton-modal-cerrar:hover {
+    color: var(--blanco);
+
+    background-color: var(--morado);
+}
+
+
+/* =========================================================
+   52. CONTADOR + PAUSA DEL COLLECTOR'S VAULT
+   ========================================================= */
+
+.vault-navegacion-inferior {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+    gap: 18px 28px;
+
+    margin-top: 22px;
+}
+
+
+.pagina-catalogo .vault-carrusel-bootstrap .vault-navegacion-inferior .vault-indicadores-bootstrap {
+    margin: 0;
+}
+
+
+.vault-utilidades {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+}
+
+
+.vault-contador {
+    min-width: 58px;
+
+    color: var(--gris-claro);
+
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+
+.vault-pausa {
+    margin: 0;
+    padding: 7px 11px;
+
+    color: var(--gris-claro);
+
+    background-color: rgba(255, 255, 255, 0.025);
+
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 999px;
+
+    font-size: 0.78rem;
+    font-weight: 700;
+}
+
+
+.vault-pausa:hover {
+    color: var(--blanco);
+
+    background-color: rgba(139, 92, 246, 0.14);
+
+    border-color: var(--morado-claro);
+
+    transform: none;
+
+    box-shadow:
+        0 0 10px rgba(139, 92, 246, 0.24);
+}
+
+
+.vault-pausa:focus-visible {
+    outline: 2px solid var(--verde-claro);
+    outline-offset: 3px;
+
+    box-shadow: none;
+}
+
+
+/* =========================================================
+   53. RESPONSIVIDAD DE CARDS, MODAL Y CONTROLES EXTRA
+   ========================================================= */
+
+@media (max-width: 767.98px) {
+
+    .modal-ficha-juego > div {
+        grid-template-columns: 1fr;
+
+        gap: 3px;
+    }
+
+
+    .modal-juego-imagen {
+        width: 100%;
+        max-width: 520px;
+        height: auto;
+        max-height: 420px;
+        min-height: 0;
+    }
+
+
+}
+
+
+@media (max-width: 600px) {
+
+    .producto-datos-rapidos,
+    .producto-meta {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+
+    .vault-navegacion-inferior {
+        gap: 14px 18px;
+    }
+
+
+    .vault-utilidades {
+        justify-content: center;
+
+        width: 100%;
+    }
+
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+
+    .btn-detalles-juego,
+    .vault-pausa {
+        transition: none;
+    }
+
+}
+
+/* =========================================================
+   54. ACCESIBILIDAD Y NAVEGACIÓN POR TECLADO - SEMANA 7
+   ========================================================= */
+
+/*
+   El enlace permanece fuera de la vista hasta recibir foco.
+   Permite saltar la navegación repetitiva y llegar al
+   contenido principal usando únicamente el teclado.
+*/
+.salto-contenido {
+    position: fixed;
+
+    top: 12px;
+    left: 12px;
+
+    z-index: 9999;
+
+    padding: 10px 16px;
+
+    color: var(--blanco);
+
+    background-color: var(--negro-secundario);
+
+    border: 2px solid var(--verde-claro);
+    border-radius: 8px;
+
+    font-weight: 700;
+
+    text-decoration: none;
+
+    transform: translateY(-180%);
+
+    transition: transform 0.2s ease;
+}
+
+.salto-contenido:focus,
+.salto-contenido:focus-visible {
+    color: var(--blanco);
+
+    transform: translateY(0);
+
+    outline: 2px solid var(--azul-claro);
+    outline-offset: 3px;
+
+    box-shadow:
+        0 0 12px rgba(34, 197, 94, 0.45),
+        0 0 20px rgba(59, 130, 246, 0.20);
+}
+
+/*
+   Indicador de foco consistente para controles interactivos.
+   Las reglas específicas de cada componente pueden ampliar
+   este estilo sin perder visibilidad al navegar con Tab.
+*/
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible {
+    outline: 2px solid var(--verde-claro);
+    outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .salto-contenido {
+        transition: none;
+    }
+}

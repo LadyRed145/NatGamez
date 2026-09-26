@@ -1,0 +1,928 @@
+/* =========================================================
+   57. SEMANA 7 - COMPRA FINAL + VOUCHER NATGAMEZ
+   ========================================================= */
+
+.carrito-acciones-finales {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.carrito-comprar-ahora {
+    width: 100%;
+
+    margin: 0;
+    padding: 11px 14px;
+
+    color: #dcfce7;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(34, 197, 94, 0.22),
+            rgba(59, 130, 246, 0.10)
+        );
+
+    border: 1px solid rgba(74, 222, 128, 0.58);
+    border-radius: 9px;
+
+    font: inherit;
+    font-size: 0.88rem;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 0 rgba(34, 197, 94, 0);
+
+    transition:
+        color 0.22s ease,
+        background-color 0.22s ease,
+        border-color 0.22s ease,
+        box-shadow 0.22s ease,
+        transform 0.22s ease;
+}
+
+.carrito-comprar-ahora:hover:not(:disabled),
+.carrito-comprar-ahora:focus-visible:not(:disabled) {
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(34, 197, 94, 0.34),
+            rgba(59, 130, 246, 0.16)
+        );
+
+    border-color: var(--verde-claro);
+
+    box-shadow:
+        0 0 14px rgba(34, 197, 94, 0.34),
+        0 0 24px rgba(59, 130, 246, 0.12);
+
+    transform: translateY(-1px);
+}
+
+.carrito-comprar-ahora:focus-visible {
+    outline: 2px solid var(--verde-claro);
+    outline-offset: 3px;
+}
+
+.carrito-comprar-ahora:disabled {
+    opacity: 0.34;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+/* ---------------------------------------------------------
+   MODAL DEL VOUCHER
+   --------------------------------------------------------- */
+
+.modal-voucher-natgamez {
+    --bs-modal-width: 920px;
+}
+
+.voucher-modal-content {
+    overflow: hidden;
+
+    color: var(--blanco);
+
+    background:
+        radial-gradient(
+            circle at 100% 0%,
+            rgba(34, 197, 94, 0.10),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 0% 0%,
+            rgba(139, 92, 246, 0.12),
+            transparent 34%
+        ),
+        linear-gradient(
+            155deg,
+            #181922,
+            #101117 72%
+        );
+
+    border: 1px solid rgba(139, 92, 246, 0.42);
+    border-radius: 18px;
+
+    box-shadow:
+        0 26px 80px rgba(0, 0, 0, 0.58),
+        0 0 28px rgba(139, 92, 246, 0.10);
+}
+
+.voucher-modal-header {
+    padding: 18px 22px;
+
+    border-bottom: 1px solid rgba(148, 163, 184, 0.16);
+}
+
+.voucher-modal-title {
+    margin: 0;
+
+    color: var(--blanco);
+
+    font-size: 1.1rem;
+    font-weight: 800;
+}
+
+.voucher-modal-body {
+    padding: 22px;
+}
+
+.voucher-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+
+    padding: 16px 22px 20px;
+
+    border-top: 1px solid rgba(148, 163, 184, 0.16);
+}
+
+/* ---------------------------------------------------------
+   COMPROBANTE
+   --------------------------------------------------------- */
+
+.voucher-comprobante {
+    position: relative;
+
+    margin: 0;
+    padding: clamp(22px, 4vw, 34px);
+
+    overflow: hidden;
+
+    color: #edf2f7;
+
+    background:
+        radial-gradient(
+            circle at 92% 12%,
+            rgba(34, 197, 94, 0.10),
+            transparent 24%
+        ),
+        radial-gradient(
+            circle at 8% 18%,
+            rgba(139, 92, 246, 0.12),
+            transparent 26%
+        ),
+        linear-gradient(
+            145deg,
+            rgba(19, 21, 29, 0.99),
+            rgba(12, 14, 20, 0.99)
+        );
+
+    border: 1px solid rgba(148, 163, 184, 0.18);
+    border-radius: 16px;
+
+    box-shadow:
+        inset 0 0 44px rgba(139, 92, 246, 0.025),
+        0 18px 38px rgba(0, 0, 0, 0.24);
+}
+
+.voucher-comprobante::before {
+    content: "";
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 3px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--morado),
+            var(--azul),
+            var(--verde)
+        );
+}
+
+.voucher-cabecera {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    gap: 24px;
+
+    padding-bottom: 22px;
+
+    border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+}
+
+.voucher-identidad {
+    min-width: 0;
+}
+
+.voucher-kicker {
+    margin: 0 0 8px;
+
+    color: var(--verde-claro);
+
+    font-size: 0.72rem;
+    font-weight: 900;
+    letter-spacing: 1.8px;
+}
+
+.voucher-marca {
+    margin: 0 0 8px;
+
+    color: var(--blanco);
+
+    font-size: clamp(1.8rem, 4vw, 2.55rem);
+    font-weight: 900;
+    letter-spacing: -0.6px;
+}
+
+.voucher-mensaje {
+    max-width: 570px;
+
+    margin: 0;
+
+    color: var(--gris-claro);
+
+    font-size: 0.94rem;
+    line-height: 1.6;
+}
+
+.voucher-logo {
+    flex: 0 0 auto;
+
+    width: 96px;
+    height: 96px;
+
+    padding: 6px;
+
+    object-fit: contain;
+
+    background-color: rgba(8, 9, 14, 0.72);
+
+    border: 1px solid rgba(167, 139, 250, 0.24);
+    border-radius: 16px;
+
+    box-shadow:
+        0 0 18px rgba(139, 92, 246, 0.14),
+        0 0 26px rgba(59, 130, 246, 0.08);
+}
+
+/* ---------------------------------------------------------
+   DATOS DE LA COMPRA
+   --------------------------------------------------------- */
+
+.voucher-datos {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 10px;
+
+    margin: 20px 0;
+}
+
+.voucher-dato {
+    display: flex;
+    flex-direction: column;
+
+    gap: 4px;
+
+    min-width: 0;
+
+    padding: 12px 13px;
+
+    background-color: rgba(255, 255, 255, 0.025);
+
+    border: 1px solid rgba(148, 163, 184, 0.13);
+    border-radius: 10px;
+}
+
+.voucher-dato-etiqueta {
+    color: var(--gris);
+
+    font-size: 0.67rem;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+}
+
+.voucher-dato strong {
+    overflow-wrap: anywhere;
+
+    color: var(--blanco);
+
+    font-size: 0.82rem;
+    line-height: 1.35;
+}
+
+.voucher-dato .voucher-estado-confirmado {
+    color: var(--verde-claro);
+}
+
+/* ---------------------------------------------------------
+   TABLA DEL VOUCHER
+   --------------------------------------------------------- */
+
+.voucher-tabla-contenedor {
+    width: 100%;
+
+    overflow-x: auto;
+
+    border: 1px solid rgba(148, 163, 184, 0.14);
+    border-radius: 12px;
+}
+
+.voucher-tabla {
+    width: 100%;
+    min-width: 640px;
+
+    border-collapse: collapse;
+
+    color: var(--gris-claro);
+}
+
+.voucher-tabla thead {
+    background-color: rgba(139, 92, 246, 0.07);
+}
+
+.voucher-tabla th,
+.voucher-tabla td {
+    padding: 12px 14px;
+
+    text-align: left;
+    vertical-align: middle;
+
+    border-bottom: 1px solid rgba(148, 163, 184, 0.11);
+}
+
+.voucher-tabla th {
+    color: var(--gris);
+
+    font-size: 0.70rem;
+    font-weight: 900;
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
+}
+
+.voucher-tabla td {
+    font-size: 0.83rem;
+}
+
+.voucher-tabla tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.voucher-producto-contenido {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+}
+
+.voucher-producto-imagen {
+    flex: 0 0 auto;
+
+    width: 48px;
+    height: 48px;
+
+    object-fit: cover;
+
+    background-color: #090a0e;
+
+    border: 1px solid rgba(148, 163, 184, 0.15);
+    border-radius: 8px;
+}
+
+.voucher-producto-nombre,
+.voucher-producto-genero {
+    display: block;
+}
+
+.voucher-producto-nombre {
+    margin-bottom: 2px;
+
+    color: var(--blanco);
+
+    font-size: 0.85rem;
+}
+
+.voucher-producto-genero {
+    color: var(--gris);
+
+    font-size: 0.70rem;
+}
+
+.voucher-subtotal {
+    color: var(--verde-claro);
+
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+/* ---------------------------------------------------------
+   RESUMEN Y PIE
+   --------------------------------------------------------- */
+
+.voucher-resumen {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    gap: 24px;
+
+    margin-top: 20px;
+    padding-top: 18px;
+
+    border-top: 1px dashed rgba(148, 163, 184, 0.24);
+}
+
+.voucher-resumen-texto {
+    display: flex;
+    flex-direction: column;
+
+    gap: 2px;
+
+    color: var(--gris-claro);
+
+    font-size: 0.84rem;
+}
+
+.voucher-resumen-texto small {
+    color: var(--gris);
+}
+
+.voucher-total {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    gap: 2px;
+}
+
+.voucher-total span {
+    color: var(--gris);
+
+    font-size: 0.74rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.voucher-total strong {
+    color: var(--verde-claro);
+
+    font-size: 1.55rem;
+}
+
+.voucher-pie {
+    margin-top: 22px;
+    padding: 15px 16px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(139, 92, 246, 0.06),
+            rgba(34, 197, 94, 0.045)
+        );
+
+    border: 1px solid rgba(148, 163, 184, 0.12);
+    border-radius: 11px;
+}
+
+.voucher-pie strong {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: var(--blanco);
+
+    font-size: 0.86rem;
+}
+
+.voucher-pie p {
+    margin: 0;
+
+    color: var(--gris);
+
+    font-size: 0.72rem;
+    line-height: 1.5;
+}
+
+/* ---------------------------------------------------------
+   BOTONES DEL MODAL
+   --------------------------------------------------------- */
+
+.voucher-boton-imprimir,
+.voucher-boton-cerrar {
+    margin: 0;
+    padding: 10px 15px;
+
+    border-radius: 9px;
+
+    font: inherit;
+    font-size: 0.82rem;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition:
+        color 0.2s ease,
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+}
+
+.voucher-boton-imprimir {
+    color: #dcfce7;
+
+    background-color: rgba(34, 197, 94, 0.09);
+
+    border: 1px solid rgba(74, 222, 128, 0.42);
+}
+
+.voucher-boton-imprimir:hover,
+.voucher-boton-imprimir:focus-visible {
+    color: #ffffff;
+
+    background-color: rgba(34, 197, 94, 0.17);
+
+    border-color: var(--verde-claro);
+
+    box-shadow:
+        0 0 12px rgba(34, 197, 94, 0.22);
+
+    transform: translateY(-1px);
+}
+
+.voucher-boton-cerrar {
+    color: #ddd6fe;
+
+    background-color: rgba(139, 92, 246, 0.08);
+
+    border: 1px solid rgba(167, 139, 250, 0.34);
+}
+
+.voucher-boton-cerrar:hover,
+.voucher-boton-cerrar:focus-visible {
+    color: #ffffff;
+
+    background-color: rgba(139, 92, 246, 0.16);
+
+    border-color: var(--morado-claro);
+
+    box-shadow:
+        0 0 12px rgba(139, 92, 246, 0.20);
+
+    transform: translateY(-1px);
+}
+
+.voucher-boton-imprimir:focus-visible,
+.voucher-boton-cerrar:focus-visible {
+    outline: 2px solid var(--verde-claro);
+    outline-offset: 3px;
+}
+
+/* ---------------------------------------------------------
+   RESPONSIVE DEL VOUCHER
+   --------------------------------------------------------- */
+
+@media (max-width: 767.98px) {
+
+    .voucher-cabecera {
+        gap: 16px;
+    }
+
+    .voucher-logo {
+        width: 78px;
+        height: 78px;
+    }
+
+    .voucher-datos {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .voucher-resumen {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .voucher-total {
+        align-items: flex-start;
+    }
+
+}
+
+@media (max-width: 520px) {
+
+    .voucher-modal-body {
+        padding: 12px;
+    }
+
+    .voucher-comprobante {
+        padding: 18px;
+    }
+
+    .voucher-cabecera {
+        flex-direction: column-reverse;
+    }
+
+    .voucher-logo {
+        align-self: flex-end;
+    }
+
+    .voucher-datos {
+        grid-template-columns: 1fr;
+    }
+
+    .voucher-modal-footer {
+        flex-direction: column;
+    }
+
+    .voucher-boton-imprimir,
+    .voucher-boton-cerrar {
+        width: 100%;
+    }
+
+}
+
+/* ---------------------------------------------------------
+   IMPRESIÓN DEL VOUCHER
+   --------------------------------------------------------- */
+
+@media print {
+
+    body * {
+        visibility: hidden !important;
+    }
+
+    #voucherContenido,
+    #voucherContenido * {
+        visibility: visible !important;
+    }
+
+    #voucherContenido {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        width: 100%;
+
+        margin: 0;
+        padding: 24px;
+
+        color: #111827 !important;
+        background: #ffffff !important;
+
+        border: 0 !important;
+        border-radius: 0 !important;
+
+        box-shadow: none !important;
+    }
+
+    #voucherContenido::before {
+        display: none;
+    }
+
+    #voucherContenido .voucher-marca,
+    #voucherContenido .voucher-producto-nombre,
+    #voucherContenido .voucher-dato strong,
+    #voucherContenido .voucher-total strong,
+    #voucherContenido .voucher-pie strong {
+        color: #111827 !important;
+    }
+
+    #voucherContenido .voucher-kicker,
+    #voucherContenido .voucher-estado-confirmado,
+    #voucherContenido .voucher-subtotal {
+        color: #15803d !important;
+    }
+
+    #voucherContenido .voucher-mensaje,
+    #voucherContenido .voucher-dato-etiqueta,
+    #voucherContenido .voucher-producto-genero,
+    #voucherContenido .voucher-resumen-texto,
+    #voucherContenido .voucher-resumen-texto small,
+    #voucherContenido .voucher-total span,
+    #voucherContenido .voucher-pie p,
+    #voucherContenido .voucher-tabla,
+    #voucherContenido .voucher-tabla th,
+    #voucherContenido .voucher-tabla td {
+        color: #374151 !important;
+    }
+
+    #voucherContenido .voucher-dato,
+    #voucherContenido .voucher-pie,
+    #voucherContenido .voucher-tabla-contenedor,
+    #voucherContenido .voucher-tabla thead {
+        background: transparent !important;
+    }
+
+    #voucherContenido .voucher-logo,
+    #voucherContenido .voucher-dato,
+    #voucherContenido .voucher-pie,
+    #voucherContenido .voucher-tabla-contenedor {
+        border-color: #d1d5db !important;
+        box-shadow: none !important;
+    }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .carrito-comprar-ahora,
+    .voucher-boton-imprimir,
+    .voucher-boton-cerrar {
+        transition: none !important;
+    }
+
+}
+
+
+/* =========================================================
+   58. SEMANA 7 - TIENDA COMPLETA
+   Collector's Vault + Figuras Premium comprables
+   ========================================================= */
+
+/*
+   El mismo carrito se utiliza para todas las zonas de la tienda.
+   En reposo el botón conserva el icono compacto y al pasar el
+   cursor muestra la acción completa, sin desordenar precio/card.
+*/
+
+.vault-compra-linea,
+.figura-compra-linea {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 16px;
+
+    width: 100%;
+}
+
+.pagina-catalogo .vault-carrusel-bootstrap .vault-compra-linea {
+    margin-top: auto;
+    padding-top: 18px;
+}
+
+.pagina-catalogo .vault-carrusel-bootstrap .vault-compra-linea .precio-premium {
+    flex: 1 1 auto;
+
+    margin: 0 !important;
+}
+
+.vault-compra-linea .btn-agregar-carrito,
+.figura-compra-linea .btn-agregar-carrito {
+    flex: 0 0 auto;
+
+    width: 52px;
+    min-width: 52px;
+    max-width: 52px;
+
+    margin: 0;
+}
+
+.vault-compra-linea .btn-agregar-carrito.is-hover,
+.vault-compra-linea .btn-agregar-carrito:hover,
+.vault-compra-linea .btn-agregar-carrito:focus-visible,
+.figura-compra-linea .btn-agregar-carrito.is-hover,
+.figura-compra-linea .btn-agregar-carrito:hover,
+.figura-compra-linea .btn-agregar-carrito:focus-visible {
+    width: 180px;
+    max-width: 180px;
+}
+
+
+/* ---------------------------------------------------------
+   FIGURAS PREMIUM
+   --------------------------------------------------------- */
+
+.pagina-catalogo .figuras-grid {
+    align-items: stretch;
+}
+
+.pagina-catalogo .figura-card {
+    display: flex;
+    flex-direction: column;
+
+    height: 100%;
+}
+
+.pagina-catalogo .figura-card > p:not(.producto-genero) {
+    flex: 1 1 auto;
+}
+
+.figura-compra-linea {
+    margin-top: auto;
+    padding-top: 16px;
+
+    border-top: 1px solid rgba(148, 163, 184, 0.16);
+}
+
+.precio-figura {
+    margin: 0 !important;
+
+    color: var(--verde-claro) !important;
+
+    font-size: 1.18rem !important;
+    font-weight: 900 !important;
+    letter-spacing: 0 !important;
+    text-transform: none !important;
+}
+
+/*
+   Con seis figuras la cuadrícula se ve más ordenada sin el
+   desplazamiento vertical especial que tenía solo la segunda card.
+*/
+.pagina-catalogo .figuras-grid .figura-card:nth-child(2) {
+    transform: none;
+}
+
+.pagina-catalogo .figuras-grid .figura-card:nth-child(2):hover {
+    transform: translateY(-7px);
+}
+
+.pagina-catalogo .figura-card-extra:nth-child(4):hover {
+    border-color: rgba(139, 92, 246, 0.58);
+
+    box-shadow:
+        0 0 16px rgba(139, 92, 246, 0.18),
+        0 16px 30px rgba(0, 0, 0, 0.32);
+}
+
+/* Dante: acento carmesí para mantener su identidad visual. */
+.pagina-catalogo .figura-card-extra:nth-child(5):hover {
+    border-color: rgba(239, 68, 68, 0.68);
+
+    box-shadow:
+        0 0 18px rgba(239, 68, 68, 0.22),
+        0 16px 30px rgba(0, 0, 0, 0.32);
+}
+
+/* Bayonetta: morado + carmesí, elegante y teatral. */
+.pagina-catalogo .figura-card-extra:nth-child(6):hover {
+    border-color: rgba(192, 132, 252, 0.72);
+
+    box-shadow:
+        0 0 18px rgba(168, 85, 247, 0.24),
+        0 0 30px rgba(190, 24, 93, 0.10),
+        0 16px 30px rgba(0, 0, 0, 0.32);
+}
+
+.pagina-catalogo .figura-card[data-producto-id="figura-dante-dmc5"] .figura-imagen-extra img {
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(239, 68, 68, 0.16),
+            transparent 62%
+        ),
+        #0f0f16;
+}
+
+.pagina-catalogo .figura-card[data-producto-id="figura-bayonetta"] .figura-imagen-extra img {
+    background:
+        radial-gradient(
+            circle at 50% 48%,
+            rgba(168, 85, 247, 0.17),
+            rgba(190, 24, 93, 0.07) 44%,
+            transparent 68%
+        ),
+        #0f0f16;
+}
+
+.pagina-catalogo .figura-imagen-extra img {
+    object-fit: contain;
+    object-position: center;
+
+    padding: 8px;
+
+    background:
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(96, 165, 250, 0.08),
+            transparent 60%
+        ),
+        #0f0f16;
+}
+
+
+/* ---------------------------------------------------------
+   COMPROBANTE - TEXTO VISIBLE
+   La impresión se realiza ahora en un documento A4 aislado.
+   Ya no se imprime el DOM completo de NatGamez.
+   --------------------------------------------------------- */
+
+.voucher-boton-imprimir::after {
+    content: "";
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+
+    .vault-compra-linea .btn-agregar-carrito,
+    .figura-compra-linea .btn-agregar-carrito,
+    .figura-card-extra {
+        transition: none !important;
+    }
+
+}
+
+/* =========================================================

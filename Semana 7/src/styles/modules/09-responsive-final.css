@@ -1,0 +1,805 @@
+/* =========================================================  
+   59. RESPONSIVE FINAL — DESKTOP / TABLET / CELULAR
+   Semana 7 · Tienda completa NatGamez
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   TABLET / LAPTOP PEQUEÑO
+   --------------------------------------------------------- */
+
+@media (min-width: 768px) and (max-width: 1199.98px) {
+
+    .catalogo-main,
+    .nav-catalogo {
+        width: 96%;
+        max-width: 1120px;
+    }
+
+    .catalogo-main {
+        padding-inline: 12px;
+    }
+
+    .nav-catalogo .nav-collapse-bootstrap > ul {
+        gap: 8px;
+    }
+
+    .nav-catalogo .nav-collapse-bootstrap > ul > li > a,
+    .nav-accion-boton,
+    .nav-comprar-boton {
+        min-height: 48px;
+        padding: 10px 13px;
+    }
+
+    .nav-buscador-panel {
+        width: min(94%, 760px);
+    }
+
+    #videojuegos .catalog-card figure {
+        height: 220px;
+    }
+
+    .catalog-card-contenido {
+        padding: 20px;
+    }
+
+    .offcanvas-natgamez {
+        --bs-offcanvas-width: min(480px, 72vw);
+    }
+
+    /*
+       En tablet apilamos imagen + información del Collector.
+       Evita columnas demasiado estrechas en orientación vertical.
+    */
+    .pagina-catalogo .vault-carrusel-bootstrap .vault-card {
+        display: flex;
+        flex-direction: column;
+
+        min-height: 0;
+        height: auto;
+    }
+
+    .pagina-catalogo .vault-carrusel-bootstrap .vault-card-imagen {
+        flex: 0 0 320px;
+
+        width: 100%;
+        min-height: 320px;
+        height: 320px;
+
+        border-right: 0;
+        border-bottom: 1px solid var(--borde);
+    }
+
+    .pagina-catalogo .vault-carrusel-bootstrap .vault-card-contenido {
+        min-height: 300px;
+        padding: 28px 32px;
+    }
+
+    .pagina-catalogo .vault-carrusel-bootstrap .vault-control {
+        top: 160px;
+    }
+
+    .pagina-catalogo .figuras-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .pagina-catalogo .figuras-grid .figura-card:last-child {
+        grid-column: auto;
+    }
+
+    .pagina-catalogo .figura-imagen {
+        height: 250px;
+    }
+
+    .modal-voucher-natgamez .modal-dialog {
+        width: calc(100% - 36px);
+        max-width: 860px;
+        margin-inline: auto;
+    }
+
+    .voucher-comprobante {
+        padding: 26px;
+    }
+}
+
+/* ---------------------------------------------------------
+   TABLET VERTICAL + CELULAR GRANDE
+   --------------------------------------------------------- */
+
+@media (max-width: 991.98px) {
+
+    .nav-catalogo {
+        width: 96%;
+        padding-inline: 10px;
+    }
+
+    .navbar-natgamez-bootstrap .navbar-toggler {
+        min-width: 48px;
+        min-height: 46px;
+    }
+
+    .nav-catalogo .nav-collapse-bootstrap > ul {
+        width: min(100%, 520px);
+        gap: 9px;
+        padding-top: 10px;
+    }
+
+    .nav-catalogo .nav-collapse-bootstrap > ul > li,
+    .nav-catalogo .nav-collapse-bootstrap > ul > li > a,
+    .nav-accion-boton,
+    .nav-comprar-boton {
+        width: 100%;
+        min-height: 48px;
+    }
+
+    .nav-comprar-contador {
+        top: 50%;
+        right: 14px;
+        transform: translateY(-50%);
+    }
+
+    .nav-comprar-contador.tiene-productos {
+        transform: translateY(-50%) scale(1.05);
+    }
+
+    .nav-buscador-panel {
+        width: min(94%, 600px);
+        margin-top: 10px;
+    }
+
+    .pagina-catalogo .vault-carrusel-bootstrap .vault-card {
+        display: flex;
+        flex-direction: column;
+
+        min-height: 0;
+        height: auto;
+    }
+
+    .pagina-catalogo .vault-carrusel-bootstrap .vault-card-imagen {
+        flex: 0 0 300px;
+
+        min-height: 300px;
+        height: 300px;
+
+        border-right: 0;
+        border-bottom: 1px solid var(--borde);
+    }
+
+    .pagina-catalogo .vault-carrusel-bootstrap .vault-card-contenido {
+        min-height: 0;
+        padding: 28px;
+    }
+
+    .pagina-catalogo .vault-carrusel-bootstrap .vault-control {
+        top: 150px;
+    }
+
+    .vault-compra-linea,
+    .figura-compra-linea {
+        gap: 12px;
+    }
+}
+
+/* ---------------------------------------------------------
+   CELULAR
+   --------------------------------------------------------- */
+
+@media (max-width: 767.98px) {
+
+    body.pagina-catalogo {
+        font-size: 15px;
+    }
+
+    .catalogo-main {
+        width: 100%;
+        margin-inline: auto;
+        padding: 8px 10px;
+    }
+
+    .catalogo-seccion,
+    .vault-seccion,
+    .figuras-seccion,
+    .regreso-principal {
+        padding: 20px 16px;
+        border-radius: 12px;
+    }
+
+    .seccion-encabezado {
+        gap: 10px;
+    }
+
+    .seccion-encabezado h2 {
+        font-size: clamp(1.65rem, 8vw, 2.2rem);
+    }
+
+    .nav-buscador-form {
+        flex-direction: column;
+        gap: 9px;
+    }
+
+    .nav-buscador-campo,
+    .nav-buscador-input,
+    .nav-buscador-boton {
+        width: 100%;
+    }
+
+    .nav-buscador-input,
+    .nav-buscador-boton {
+        min-height: 50px;
+    }
+
+    .estado-busqueda-catalogo {
+        margin: 0 0 18px;
+        font-size: 0.82rem;
+    }
+
+    #videojuegos .catalogo-grid > [class*="col-"] {
+        width: 100%;
+    }
+
+    #videojuegos .catalog-card figure {
+        height: auto;
+        min-height: 220px;
+        aspect-ratio: 16 / 10;
+    }
+
+    #videojuegos .catalog-card figure img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    .catalog-card-contenido {
+        padding: 18px;
+    }
+
+    .producto-datos-rapidos,
+    .producto-meta {
+        gap: 8px;
+    }
+
+    .acciones-producto {
+        min-height: 0;
+        gap: 9px;
+    }
+
+
+    .offcanvas-natgamez {
+        --bs-offcanvas-width: min(100vw, 430px);
+    }
+
+    .offcanvas-natgamez .offcanvas-header {
+        padding: 18px 16px 14px;
+    }
+
+    .offcanvas-natgamez .offcanvas-body {
+        padding: 14px 16px 18px;
+    }
+
+    .carrito-item {
+        grid-template-columns: 62px minmax(0, 1fr);
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .carrito-item-imagen {
+        width: 62px;
+        height: 62px;
+    }
+
+    .carrito-item-subtotal {
+        grid-column: 2;
+        justify-self: start;
+    }
+
+    .carrito-item-controles {
+        gap: 8px;
+    }
+
+    .carrito-cantidad-boton {
+        width: 34px;
+        height: 34px;
+    }
+
+    .btn-carrito-eliminar {
+        min-height: 34px;
+        padding-inline: 10px;
+    }
+
+    .carrito-comprar-ahora,
+    .carrito-vaciar {
+        min-height: 48px;
+    }
+
+    .pagina-catalogo .vault-carrusel-bootstrap .vault-card-imagen {
+        flex-basis: 250px;
+        min-height: 250px;
+        height: 250px;
+    }
+
+    .pagina-catalogo .vault-carrusel-bootstrap .vault-card-imagen img {
+        padding: 12px;
+    }
+
+    .pagina-catalogo .vault-carrusel-bootstrap .vault-card-contenido {
+        padding: 22px 18px 24px;
+    }
+
+    .pagina-catalogo .vault-carrusel-bootstrap .vault-control {
+        top: 125px;
+        width: 44px;
+        height: 44px;
+    }
+
+    .vault-compra-linea,
+    .figura-compra-linea {
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .pagina-catalogo .vault-carrusel-bootstrap .vault-compra-linea .precio-premium,
+    .precio-figura {
+        width: 100%;
+        text-align: left;
+    }
+
+    .pagina-catalogo .figuras-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .pagina-catalogo .figura-imagen,
+    .pagina-catalogo .figura-imagen-extra {
+        height: 280px;
+    }
+
+    .modal-voucher-natgamez .modal-dialog {
+        width: calc(100% - 16px);
+        max-width: none;
+        margin: 8px auto;
+    }
+
+    .modal-voucher-natgamez .modal-content {
+        max-height: calc(100dvh - 16px);
+        border-radius: 14px;
+    }
+
+    .voucher-modal-header {
+        padding: 14px 16px;
+    }
+
+    .voucher-modal-body {
+        padding: 10px;
+    }
+
+    .voucher-comprobante {
+        padding: 16px;
+    }
+
+    .voucher-cabecera {
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .voucher-marca {
+        font-size: 1.8rem;
+    }
+
+    .voucher-logo {
+        width: 68px;
+        height: 68px;
+    }
+
+    .voucher-datos {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .voucher-tabla-contenedor {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .voucher-tabla {
+        min-width: 610px;
+    }
+
+    .voucher-resumen {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .voucher-total {
+        align-items: flex-start;
+    }
+
+    .voucher-modal-footer {
+        flex-direction: column;
+        padding: 12px 14px 14px;
+    }
+
+    .voucher-boton-imprimir,
+    .voucher-boton-cerrar {
+        width: 100%;
+        min-height: 46px;
+    }
+}
+
+/* ---------------------------------------------------------
+   CELULAR PEQUEÑO
+   --------------------------------------------------------- */
+
+@media (max-width: 430px) {
+
+    .catalogo-main {
+        padding-inline: 6px;
+    }
+
+    .catalogo-seccion,
+    .vault-seccion,
+    .figuras-seccion,
+    .regreso-principal {
+        padding-inline: 13px;
+    }
+
+    #videojuegos .catalog-card figure {
+        min-height: 195px;
+    }
+
+    .pagina-catalogo .vault-carrusel-bootstrap .vault-card-imagen {
+        flex-basis: 220px;
+        min-height: 220px;
+        height: 220px;
+    }
+
+    .pagina-catalogo .vault-carrusel-bootstrap .vault-control {
+        top: 110px;
+        width: 42px;
+        height: 42px;
+    }
+
+    .pagina-catalogo .figura-imagen,
+    .pagina-catalogo .figura-imagen-extra {
+        height: 245px;
+    }
+
+    .carrito-offcanvas-titulo h2 {
+        font-size: 1.45rem;
+    }
+
+    .carrito-item {
+        grid-template-columns: 54px minmax(0, 1fr);
+    }
+
+    .carrito-item-imagen {
+        width: 54px;
+        height: 54px;
+    }
+
+    .voucher-comprobante {
+        padding: 14px;
+    }
+
+    .voucher-logo {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+/* =========================================================
+   60. PARIDAD RESPONSIVE LIMPIA — TABLET / CELULAR
+   Semana 7 · Una sola capa final, sin parches superpuestos.
+   Escritorio conserva el comportamiento original.
+   ========================================================= */
+
+/* Acceso flotante al carrito: oculto por defecto en escritorio. */
+.carrito-flotante-movil {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 52px;
+    padding: 10px 16px;
+    color: #f8fafc;
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.94), rgba(22, 163, 74, 0.96));
+    border: 1px solid rgba(134, 239, 172, 0.72);
+    border-radius: 999px;
+    box-shadow: 0 14px 36px rgba(0, 0, 0, 0.38), 0 0 22px rgba(34, 197, 94, 0.22);
+    font: inherit;
+    font-size: 0.92rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+}
+
+.carrito-flotante-icono {
+    font-size: 1.05rem;
+}
+
+.carrito-flotante-contador {
+    display: grid;
+    place-items: center;
+    min-width: 24px;
+    height: 24px;
+    padding-inline: 6px;
+    color: #052e16;
+    background: #dcfce7;
+    border-radius: 999px;
+    font-size: 0.74rem;
+    font-weight: 900;
+}
+
+.carrito-flotante-contador.tiene-productos {
+    color: #ffffff;
+    background: #7c3aed;
+    box-shadow: 0 0 14px rgba(139, 92, 246, 0.48);
+}
+
+.carrito-flotante-movil.is-touching,
+.carrito-flotante-movil:active {
+    transform: scale(0.96);
+    filter: brightness(1.08);
+    box-shadow: 0 7px 18px rgba(0, 0, 0, 0.34), 0 0 28px rgba(34, 197, 94, 0.34);
+}
+
+.carrito-ayuda-compra {
+    margin: 10px 0 0;
+    color: var(--gris);
+    font-size: 0.72rem;
+    line-height: 1.45;
+    text-align: center;
+}
+
+.btn-agregar-carrito.is-touching,
+.nav-comprar-boton.is-touching,
+.carrito-comprar-ahora.is-touching {
+    transform: scale(0.975);
+    filter: brightness(1.12);
+}
+
+/* Tablet y celular: misma funcionalidad que escritorio con equivalentes táctiles. */
+@media (max-width: 1199.98px) {
+    .carrito-flotante-movil {
+        position: fixed;
+        right: max(14px, env(safe-area-inset-right));
+        bottom: max(14px, env(safe-area-inset-bottom));
+        z-index: 1038;
+        display: flex;
+    }
+
+    body.carrito-abierto .carrito-flotante-movil,
+    body.modal-open .carrito-flotante-movil {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    /* El panel se divide físicamente en cabecera / lista / checkout. */
+    .offcanvas-natgamez {
+        --bs-offcanvas-width: min(520px, 82vw);
+        display: grid;
+        grid-template-rows: auto minmax(0, 1fr) auto;
+        height: 100dvh;
+        max-height: 100dvh;
+        overflow: hidden;
+    }
+
+    .offcanvas-natgamez > .offcanvas-header {
+        grid-row: 1;
+    }
+
+    .offcanvas-natgamez > .offcanvas-body {
+        grid-row: 2;
+        display: grid;
+        grid-template-rows: auto minmax(0, 1fr);
+        min-height: 0;
+        overflow: hidden;
+        padding: 14px 16px 0;
+    }
+
+    .offcanvas-natgamez .carrito-estado {
+        grid-row: 1;
+        margin-bottom: 12px;
+    }
+
+    .offcanvas-natgamez .carrito-lista {
+        grid-row: 2;
+        min-height: 0;
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding-right: 4px;
+        padding-bottom: 20px;
+        overscroll-behavior: contain;
+        -webkit-overflow-scrolling: touch;
+        touch-action: pan-y;
+        scrollbar-gutter: stable;
+    }
+
+    .offcanvas-natgamez > .carrito-checkout-fijo {
+        grid-row: 3;
+        position: relative;
+        width: 100%;
+        margin: 0;
+        padding: 12px 16px max(14px, env(safe-area-inset-bottom));
+        background: linear-gradient(180deg, rgba(24, 27, 39, 0.998), rgba(13, 15, 22, 1));
+        border-top: 1px solid rgba(148, 163, 184, 0.30);
+        box-shadow: 0 -12px 32px rgba(0, 0, 0, 0.45);
+        z-index: 10;
+    }
+
+    .offcanvas-natgamez > .carrito-checkout-fijo .carrito-total-linea {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        margin: 0 0 10px;
+        padding: 0;
+        border-top: 0;
+    }
+
+    .offcanvas-natgamez > .carrito-checkout-fijo .carrito-acciones-finales {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(118px, 0.55fr);
+        gap: 8px;
+    }
+
+    .offcanvas-natgamez .carrito-comprar-ahora,
+    .offcanvas-natgamez .carrito-vaciar {
+        width: 100%;
+        min-height: 46px;
+        margin: 0;
+    }
+
+    /* Videojuegos: icono centrado y expansión simétrica como en PC. */
+    .catalog-card .acciones-producto {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        overflow: visible;
+    }
+
+    .catalog-card .acciones-producto > .btn-agregar-carrito {
+        align-self: center;
+        width: 54px;
+        min-width: 54px;
+        max-width: 54px;
+        min-height: 46px;
+        margin-inline: auto;
+        gap: 0;
+        transform-origin: center;
+    }
+
+    .catalog-card .acciones-producto > .btn-agregar-carrito .btn-carrito-texto {
+        max-width: 0;
+        margin-left: 0;
+        opacity: 0;
+        transform: translateX(-5px);
+    }
+
+    .catalog-card .acciones-producto > .btn-agregar-carrito.is-hover,
+    .catalog-card .acciones-producto > .btn-agregar-carrito.is-touching {
+        align-self: stretch;
+        width: 100%;
+        min-width: 100%;
+        max-width: 100%;
+        margin-inline: 0;
+        gap: 7px;
+    }
+
+    .catalog-card .acciones-producto > .btn-agregar-carrito.is-hover .btn-carrito-texto,
+    .catalog-card .acciones-producto > .btn-agregar-carrito.is-touching .btn-carrito-texto {
+        max-width: 190px;
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    /* Vault y figuras: compactos en reposo, expansión proporcional al tocar. */
+    .vault-compra-linea,
+    .figura-compra-linea {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+    }
+
+    .vault-compra-linea .btn-agregar-carrito,
+    .figura-compra-linea .btn-agregar-carrito {
+        flex: 0 0 52px;
+        width: 52px;
+        min-width: 52px;
+        max-width: 52px;
+        min-height: 46px;
+        margin: 0;
+        padding-inline: 0;
+        gap: 0;
+    }
+
+    .vault-compra-linea .btn-agregar-carrito .btn-carrito-texto,
+    .figura-compra-linea .btn-agregar-carrito .btn-carrito-texto {
+        max-width: 0;
+        margin-left: 0;
+        opacity: 0;
+        transform: translateX(-5px);
+    }
+
+    .vault-compra-linea .btn-agregar-carrito.is-hover,
+    .vault-compra-linea .btn-agregar-carrito.is-touching,
+    .figura-compra-linea .btn-agregar-carrito.is-hover,
+    .figura-compra-linea .btn-agregar-carrito.is-touching {
+        flex-basis: clamp(205px, 30vw, 230px);
+        width: clamp(205px, 30vw, 230px);
+        min-width: clamp(205px, 30vw, 230px);
+        max-width: clamp(205px, 30vw, 230px);
+        gap: 7px;
+        padding-inline: 10px;
+    }
+
+    .vault-compra-linea .btn-agregar-carrito.is-hover .btn-carrito-texto,
+    .vault-compra-linea .btn-agregar-carrito.is-touching .btn-carrito-texto,
+    .figura-compra-linea .btn-agregar-carrito.is-hover .btn-carrito-texto,
+    .figura-compra-linea .btn-agregar-carrito.is-touching .btn-carrito-texto {
+        max-width: 165px;
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* En dispositivos sin hover real neutralizamos el :hover pegajoso del navegador. */
+@media (hover: none), (pointer: coarse) {
+    .catalog-card .acciones-producto > .btn-agregar-carrito:hover:not(.is-hover):not(.is-touching),
+    .vault-compra-linea .btn-agregar-carrito:hover:not(.is-hover):not(.is-touching),
+    .figura-compra-linea .btn-agregar-carrito:hover:not(.is-hover):not(.is-touching) {
+        width: 54px;
+        min-width: 54px;
+        max-width: 54px;
+        transform: none;
+    }
+
+    .catalog-card .acciones-producto > .btn-agregar-carrito:hover:not(.is-hover):not(.is-touching) .btn-carrito-texto,
+    .vault-compra-linea .btn-agregar-carrito:hover:not(.is-hover):not(.is-touching) .btn-carrito-texto,
+    .figura-compra-linea .btn-agregar-carrito:hover:not(.is-hover):not(.is-touching) .btn-carrito-texto {
+        max-width: 0;
+        margin-left: 0;
+        opacity: 0;
+        transform: translateX(-5px);
+    }
+}
+
+@media (max-width: 575.98px) {
+    .offcanvas-natgamez {
+        --bs-offcanvas-width: 100vw;
+    }
+
+    .offcanvas-natgamez > .carrito-checkout-fijo {
+        padding-inline: 12px;
+    }
+
+    .offcanvas-natgamez > .carrito-checkout-fijo .carrito-acciones-finales {
+        grid-template-columns: 1fr;
+    }
+
+    .carrito-flotante-movil {
+        right: 12px;
+        bottom: max(12px, env(safe-area-inset-bottom));
+        min-height: 54px;
+        padding-inline: 14px;
+    }
+
+    .vault-compra-linea .btn-agregar-carrito.is-hover,
+    .vault-compra-linea .btn-agregar-carrito.is-touching,
+    .figura-compra-linea .btn-agregar-carrito.is-hover,
+    .figura-compra-linea .btn-agregar-carrito.is-touching {
+        flex-basis: min(205px, 58vw);
+        width: min(205px, 58vw);
+        min-width: min(205px, 58vw);
+        max-width: min(205px, 58vw);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .carrito-flotante-movil,
+    .btn-agregar-carrito,
+    .nav-comprar-boton,
+    .carrito-comprar-ahora {
+        transition: none !important;
+    }
+}

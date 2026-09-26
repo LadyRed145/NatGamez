@@ -1,0 +1,60 @@
+/* =========================================================
+   SEMANA 7 · PRECIO NORMAL + PRECIO OFERTA
+
+   `precio` sigue siendo el valor efectivo que usa el carrito.
+   `precioNormal` y `precioOferta` se presentan visualmente.
+   ========================================================= */
+
+.producto-precios,
+.precio-especial-bloque {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+.producto-precio-normal,
+.precio-especial-normal,
+.modal-juego-precio-normal {
+  color: var(--gris) !important;
+  font-size: 0.76rem;
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration-thickness: 1px;
+  text-decoration-color: rgba(248, 113, 113, 0.78);
+  opacity: 0.86;
+}
+
+.producto-meta .producto-precio-oferta {
+  color: var(--verde-claro);
+  font-size: 1.18rem;
+  font-weight: 900;
+  line-height: 1.15;
+}
+
+.modal-juego-precios {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 8px;
+}
+
+.modal-juego-precios .modal-juego-precio {
+  margin: 0;
+}
+
+.precio-especial-bloque .precio-premium,
+.precio-especial-bloque .precio-figura {
+  margin: 0 !important;
+}
+
+@media (max-width: 575.98px) {
+  .producto-meta {
+    align-items: flex-end;
+  }
+
+  .producto-precio-normal,
+  .precio-especial-normal {
+    font-size: 0.72rem;
+  }
+}

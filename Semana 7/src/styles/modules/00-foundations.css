@@ -1,0 +1,234 @@
+/* =========================================================
+   NatGamez - Semana 7
+   Desarrollo Frontend I - PFY2201
+   Natalia Alvarado
+   ========================================================= */
+
+
+/* =========================================================
+   1. VARIABLES DE COLOR
+   ========================================================= */
+
+:root {
+    --negro: #0b0b10;
+    --negro-secundario: #15151d;
+    --negro-card: #1b1b25;
+
+    --morado: #8b5cf6;
+    --morado-claro: #a78bfa;
+
+    --azul: #3b82f6;
+    --azul-claro: #60a5fa;
+
+    --verde: #22c55e;
+    --verde-claro: #4ade80;
+
+    --blanco: #f8fafc;
+    --gris-claro: #d4d4d8;
+    --gris: #a1a1aa;
+
+    --borde: rgba(255, 255, 255, 0.12);
+}
+
+
+/* =========================================================
+   2. RESET Y MODELO DE CAJAS
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   3. ESTILOS GENERALES
+   ========================================================= */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    position: relative;
+
+    min-height: 100vh;
+
+    overflow-x: hidden;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+
+    background-color: var(--negro);
+    color: var(--blanco);
+}
+
+
+/* =========================================================
+   4. PARTÍCULAS / BRILLITOS RGB DEL FONDO
+   ========================================================= */
+
+body::before {
+    content: "";
+
+    position: fixed;
+
+    top: -140px;
+    left: 0;
+
+    width: 3px;
+    height: 3px;
+
+    z-index: 0;
+
+    pointer-events: none;
+
+    border-radius: 50%;
+
+    background-color: rgba(167, 139, 250, 0.95);
+
+    box-shadow:
+        6vw 8vh rgba(167, 139, 250, 0.90),
+        13vw 18vh rgba(96, 165, 250, 0.88),
+        21vw 10vh rgba(74, 222, 128, 0.78),
+        28vw 26vh rgba(167, 139, 250, 0.86),
+        35vw 14vh rgba(96, 165, 250, 0.88),
+        42vw 34vh rgba(74, 222, 128, 0.72),
+        50vw 12vh rgba(167, 139, 250, 0.88),
+        57vw 24vh rgba(96, 165, 250, 0.84),
+        64vw 9vh rgba(74, 222, 128, 0.76),
+        71vw 30vh rgba(167, 139, 250, 0.84),
+        78vw 16vh rgba(96, 165, 250, 0.86),
+        85vw 22vh rgba(74, 222, 128, 0.74),
+        92vw 11vh rgba(167, 139, 250, 0.86),
+
+        10vw 48vh rgba(96, 165, 250, 0.80),
+        18vw 60vh rgba(167, 139, 250, 0.84),
+        27vw 54vh rgba(74, 222, 128, 0.70),
+        36vw 72vh rgba(96, 165, 250, 0.80),
+        44vw 63vh rgba(167, 139, 250, 0.82),
+        53vw 82vh rgba(74, 222, 128, 0.68),
+        62vw 58vh rgba(96, 165, 250, 0.78),
+        70vw 69vh rgba(167, 139, 250, 0.80),
+        79vw 56vh rgba(74, 222, 128, 0.70),
+        88vw 84vh rgba(96, 165, 250, 0.78),
+        95vw 66vh rgba(167, 139, 250, 0.80);
+
+    filter:
+        drop-shadow(0 0 5px rgba(139, 92, 246, 0.85))
+        drop-shadow(0 0 10px rgba(59, 130, 246, 0.55));
+
+    opacity: 0.92;
+
+    animation:
+        estrellasCaida 16s linear infinite;
+}
+
+body::after {
+    content: "";
+
+    position: fixed;
+
+    top: -180px;
+    left: 0;
+
+    width: 4px;
+    height: 4px;
+
+    z-index: 0;
+
+    pointer-events: none;
+
+    border-radius: 50%;
+
+    background-color: rgba(96, 165, 250, 0.90);
+
+    box-shadow:
+        9vw 12vh rgba(96, 165, 250, 0.88),
+        17vw 28vh rgba(167, 139, 250, 0.82),
+        26vw 7vh rgba(74, 222, 128, 0.74),
+        33vw 39vh rgba(96, 165, 250, 0.84),
+        47vw 17vh rgba(167, 139, 250, 0.82),
+        58vw 32vh rgba(74, 222, 128, 0.72),
+        66vw 13vh rgba(96, 165, 250, 0.84),
+        76vw 27vh rgba(167, 139, 250, 0.82),
+        84vw 8vh rgba(74, 222, 128, 0.70),
+        93vw 36vh rgba(96, 165, 250, 0.82),
+
+        14vw 66vh rgba(167, 139, 250, 0.78),
+        31vw 78vh rgba(96, 165, 250, 0.80),
+        49vw 59vh rgba(74, 222, 128, 0.68),
+        67vw 74vh rgba(167, 139, 250, 0.78),
+        82vw 88vh rgba(96, 165, 250, 0.80);
+
+    filter:
+        drop-shadow(0 0 7px rgba(59, 130, 246, 0.70))
+        drop-shadow(0 0 12px rgba(34, 197, 94, 0.35));
+
+    opacity: 0.82;
+
+    animation:
+        estrellasCaidaLenta 22s linear infinite;
+}
+
+@keyframes estrellasCaida {
+    from {
+        transform: translateY(-130px);
+    }
+
+    to {
+        transform: translateY(118vh);
+    }
+}
+
+@keyframes estrellasCaidaLenta {
+    from {
+        transform:
+            translateY(-170px)
+            translateX(0);
+    }
+
+    to {
+        transform:
+            translateY(122vh)
+            translateX(18px);
+    }
+}
+
+
+/* =========================================================
+   5. CAPAS DEL CONTENIDO
+   ========================================================= */
+
+header,
+nav,
+main,
+footer {
+    position: relative;
+    z-index: 1;
+}
+
+
+/* =========================================================
+   6. TEXTO SOLO PARA LECTORES DE PANTALLA
+   ========================================================= */
+
+.sr-only {
+    position: absolute;
+
+    width: 1px;
+    height: 1px;
+
+    margin: -1px;
+    padding: 0;
+
+    overflow: hidden;
+
+    clip: rect(0, 0, 0, 0);
+
+    white-space: nowrap;
+
+    border: 0;
+}

@@ -1,0 +1,215 @@
+/* =========================================================
+   SEMANA 7 · AJUSTES DE INTERFAZ REACT
+
+   Ajustes finales aplicados sobre los componentes React reales.
+   Este módulo no redefine el cielo ni la lógica de negocio.
+   ========================================================= */
+
+:root {
+  --buy-btn-height: 56px;
+}
+
+
+/* =========================================================
+   BOTONES DE COMPRA
+
+   Unifica alineación y altura en videojuegos, Collector's Vault
+   y figuras premium sin alterar sus eventos ni comportamiento.
+   ========================================================= */
+
+.add-to-cart-button,
+.add-to-cart-button--expanded,
+.add-to-cart-button--compact,
+.product-actions .btn,
+.collector-card .btn,
+.figure-card .btn,
+.boton-agregar-carrito {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center !important;
+  gap: 0.6rem;
+
+  min-height: var(--buy-btn-height);
+
+  text-align: center !important;
+  line-height: 1.15;
+}
+
+.add-to-cart-button span,
+.add-to-cart-button strong,
+.add-to-cart-button small,
+.add-to-cart-button--expanded span,
+.add-to-cart-button--compact span,
+.product-actions .btn span,
+.collector-card .btn span,
+.figure-card .btn span {
+  text-align: center;
+}
+
+
+/* =========================================================
+   ACCIONES DEL CARRITO
+
+   Mantiene la misma jerarquía tipográfica entre Finalizar compra
+   y Vaciar carrito.
+   ========================================================= */
+
+#botonVaciarCarrito,
+#botonFinalizarCompra,
+.cart-summary__actions .btn,
+.carrito-acciones .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 54px;
+
+  font-size: 0.92rem;
+  font-weight: 800;
+  line-height: 1.15;
+  text-align: center;
+}
+
+
+/* =========================================================
+   NAVBAR REACT · DESKTOP
+
+   CatalogNavbar.jsx genera:
+   nav-collapse-bootstrap > ul > li > a / button.
+
+   Estas reglas apuntan al DOM real del componente. No se usan
+   selectores Bootstrap inexistentes como .nav-link o .nav-item.
+   ========================================================= */
+
+.nav-catalogo .nav-collapse-bootstrap > ul > li > a,
+.nav-catalogo .nav-accion-boton,
+.nav-catalogo .nav-comprar-boton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+
+  text-align: center;
+}
+
+.nav-catalogo .nav-accion-texto,
+.nav-catalogo .nav-comprar-texto {
+  text-align: center;
+}
+
+
+/* Botones equilibrados en escritorio ancho. */
+@media (min-width: 1200px) {
+  .nav-catalogo .nav-collapse-bootstrap > ul > li {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .nav-catalogo .nav-collapse-bootstrap > ul > li > a,
+  .nav-catalogo .nav-accion-boton,
+  .nav-catalogo .nav-comprar-boton {
+    width: 100%;
+    min-height: 54px;
+  }
+}
+
+
+/* En laptop/tablet horizontal pueden envolver, pero mantienen
+   anchos equivalentes por fila. */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .nav-catalogo .nav-collapse-bootstrap > ul > li {
+    flex: 1 1 calc(25% - 10px);
+    min-width: 180px;
+  }
+
+  .nav-catalogo .nav-collapse-bootstrap > ul > li > a,
+  .nav-catalogo .nav-accion-boton,
+  .nav-catalogo .nav-comprar-boton {
+    width: 100%;
+    min-height: 52px;
+  }
+}
+
+
+/* =========================================================
+   TABLET / CELULAR
+
+   Cada acción ocupa el ancho disponible y su contenido queda
+   centrado tanto visualmente como en el flujo flex.
+   ========================================================= */
+
+@media (max-width: 991.98px) {
+  .nav-catalogo .nav-collapse-bootstrap {
+    text-align: center;
+  }
+
+  .nav-catalogo .nav-collapse-bootstrap > ul {
+    align-items: stretch;
+    width: min(100%, 520px);
+    margin-inline: auto;
+  }
+
+  .nav-catalogo .nav-collapse-bootstrap > ul > li,
+  .nav-catalogo .nav-collapse-bootstrap > ul > li > a,
+  .nav-catalogo .nav-accion-boton,
+  .nav-catalogo .nav-comprar-boton {
+    width: 100%;
+  }
+
+  .nav-catalogo .nav-collapse-bootstrap > ul > li > a,
+  .nav-catalogo .nav-accion-boton,
+  .nav-catalogo .nav-comprar-boton {
+    justify-content: center !important;
+
+    min-height: 54px;
+
+    text-align: center !important;
+  }
+
+  .nav-catalogo .nav-accion-texto,
+  .nav-catalogo .nav-comprar-texto {
+    margin-inline: 0;
+
+    text-align: center !important;
+  }
+
+  .add-to-cart-button,
+  .add-to-cart-button--expanded,
+  .add-to-cart-button--compact,
+  .product-actions .btn,
+  .collector-card .btn,
+  .figure-card .btn,
+  .boton-agregar-carrito {
+    width: 100%;
+
+    justify-content: center !important;
+
+    text-align: center !important;
+  }
+}
+
+
+@media (max-width: 575.98px) {
+  .nav-catalogo .nav-collapse-bootstrap > ul {
+    width: min(100%, 440px);
+  }
+
+  .nav-catalogo .nav-collapse-bootstrap > ul > li > a,
+  .nav-catalogo .nav-accion-boton,
+  .nav-catalogo .nav-comprar-boton {
+    min-height: 54px;
+    padding-inline: 1rem;
+  }
+
+  .add-to-cart-button,
+  .add-to-cart-button--expanded,
+  .add-to-cart-button--compact,
+  .product-actions .btn,
+  .collector-card .btn,
+  .figure-card .btn,
+  .boton-agregar-carrito {
+    min-height: 54px;
+    padding: 0.85rem 1rem;
+  }
+}

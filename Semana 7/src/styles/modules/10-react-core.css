@@ -1,0 +1,78 @@
+/* =========================================================
+   NATGAMEZ · SEMANA 7 · INTEGRACIÓN REACT
+
+   Ajustes estrictamente necesarios para integrar la interfaz heredada
+   con el árbol de componentes React sin alterar su identidad visual.
+   ========================================================= */
+
+#root {
+  min-height: 100vh;
+}
+
+#root > .carrito-flotante-movil {
+  position: fixed;
+}
+
+.nav-buscador-panel[hidden] {
+  display: none !important;
+}
+
+/* Botón reutilizable de Vault + Figuras */
+@media (min-width: 1200px) {
+  .vault-compra-linea .btn-agregar-carrito.is-hover,
+  .vault-compra-linea .btn-agregar-carrito.is-touching,
+  .vault-compra-linea .btn-agregar-carrito:hover,
+  .vault-compra-linea .btn-agregar-carrito:focus-visible,
+  .figura-compra-linea .btn-agregar-carrito.is-hover,
+  .figura-compra-linea .btn-agregar-carrito.is-touching,
+  .figura-compra-linea .btn-agregar-carrito:hover,
+  .figura-compra-linea .btn-agregar-carrito:focus-visible {
+    width: 215px;
+    min-width: 215px;
+    max-width: 215px;
+  }
+}
+
+.offcanvas-natgamez .carrito-vaciar {
+  font-size: 0.88rem;
+  font-weight: 800;
+}
+/* =========================================================
+   NATGAMEZ · SEMANA 7 · INTEGRACIÓN REACT
+
+   Ajustes estrictamente necesarios para integrar la interfaz heredada
+   con el árbol de componentes React sin alterar su identidad visual.
+   ========================================================= */
+
+#root {
+  min-height: 100vh;
+}
+
+#root > .carrito-flotante-movil {
+  position: fixed;
+}
+
+.nav-buscador-panel[hidden] {
+  display: none !important;
+}
+
+/* Botón reutilizable de Vault + Figuras */
+@media (min-width: 1200px) {
+  .vault-compra-linea .btn-agregar-carrito.is-hover,
+  .vault-compra-linea .btn-agregar-carrito.is-touching,
+  .vault-compra-linea .btn-agregar-carrito:hover,
+  .vault-compra-linea .btn-agregar-carrito:focus-visible,
+  .figura-compra-linea .btn-agregar-carrito.is-hover,
+  .figura-compra-linea .btn-agregar-carrito.is-touching,
+  .figura-compra-linea .btn-agregar-carrito:hover,
+  .figura-compra-linea .btn-agregar-carrito:focus-visible {
+    width: 215px;
+    min-width: 215px;
+    max-width: 215px;
+  }
+}
+
+.offcanvas-natgamez .carrito-vaciar {
+  font-size: 0.88rem;
+  font-weight: 800;
+}

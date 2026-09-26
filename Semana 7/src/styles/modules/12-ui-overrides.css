@@ -216,30 +216,23 @@
 
 
 /* =========================================================
-   FIGURAS PREMIUM · PRECIO + BOTÓN SIN SALTOS
+   FIGURAS PREMIUM · PRECIO + BOTÓN ESTABLE EN ESCRITORIO
 
-   En escritorio con mouse la fila de compra se divide en dos
-   columnas reales: una para el precio y otra para la acción.
-
-   El botón conserva su estado compacto, su expansión, glow y
-   animación; simplemente dispone desde el inicio del espacio que
-   necesitará al abrirse. De esta forma no empuja, comprime ni
-   invade el bloque de precio y la card mantiene todos sus efectos.
+   Precio y acción mantienen espacios independientes.
+   El botón conserva expansión, glow y hover de la card,
+   pero ajusta su contenido interno para evitar cortes.
    ========================================================= */
 
 @media (hover: hover) and (pointer: fine) and (min-width: 1200px) {
   .figura-compra-linea {
     display: grid;
-    grid-template-columns: minmax(145px, 1fr) 190px;
+    grid-template-columns: minmax(0, 1fr) 180px;
     align-items: center;
-    column-gap: 20px;
-
-    width: 100%;
+    column-gap: 12px;
   }
 
   .figura-compra-linea .precio-especial-bloque {
     min-width: 0;
-    width: 100%;
   }
 
   .figura-compra-linea .precio-especial-normal,
@@ -247,12 +240,10 @@
     white-space: nowrap;
   }
 
-  /*
-     La segunda columna siempre mide 190 px, pero el botón continúa
-     viéndose compacto en reposo. Al expandirse ocupa únicamente su
-     propia columna y no modifica la distribución de la fila.
-  */
+  /* Estado compacto. */
   .figura-compra-linea .btn-agregar-carrito {
+    box-sizing: border-box;
+
     justify-self: end;
 
     width: 54px;
@@ -260,14 +251,36 @@
     max-width: 54px;
 
     margin: 0;
+    padding-inline: 10px;
+
+    gap: 6px;
+
+    white-space: nowrap;
   }
 
+  /* Estado expandido: cabe completo dentro de la columna reservada. */
   .figura-compra-linea .btn-agregar-carrito.is-hover,
   .figura-compra-linea .btn-agregar-carrito.is-touching,
   .figura-compra-linea .btn-agregar-carrito:hover,
   .figura-compra-linea .btn-agregar-carrito:focus-visible {
-    width: 190px;
-    min-width: 190px;
-    max-width: 190px;
+    width: 180px;
+    min-width: 180px;
+    max-width: 180px;
+
+    padding-inline: 8px;
+
+    gap: 6px;
+
+    font-size: 0.9rem;
+
+    white-space: nowrap;
+  }
+
+  .figura-compra-linea .btn-agregar-carrito.is-hover .btn-carrito-texto,
+  .figura-compra-linea .btn-agregar-carrito.is-touching .btn-carrito-texto,
+  .figura-compra-linea .btn-agregar-carrito:hover .btn-carrito-texto,
+  .figura-compra-linea .btn-agregar-carrito:focus-visible .btn-carrito-texto {
+    max-width: 145px;
+    margin-left: 6px;
   }
 }

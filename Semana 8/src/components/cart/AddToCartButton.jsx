@@ -2,13 +2,28 @@
  * NatGamez · Semana 8 · COMPONENTE REACT
  * Botón reutilizable de compra.
  *
- * Centraliza la interacción para agregar videojuegos, figuras y ediciones Collector al carrito manteniendo el mismo feedback visual.
+ * Centraliza la interacción para agregar videojuegos, figuras y ediciones
+ * Collector al carrito manteniendo el mismo feedback visual en escritorio,
+ * tablet y celular.
  */
 import {
   useEffect,
   useRef,
   useState,
 } from 'react';
+
+const DURACION_AGREGADO_ESCRITORIO = 2200;
+const DURACION_AGREGADO_TACTIL = 3000;
+
+function obtenerDuracionFeedback() {
+  const entornoTactil = window.matchMedia(
+    '(hover: none), (pointer: coarse), (max-width: 1199.98px)',
+  ).matches;
+
+  return entornoTactil
+    ? DURACION_AGREGADO_TACTIL
+    : DURACION_AGREGADO_ESCRITORIO;
+}
 
 function AddToCartButton({
   producto,
@@ -37,9 +52,10 @@ function AddToCartButton({
     setAgregado(true);
 
     window.clearTimeout(temporizadorAgregado.current);
+
     temporizadorAgregado.current = window.setTimeout(
       () => setAgregado(false),
-      600,
+      obtenerDuracionFeedback(),
     );
   }
 
@@ -62,6 +78,7 @@ function AddToCartButton({
     setTouching(false);
 
     window.clearTimeout(temporizadorHover.current);
+
     temporizadorHover.current = window.setTimeout(
       () => setHover(false),
       1900,
@@ -80,7 +97,11 @@ function AddToCartButton({
       ].filter(Boolean).join(' ')}
       type="button"
       data-producto-id={producto.id}
-      aria-label={`Agregar ${producto.titulo} al carrito`}
+      aria-label={
+        agregado
+          ? `${producto.titulo} agregado al carrito`
+          : `Agregar ${producto.titulo} al carrito`
+      }
       onClick={agregar}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
@@ -94,11 +115,14 @@ function AddToCartButton({
         className="btn-carrito-icono"
         aria-hidden="true"
       >
-        🛒
+        {agregado ? '✓' : '🛒'}
       </span>
 
-      <span className="btn-carrito-texto">
-        Agregar al carrito
+      <span
+        className="btn-carrito-texto"
+        aria-live="polite"
+      >
+        {agregado ? 'Agregado' : 'Agregar al carrito'}
       </span>
     </button>
   );

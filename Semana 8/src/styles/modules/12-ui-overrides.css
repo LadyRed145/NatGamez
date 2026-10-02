@@ -1242,3 +1242,93 @@ body.favoritos-abierto .carrito-flotante-movil {
     transition: none !important;
   }
 }
+
+/* =========================================================
+   SEMANA 8 · FEEDBACK CONFIRMADO AL AGREGAR
+   El estado "producto-agregado" debe ser visible aunque el
+   usuario retire el mouse o termine el toque. Al ser la última
+   capa CSS, neutraliza colapsados heredados de módulos previos.
+   ========================================================= */
+
+.btn-agregar-carrito.producto-agregado {
+  color: #ecfdf5 !important;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(34, 197, 94, 0.24),
+      rgba(16, 185, 129, 0.14)
+    ) !important;
+  border-color: #4ade80 !important;
+  box-shadow:
+    0 0 14px rgba(34, 197, 94, 0.52),
+    0 0 24px rgba(16, 185, 129, 0.20) !important;
+}
+
+.btn-agregar-carrito.producto-agregado .btn-carrito-icono {
+  color: #dcfce7;
+  transform: scale(1.08);
+  filter:
+    drop-shadow(0 0 6px rgba(74, 222, 128, 0.82));
+}
+
+.btn-agregar-carrito.producto-agregado .btn-carrito-texto {
+  max-width: 190px !important;
+  margin-left: 8px !important;
+  opacity: 1 !important;
+  overflow: visible !important;
+  transform: translateX(0) !important;
+}
+
+/* Videojuegos: el feedback ocupa el mismo ancho del hover. */
+.catalog-card .acciones-producto > .btn-agregar-carrito.producto-agregado {
+  align-self: stretch;
+  width: 100% !important;
+  min-width: 100% !important;
+  max-width: 100% !important;
+  gap: 7px;
+}
+
+/* Collector y figuras mantienen sus anchos aprobados en escritorio. */
+@media (min-width: 1200px) {
+  .vault-compra-linea .btn-agregar-carrito.producto-agregado {
+    flex-basis: 215px;
+    width: 215px !important;
+    min-width: 215px !important;
+    max-width: 215px !important;
+    gap: 7px;
+  }
+
+  .figura-compra-linea .btn-agregar-carrito.producto-agregado {
+    flex-basis: 190px;
+    width: 190px !important;
+    min-width: 190px !important;
+    max-width: 190px !important;
+    gap: 6px;
+    padding-inline: 9px;
+  }
+}
+
+/* Tablet: feedback visible aunque termine el estado táctil. */
+@media (max-width: 1199.98px) {
+  .vault-compra-linea .btn-agregar-carrito.producto-agregado,
+  .figura-compra-linea .btn-agregar-carrito.producto-agregado {
+    flex-basis: clamp(205px, 30vw, 230px);
+    width: clamp(205px, 30vw, 230px) !important;
+    min-width: clamp(205px, 30vw, 230px) !important;
+    max-width: clamp(205px, 30vw, 230px) !important;
+    gap: 7px;
+    padding-inline: 10px;
+  }
+}
+
+/* Celular: mismo estado confirmado dentro del ancho disponible. */
+@media (max-width: 575.98px) {
+  .vault-compra-linea .btn-agregar-carrito.producto-agregado,
+  .figura-compra-linea .btn-agregar-carrito.producto-agregado {
+    flex-basis: min(205px, 58vw);
+    width: min(205px, 58vw) !important;
+    min-width: min(205px, 58vw) !important;
+    max-width: min(205px, 58vw) !important;
+  }
+}
+

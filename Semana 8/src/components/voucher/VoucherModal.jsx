@@ -1,12 +1,9 @@
 /**
- * NatGamez · Semana 8 · COMPONENTE REACT
- * Modal del comprobante.
+ * NatGamez · Semana 8
+ * Modal del comprobante de compra.
  *
- * Presenta la compra final, permite guardar/imprimir el comprobante
- * y gestiona correctamente el foco al abrir/cerrar el modal.
- *
- * El manejo del foco evita warnings de accesibilidad relacionados
- * con aria-hidden cuando Bootstrap oculta el modal.
+ * Gestiona correctamente el foco antes de ocultarse para evitar
+ * conflictos de accesibilidad entre Bootstrap y aria-hidden.
  */
 
 import {
@@ -28,53 +25,84 @@ function VoucherModal({
   compra,
   onClose,
 }) {
-  const ref = useRef(null);
-
-  // Guarda el elemento que tenía el foco antes de abrir el voucher.
+  const modalRef = useRef(null);
   const focoAnteriorRef = useRef(null);
 
   /**
-   * Gestiona correctamente el foco durante el cierre del modal.
-   *
-   * Bootstrap aplica aria-hidden="true" al ocultar el modal.
-   * Si algún botón interno conserva el foco en ese momento,
-   * el navegador genera un warning de accesibilidad.
-   *
-   * Por eso liberamos el foco antes de que Bootstrap termine
-   * de esconder el componente.
+   * Mueve el foco fuera del modal ANTES de que Bootstrap
+   * aplique aria-hidden="true".
    */
-  useEffect(() => {
-    const elemento = ref.current;
+  const liberarFocoDelModal = () => {
+    const modal = modalRef.current;
+    const activo = document.activeElement;
 
-    if (!elemento) {
+    if (
+      !modal
+      || !(activo instanceof HTMLElement)
+      || !modal.contains(activo)
+    ) {
+      return;
+    }
+
+    activo.blur();
+
+    /**
+     * Dejamos temporalmente el foco en body.
+     *
+     * Esto garantiza que ningún descendiente del modal siga
+     * teniendo foco cuando Bootstrap lo marque como oculto.
+     */
+    const teniaTabIndex = document.body.hasAttribute('tabindex');
+    const tabIndexAnterior = document.body.getAttribute('tabindex');
+
+    if (!teniaTabIndex) {
+      document.body.setAttribute('tabindex', '-1');
+    }
+
+    document.body.focus({
+      preventScroll: true,
+    });
+
+    if (!teniaTabIndex) {
+      document.body.removeAttribute('tabindex');
+    } else if (tabIndexAnterior !== null) {
+      document.body.setAttribute(
+        'tabindex',
+        tabIndexAnterior,
+      );
+    }
+  };
+
+  useEffect(() => {
+    const modal = modalRef.current;
+
+    if (!modal) {
       return undefined;
     }
 
-    const liberarFocoAntesDeCerrar = () => {
-      const elementoActivo = document.activeElement;
-
-      if (
-        elementoActivo instanceof HTMLElement
-        && elemento.contains(elementoActivo)
-      ) {
-        elementoActivo.blur();
-      }
+    const manejarInicioCierre = () => {
+      liberarFocoDelModal();
     };
 
-    const modalCerrado = () => {
-      /**
-       * Intentamos devolver el foco al elemento que estaba activo
-       * antes de abrir el comprobante.
-       */
+    const manejarCierreCompleto = () => {
       const focoAnterior = focoAnteriorRef.current;
 
+      /**
+       * Si el elemento original sigue visible y conectado,
+       * recuperamos el foco.
+       */
       if (
         focoAnterior instanceof HTMLElement
         && focoAnterior.isConnected
+        && !modal.contains(focoAnterior)
       ) {
-        focoAnterior.focus({
-          preventScroll: true,
-        });
+        try {
+          focoAnterior.focus({
+            preventScroll: true,
+          });
+        } catch {
+          // El foco ya quedó en una zona segura.
+        }
       }
 
       focoAnteriorRef.current = null;
@@ -82,59 +110,65 @@ function VoucherModal({
       onClose?.();
     };
 
-    elemento.addEventListener(
+    modal.addEventListener(
       'hide.bs.modal',
-      liberarFocoAntesDeCerrar,
+      manejarInicioCierre,
     );
 
-    elemento.addEventListener(
+    modal.addEventListener(
       'hidden.bs.modal',
-      modalCerrado,
+      manejarCierreCompleto,
     );
 
     return () => {
-      elemento.removeEventListener(
+      modal.removeEventListener(
         'hide.bs.modal',
-        liberarFocoAntesDeCerrar,
+        manejarInicioCierre,
       );
 
-      elemento.removeEventListener(
+      modal.removeEventListener(
         'hidden.bs.modal',
-        modalCerrado,
+        manejarCierreCompleto,
       );
     };
   }, [onClose]);
 
-  /**
-   * Abre el modal cada vez que existe una compra.
-   *
-   * Antes de mostrarlo se conserva el foco actual para poder
-   * devolverlo correctamente cuando se cierre el comprobante.
-   */
   useEffect(() => {
-    const elemento = ref.current;
+    const modal = modalRef.current;
 
-    if (!compra || !elemento) {
+    if (!compra || !modal) {
       return;
     }
 
-    const elementoActivo = document.activeElement;
+    const activo = document.activeElement;
 
     if (
-      elementoActivo instanceof HTMLElement
-      && !elemento.contains(elementoActivo)
+      activo instanceof HTMLElement
+      && !modal.contains(activo)
     ) {
-      focoAnteriorRef.current = elementoActivo;
+      focoAnteriorRef.current = activo;
     }
 
     Modal
-      .getOrCreateInstance(elemento)
+      .getOrCreateInstance(modal)
       .show();
   }, [compra]);
 
+  /**
+   * Este handler ocurre antes de que el evento click llegue
+   * al listener delegado de Bootstrap que ejecuta data-bs-dismiss.
+   *
+   * Así eliminamos el foco del botón antes del cierre real.
+   */
+  const manejarBotonCerrar = (event) => {
+    event.currentTarget.blur();
+
+    liberarFocoDelModal();
+  };
+
   return (
     <div
-      ref={ref}
+      ref={modalRef}
       id="modalVoucherNatGamez"
       className="modal fade modal-voucher-natgamez"
       tabIndex="-1"
@@ -142,6 +176,7 @@ function VoucherModal({
       aria-hidden="true"
     >
       <div className="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+
         <div className="modal-content voucher-modal-content">
 
           <div className="modal-header voucher-modal-header">
@@ -157,6 +192,7 @@ function VoucherModal({
               type="button"
               data-bs-dismiss="modal"
               aria-label="Cerrar comprobante"
+              onClick={manejarBotonCerrar}
             />
           </div>
 
@@ -167,6 +203,7 @@ function VoucherModal({
           </div>
 
           <div className="modal-footer voucher-modal-footer">
+
             <button
               id="botonImprimirComprobante"
               className="voucher-boton-imprimir"
@@ -185,9 +222,11 @@ function VoucherModal({
               className="voucher-boton-cerrar"
               type="button"
               data-bs-dismiss="modal"
+              onClick={manejarBotonCerrar}
             >
               Cerrar
             </button>
+
           </div>
 
         </div>

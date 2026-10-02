@@ -1,0 +1,908 @@
+/* =========================================================
+   39. CATÁLOGO - CIELO PROFUNDO RGB CON PARALLAX
+   Tres profundidades de estrellas + fugaces ocasionales.
+   ========================================================= */
+
+body.pagina-catalogo {
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(26, 32, 52, 0.38),
+            transparent 42%
+        ),
+        radial-gradient(
+            circle at 12% 72%,
+            rgba(139, 92, 246, 0.055),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 88% 64%,
+            rgba(59, 130, 246, 0.050),
+            transparent 30%
+        ),
+        #07070d;
+}
+
+
+/* =========================================================
+   CAPA 1 · ESTRELLAS PEQUEÑAS Y LEJANAS
+
+   Se recupera el comportamiento perceptible de Semana 6:
+   estrellas individuales que atraviesan el cielo, en lugar de
+   un patrón repetido que visualmente parecía quedarse quieto.
+
+   La lista se duplica 100vw a la derecha. Mientras una copia
+   sale de pantalla, la otra entra exactamente en su lugar,
+   logrando un movimiento continuo sin ida y vuelta ni saltos.
+   ========================================================= */
+
+body.pagina-catalogo::before {
+    content: "";
+
+    position: fixed;
+
+    top: 0;
+    left: -100vw;
+
+    width: 3px;
+    height: 3px;
+
+    z-index: 0;
+
+    pointer-events: none;
+
+    border-radius: 50%;
+
+    background-color: rgba(167, 139, 250, 0.96);
+
+    box-shadow:
+        5vw 8vh rgba(167, 139, 250, 0.90),
+        11vw 18vh rgba(96, 165, 250, 0.88),
+        17vw 33vh rgba(74, 222, 128, 0.80),
+        23vw 12vh rgba(248, 250, 252, 0.72),
+        28vw 47vh rgba(167, 139, 250, 0.86),
+        34vw 71vh rgba(96, 165, 250, 0.84),
+        39vw 24vh rgba(74, 222, 128, 0.78),
+        44vw 88vh rgba(167, 139, 250, 0.84),
+        49vw 57vh rgba(96, 165, 250, 0.86),
+        54vw 15vh rgba(74, 222, 128, 0.76),
+        59vw 39vh rgba(167, 139, 250, 0.86),
+        64vw 79vh rgba(96, 165, 250, 0.82),
+        69vw 28vh rgba(74, 222, 128, 0.76),
+        74vw 62vh rgba(167, 139, 250, 0.84),
+        79vw 6vh rgba(96, 165, 250, 0.86),
+        84vw 44vh rgba(74, 222, 128, 0.76),
+        89vw 91vh rgba(167, 139, 250, 0.82),
+        94vw 21vh rgba(96, 165, 250, 0.84),
+        98vw 68vh rgba(74, 222, 128, 0.72),
+        8vw 84vh rgba(96, 165, 250, 0.78),
+        15vw 58vh rgba(167, 139, 250, 0.82),
+        31vw 93vh rgba(74, 222, 128, 0.72),
+        47vw 4vh rgba(167, 139, 250, 0.80),
+        57vw 96vh rgba(96, 165, 250, 0.80),
+        67vw 52vh rgba(248, 250, 252, 0.68),
+        76vw 34vh rgba(74, 222, 128, 0.72),
+        87vw 73vh rgba(167, 139, 250, 0.80),
+        96vw 49vh rgba(96, 165, 250, 0.80),
+
+        105vw 8vh rgba(167, 139, 250, 0.90),
+        111vw 18vh rgba(96, 165, 250, 0.88),
+        117vw 33vh rgba(74, 222, 128, 0.80),
+        123vw 12vh rgba(248, 250, 252, 0.72),
+        128vw 47vh rgba(167, 139, 250, 0.86),
+        134vw 71vh rgba(96, 165, 250, 0.84),
+        139vw 24vh rgba(74, 222, 128, 0.78),
+        144vw 88vh rgba(167, 139, 250, 0.84),
+        149vw 57vh rgba(96, 165, 250, 0.86),
+        154vw 15vh rgba(74, 222, 128, 0.76),
+        159vw 39vh rgba(167, 139, 250, 0.86),
+        164vw 79vh rgba(96, 165, 250, 0.82),
+        169vw 28vh rgba(74, 222, 128, 0.76),
+        174vw 62vh rgba(167, 139, 250, 0.84),
+        179vw 6vh rgba(96, 165, 250, 0.86),
+        184vw 44vh rgba(74, 222, 128, 0.76),
+        189vw 91vh rgba(167, 139, 250, 0.82),
+        194vw 21vh rgba(96, 165, 250, 0.84),
+        198vw 68vh rgba(74, 222, 128, 0.72),
+        108vw 84vh rgba(96, 165, 250, 0.78),
+        115vw 58vh rgba(167, 139, 250, 0.82),
+        131vw 93vh rgba(74, 222, 128, 0.72),
+        147vw 4vh rgba(167, 139, 250, 0.80),
+        157vw 96vh rgba(96, 165, 250, 0.80),
+        167vw 52vh rgba(248, 250, 252, 0.68),
+        176vw 34vh rgba(74, 222, 128, 0.72),
+        187vw 73vh rgba(167, 139, 250, 0.80),
+        196vw 49vh rgba(96, 165, 250, 0.80);
+
+    filter:
+        drop-shadow(0 0 4px rgba(139, 92, 246, 0.52))
+        drop-shadow(0 0 5px rgba(59, 130, 246, 0.34));
+
+    opacity: 0.90;
+
+    will-change: transform;
+
+    animation:
+        estrellasLejanas 56s linear infinite,
+        titileoLejano 4.7s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   CAPA 2 · ESTRELLAS MEDIANAS RGB
+
+   Segunda profundidad. Usa menos estrellas, algo más grandes
+   y un recorrido más rápido para que el parallax sea visible
+   sin que el cielo parezca una lluvia de partículas.
+   ========================================================= */
+
+body.pagina-catalogo::after {
+    content: "";
+
+    position: fixed;
+
+    top: 0;
+    left: -100vw;
+
+    width: 4px;
+    height: 4px;
+
+    z-index: 0;
+
+    pointer-events: none;
+
+    border-radius: 50%;
+
+    background-color: rgba(96, 165, 250, 0.95);
+
+    box-shadow:
+        7vw 14vh rgba(96, 165, 250, 0.92),
+        14vw 42vh rgba(167, 139, 250, 0.88),
+        21vw 77vh rgba(74, 222, 128, 0.80),
+        29vw 24vh rgba(167, 139, 250, 0.90),
+        37vw 61vh rgba(96, 165, 250, 0.90),
+        45vw 9vh rgba(74, 222, 128, 0.80),
+        53vw 87vh rgba(167, 139, 250, 0.88),
+        61vw 36vh rgba(96, 165, 250, 0.90),
+        69vw 69vh rgba(74, 222, 128, 0.80),
+        77vw 18vh rgba(167, 139, 250, 0.88),
+        85vw 52vh rgba(96, 165, 250, 0.90),
+        93vw 82vh rgba(74, 222, 128, 0.78),
+        19vw 95vh rgba(248, 250, 252, 0.72),
+        33vw 4vh rgba(96, 165, 250, 0.84),
+        49vw 48vh rgba(167, 139, 250, 0.84),
+        72vw 96vh rgba(96, 165, 250, 0.84),
+        88vw 31vh rgba(167, 139, 250, 0.84),
+
+        107vw 14vh rgba(96, 165, 250, 0.92),
+        114vw 42vh rgba(167, 139, 250, 0.88),
+        121vw 77vh rgba(74, 222, 128, 0.80),
+        129vw 24vh rgba(167, 139, 250, 0.90),
+        137vw 61vh rgba(96, 165, 250, 0.90),
+        145vw 9vh rgba(74, 222, 128, 0.80),
+        153vw 87vh rgba(167, 139, 250, 0.88),
+        161vw 36vh rgba(96, 165, 250, 0.90),
+        169vw 69vh rgba(74, 222, 128, 0.80),
+        177vw 18vh rgba(167, 139, 250, 0.88),
+        185vw 52vh rgba(96, 165, 250, 0.90),
+        193vw 82vh rgba(74, 222, 128, 0.78),
+        119vw 95vh rgba(248, 250, 252, 0.72),
+        133vw 4vh rgba(96, 165, 250, 0.84),
+        149vw 48vh rgba(167, 139, 250, 0.84),
+        172vw 96vh rgba(96, 165, 250, 0.84),
+        188vw 31vh rgba(167, 139, 250, 0.84);
+
+    filter:
+        drop-shadow(0 0 6px rgba(59, 130, 246, 0.48))
+        drop-shadow(0 0 7px rgba(139, 92, 246, 0.30));
+
+    opacity: 0.88;
+
+    will-change:
+        transform,
+        opacity;
+
+    animation:
+        estrellasMedias 40s linear infinite,
+        titileoMedio 3.6s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   CAPA 3 · ESTRELLAS CERCANAS Y BRILLANTES
+
+   Se conservan pocas estrellas de referencia, como en Semana 6.
+   No se desplazan para que la profundidad se lea con claridad;
+   únicamente titilan suavemente mientras las dos capas anteriores
+   cruzan el cielo de forma continua.
+   ========================================================= */
+
+.cielo-catalogo {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+}
+
+.cielo-catalogo::before {
+    content: "";
+
+    position: absolute;
+
+    inset: -10%;
+
+    background:
+        radial-gradient(circle at 9% 18%, rgba(167, 139, 250, 0.98) 0 2px, rgba(167, 139, 250, 0.24) 2.8px, transparent 5px),
+        radial-gradient(circle at 27% 67%, rgba(96, 165, 250, 0.94) 0 1.8px, rgba(96, 165, 250, 0.20) 2.7px, transparent 4.8px),
+        radial-gradient(circle at 53% 28%, rgba(74, 222, 128, 0.88) 0 1.75px, rgba(74, 222, 128, 0.17) 2.5px, transparent 4.6px),
+        radial-gradient(circle at 72% 82%, rgba(167, 139, 250, 0.92) 0 1.9px, rgba(167, 139, 250, 0.21) 2.8px, transparent 5px),
+        radial-gradient(circle at 91% 39%, rgba(96, 165, 250, 0.96) 0 2px, rgba(96, 165, 250, 0.22) 2.8px, transparent 5px),
+        radial-gradient(circle at 39% 89%, rgba(248, 250, 252, 0.80) 0 1.6px, rgba(248, 250, 252, 0.14) 2.3px, transparent 4px);
+
+    filter:
+        drop-shadow(0 0 6px rgba(139, 92, 246, 0.26))
+        drop-shadow(0 0 8px rgba(59, 130, 246, 0.18));
+
+    opacity: 0.82;
+
+    will-change: opacity;
+
+    animation:
+        parpadeoEstrellas 4.2s ease-in-out infinite alternate;
+}
+
+
+/* =========================================================
+   ESTRELLAS FUGACES
+   Se mantienen exactamente con la lógica actual.
+   ========================================================= */
+
+.estrella-fugaz {
+    position: absolute;
+
+    width: 150px;
+    height: 2px;
+
+    border-radius: 999px;
+
+    opacity: 0;
+
+    transform:
+        rotate(-28deg)
+        translate3d(0, 0, 0);
+
+    transform-origin: right center;
+
+    will-change:
+        transform,
+        opacity;
+}
+
+.estrella-fugaz::after {
+    content: "";
+
+    position: absolute;
+
+    right: -1px;
+    top: 50%;
+
+    width: 6px;
+    height: 6px;
+
+    transform: translateY(-50%);
+
+    border-radius: 50%;
+}
+
+.estrella-fugaz-morada {
+    top: 16%;
+    left: 78%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(167, 139, 250, 0.18),
+            rgba(167, 139, 250, 0.90)
+        );
+
+    filter:
+        drop-shadow(0 0 6px rgba(139, 92, 246, 0.68));
+
+    animation:
+        fugazMorada 12s ease-in infinite;
+}
+
+.estrella-fugaz-morada::after {
+    background: var(--morado-claro);
+
+    box-shadow:
+        0 0 9px rgba(167, 139, 250, 0.92);
+}
+
+.estrella-fugaz-azul {
+    top: 46%;
+    left: 88%;
+
+    width: 130px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(96, 165, 250, 0.16),
+            rgba(96, 165, 250, 0.90)
+        );
+
+    filter:
+        drop-shadow(0 0 6px rgba(59, 130, 246, 0.62));
+
+    animation:
+        fugazAzul 16s ease-in infinite;
+}
+
+.estrella-fugaz-azul::after {
+    background: var(--azul-claro);
+
+    box-shadow:
+        0 0 9px rgba(96, 165, 250, 0.90);
+}
+
+.estrella-fugaz-verde {
+    top: 74%;
+    left: 74%;
+
+    width: 105px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(74, 222, 128, 0.13),
+            rgba(74, 222, 128, 0.78)
+        );
+
+    filter:
+        drop-shadow(0 0 5px rgba(34, 197, 94, 0.52));
+
+    animation:
+        fugazVerde 19s ease-in infinite;
+}
+
+.estrella-fugaz-verde::after {
+    background: var(--verde-claro);
+
+    box-shadow:
+        0 0 8px rgba(74, 222, 128, 0.82);
+}
+
+
+/* =========================================================
+   FUGACES SECUNDARIAS
+
+   Reutilizan los colores y animaciones existentes,
+   apareciendo en otras zonas y momentos.
+   ========================================================= */
+
+.estrella-fugaz-extra-uno {
+    top: 34%;
+    left: 92%;
+
+    width: 118px;
+
+    animation-duration: 13.5s;
+    animation-delay: -4s;
+}
+
+.estrella-fugaz-extra-dos {
+    top: 63%;
+    left: 84%;
+
+    width: 112px;
+
+    animation-duration: 15.5s;
+    animation-delay: -9s;
+}
+
+.estrella-fugaz-extra-tres {
+    top: 86%;
+    left: 90%;
+
+    width: 96px;
+
+    animation-duration: 17s;
+    animation-delay: -12s;
+}
+
+
+/* =========================================================
+   ANIMACIONES DE PROFUNDIDAD
+   ========================================================= */
+
+@keyframes estrellasLejanas {
+    from {
+        transform: translate3d(0, 0, 0);
+    }
+
+    to {
+        transform: translate3d(100vw, 0, 0);
+    }
+}
+
+@keyframes estrellasMedias {
+    from {
+        transform: translate3d(0, 0, 0);
+    }
+
+    to {
+        transform: translate3d(100vw, 0, 0);
+    }
+}
+
+@keyframes titileoLejano {
+    0%, 100% {
+        opacity: 0.78;
+    }
+
+    22% {
+        opacity: 0.94;
+    }
+
+    43% {
+        opacity: 0.74;
+    }
+
+    67% {
+        opacity: 0.98;
+    }
+
+    84% {
+        opacity: 0.83;
+    }
+}
+
+@keyframes titileoMedio {
+    0%, 100% {
+        opacity: 0.88;
+    }
+
+    18% {
+        opacity: 0.72;
+    }
+
+    46% {
+        opacity: 1;
+    }
+
+    71% {
+        opacity: 0.80;
+    }
+
+    89% {
+        opacity: 0.96;
+    }
+}
+
+@keyframes respiracionEstelar {
+    from {
+        opacity: 0.78;
+    }
+
+    to {
+        opacity: 0.98;
+    }
+}
+
+@keyframes parpadeoEstrellas {
+    from {
+        opacity: 0.78;
+    }
+
+    to {
+        opacity: 0.98;
+    }
+}
+
+
+/* =========================================================
+   ANIMACIONES DE ESTRELLAS FUGACES
+   ========================================================= */
+
+@keyframes fugazMorada {
+    0%,
+    66% {
+        opacity: 0;
+
+        transform:
+            rotate(-28deg)
+            translate3d(0, 0, 0);
+    }
+
+    69% {
+        opacity: 0.92;
+    }
+
+    78% {
+        opacity: 0;
+
+        transform:
+            rotate(-28deg)
+            translate3d(-72vw, 46vh, 0);
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes fugazAzul {
+    0%,
+    38% {
+        opacity: 0;
+
+        transform:
+            rotate(-31deg)
+            translate3d(0, 0, 0);
+    }
+
+    41% {
+        opacity: 0.88;
+    }
+
+    49% {
+        opacity: 0;
+
+        transform:
+            rotate(-31deg)
+            translate3d(-78vw, 43vh, 0);
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes fugazVerde {
+    0%,
+    78% {
+        opacity: 0;
+
+        transform:
+            rotate(-24deg)
+            translate3d(0, 0, 0);
+    }
+
+    81% {
+        opacity: 0.75;
+    }
+
+    89% {
+        opacity: 0;
+
+        transform:
+            rotate(-24deg)
+            translate3d(-68vw, 36vh, 0);
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+
+/* =========================================================
+   CIELO PROFUNDO · RESPONSIVIDAD Y ACCESIBILIDAD
+
+   El cielo mantiene las mismas tres capas también en tablet
+   y móvil. Solo se ajusta la intensidad para evitar que el
+   fondo compita visualmente con el contenido.
+   ========================================================= */
+
+@media (max-width: 900px) {
+    body.pagina-catalogo::before {
+        opacity: 0.84;
+    }
+
+    body.pagina-catalogo::after {
+        opacity: 0.90;
+    }
+
+    .cielo-catalogo::before {
+        opacity: 0.84;
+    }
+
+    .estrella-fugaz {
+        transform-origin: right center;
+    }
+}
+
+@media (max-width: 600px) {
+    body.pagina-catalogo::before {
+        opacity: 0.88;
+    }
+
+    body.pagina-catalogo::after {
+        opacity: 0.92;
+    }
+
+    .cielo-catalogo::before {
+        opacity: 0.80;
+    }
+
+    .estrella-fugaz {
+        width: 88px;
+    }
+
+    .estrella-fugaz-morada {
+        top: 18%;
+        left: 84%;
+    }
+
+    .estrella-fugaz-azul {
+        top: 50%;
+        left: 90%;
+    }
+
+    .estrella-fugaz-verde {
+        top: 78%;
+        left: 82%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body.pagina-catalogo::before,
+    body.pagina-catalogo::after,
+    .cielo-catalogo::before,
+    .estrella-fugaz {
+        animation: none !important;
+    }
+
+    .estrella-fugaz {
+        display: none;
+    }
+}
+
+
+/* =========================================================
+   41. FIGURAS PREMIUM - VITRINA OSCURA CON IMAGEN REAL
+   ========================================================= */
+
+.pagina-catalogo .figuras-seccion {
+    background:
+        linear-gradient(
+            180deg,
+            rgba(27, 27, 36, 0.965),
+            rgba(16, 16, 23, 0.98)
+        );
+
+    border-color: rgba(96, 165, 250, 0.20);
+
+    box-shadow:
+        0 14px 38px rgba(0, 0, 0, 0.25);
+}
+
+.pagina-catalogo .figura-card {
+    padding-top: 18px;
+
+    border-color: rgba(255, 255, 255, 0.10);
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.026),
+            rgba(255, 255, 255, 0.008)
+        ),
+        rgba(18, 18, 26, 0.985);
+}
+
+.pagina-catalogo .figura-imagen {
+    position: relative;
+
+    display: block;
+
+    width: 100%;
+    height: 280px;
+
+    margin: 0 auto 24px;
+
+    overflow: hidden;
+
+    border: 0;
+    border-radius: 13px;
+
+    background:
+        radial-gradient(
+            circle at 50% 55%,
+            rgba(139, 92, 246, 0.14),
+            transparent 56%
+        ),
+        #0f0f16;
+
+    box-shadow: none;
+}
+
+.pagina-catalogo .figura-imagen::before {
+    content: "";
+
+    position: absolute;
+    inset: 10% 12%;
+
+    z-index: 0;
+
+    border-radius: 50%;
+
+    filter: blur(22px);
+
+    opacity: 0.40;
+}
+
+.pagina-catalogo .figura-imagen-kratos::before {
+    background:
+        radial-gradient(
+            circle,
+            rgba(139, 92, 246, 0.64),
+            rgba(59, 130, 246, 0.20) 48%,
+            transparent 72%
+        );
+}
+
+.pagina-catalogo .figura-imagen-malenia::before {
+    background:
+        radial-gradient(
+            circle,
+            rgba(180, 67, 52, 0.64),
+            rgba(212, 175, 55, 0.19) 48%,
+            transparent 72%
+        );
+}
+
+.pagina-catalogo .figura-imagen-geralt::before {
+    background:
+        radial-gradient(
+            circle,
+            rgba(59, 130, 246, 0.55),
+            rgba(34, 197, 94, 0.16) 48%,
+            transparent 72%
+        );
+}
+
+.pagina-catalogo .figura-imagen img {
+    position: relative;
+
+    z-index: 1;
+
+    display: block;
+
+    width: 100%;
+    max-width: none;
+    height: 100%;
+
+    margin: 0;
+
+    object-fit: contain;
+    object-position: center;
+
+    border: 0;
+    border-radius: 0;
+
+    background: transparent;
+
+    box-shadow: none;
+
+    transition:
+        transform 0.42s ease,
+        filter 0.42s ease;
+}
+
+.pagina-catalogo .figura-card:hover .figura-imagen img {
+    transform: scale(1.035);
+
+    filter: brightness(1.055);
+}
+
+.pagina-catalogo .figura-card:nth-child(1):hover {
+    border-color: rgba(139, 92, 246, 0.55);
+
+    box-shadow:
+        0 0 16px rgba(139, 92, 246, 0.18),
+        0 16px 30px rgba(0, 0, 0, 0.32);
+}
+
+.pagina-catalogo .figura-card:nth-child(2):hover {
+    border-color: rgba(199, 126, 73, 0.58);
+
+    box-shadow:
+        0 0 16px rgba(180, 67, 52, 0.18),
+        0 16px 30px rgba(0, 0, 0, 0.32);
+}
+
+.pagina-catalogo .figura-card:nth-child(3):hover {
+    border-color: rgba(74, 167, 205, 0.55);
+
+    box-shadow:
+        0 0 16px rgba(59, 130, 246, 0.17),
+        0 16px 30px rgba(0, 0, 0, 0.32);
+}
+
+
+/* =========================================================
+   42. RESPONSIVIDAD DEL PULIDO VISUAL
+   ========================================================= */
+
+@media (max-width: 900px) {
+    .pagina-catalogo .figura-imagen {
+        height: 260px;
+    }
+}
+
+@media (max-width: 600px) {
+    .pagina-catalogo .figura-imagen {
+        height: 300px;
+    }
+}
+
+
+/* =========================================================
+   43. ACCESIBILIDAD DEL FONDO Y LAS NUEVAS IMÁGENES
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    .pagina-catalogo .vault-card-imagen img,
+    .pagina-catalogo .figura-imagen img {
+        transition: none;
+    }
+}
+
+
+/* =========================================================
+   44. PORTADA - IMÁGENES DESTACADAS UNIFORMES
+   Replica la presentación homogénea usada en el catálogo.
+   ========================================================= */
+
+.pagina-inicio .productos-destacados-grid figure {
+    overflow: hidden;
+}
+
+.pagina-inicio .productos-destacados-grid figure img {
+    display: block;
+
+    width: 100%;
+    max-width: none;
+    height: 300px;
+
+    object-fit: cover;
+    object-position: center;
+
+    border: none;
+
+    box-shadow: none;
+}
+
+.pagina-inicio .productos-destacados-grid > li:nth-child(1) figure img {
+    object-position: center 34%;
+}
+
+.pagina-inicio .productos-destacados-grid > li:nth-child(2) figure img {
+    object-position: center 34%;
+}
+
+.pagina-inicio .productos-destacados-grid > li:nth-child(3) figure img {
+    object-position: center;
+}
+
+@media (max-width: 900px) {
+    .pagina-inicio .productos-destacados-grid figure img {
+        height: 260px;
+    }
+}
+
+@media (max-width: 600px) {
+    .pagina-inicio .productos-destacados-grid figure img {
+        height: 240px;
+    }
+}

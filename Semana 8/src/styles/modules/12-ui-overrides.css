@@ -1,0 +1,1244 @@
+/* =========================================================
+   SEMANA 8 · AJUSTES DE INTERFAZ REACT
+
+   Ajustes finales aplicados sobre los componentes React reales.
+   Este módulo no redefine el cielo ni la lógica de negocio.
+   ========================================================= */
+
+:root {
+  --buy-btn-height: 56px;
+}
+
+
+/* =========================================================
+   BOTONES DE COMPRA
+
+   Unifica alineación y altura en videojuegos, Collector's Vault
+   y figuras premium sin alterar sus eventos ni comportamiento.
+   ========================================================= */
+
+.add-to-cart-button,
+.add-to-cart-button--expanded,
+.add-to-cart-button--compact,
+.product-actions .btn,
+.collector-card .btn,
+.figure-card .btn,
+.boton-agregar-carrito {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center !important;
+  gap: 0.6rem;
+
+  min-height: var(--buy-btn-height);
+
+  text-align: center !important;
+  line-height: 1.15;
+}
+
+.add-to-cart-button span,
+.add-to-cart-button strong,
+.add-to-cart-button small,
+.add-to-cart-button--expanded span,
+.add-to-cart-button--compact span,
+.product-actions .btn span,
+.collector-card .btn span,
+.figure-card .btn span {
+  text-align: center;
+}
+
+
+/* =========================================================
+   ACCIONES DEL CARRITO
+
+   Mantiene la misma jerarquía tipográfica entre Finalizar compra
+   y Vaciar carrito.
+   ========================================================= */
+
+#botonVaciarCarrito,
+#botonFinalizarCompra,
+.cart-summary__actions .btn,
+.carrito-acciones .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 54px;
+
+  font-size: 0.92rem;
+  font-weight: 800;
+  line-height: 1.15;
+  text-align: center;
+}
+
+
+/* =========================================================
+   NAVBAR REACT · DESKTOP
+
+   CatalogNavbar.jsx genera:
+   nav-collapse-bootstrap > ul > li > a / button.
+
+   Estas reglas apuntan al DOM real del componente. No se usan
+   selectores Bootstrap inexistentes como .nav-link o .nav-item.
+   ========================================================= */
+
+.nav-catalogo .nav-collapse-bootstrap > ul > li > a,
+.nav-catalogo .nav-accion-boton,
+.nav-catalogo .nav-comprar-boton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+
+  text-align: center;
+}
+
+.nav-catalogo .nav-accion-texto,
+.nav-catalogo .nav-comprar-texto {
+  text-align: center;
+}
+
+
+/* Botones equilibrados en escritorio ancho. */
+@media (min-width: 1200px) {
+  .nav-catalogo .nav-collapse-bootstrap > ul > li {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .nav-catalogo .nav-collapse-bootstrap > ul > li > a,
+  .nav-catalogo .nav-accion-boton,
+  .nav-catalogo .nav-comprar-boton {
+    width: 100%;
+    min-height: 54px;
+  }
+}
+
+
+/* En laptop/tablet horizontal pueden envolver, pero mantienen
+   anchos equivalentes por fila. */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .nav-catalogo .nav-collapse-bootstrap > ul > li {
+    flex: 1 1 calc(25% - 10px);
+    min-width: 180px;
+  }
+
+  .nav-catalogo .nav-collapse-bootstrap > ul > li > a,
+  .nav-catalogo .nav-accion-boton,
+  .nav-catalogo .nav-comprar-boton {
+    width: 100%;
+    min-height: 52px;
+  }
+}
+
+
+/* =========================================================
+   TABLET / CELULAR
+
+   Cada acción ocupa el ancho disponible y su contenido queda
+   centrado tanto visualmente como en el flujo flex.
+   ========================================================= */
+
+@media (max-width: 991.98px) {
+  .nav-catalogo .nav-collapse-bootstrap {
+    text-align: center;
+  }
+
+  .nav-catalogo .nav-collapse-bootstrap > ul {
+    align-items: stretch;
+    width: min(100%, 520px);
+    margin-inline: auto;
+  }
+
+  .nav-catalogo .nav-collapse-bootstrap > ul > li {
+    display: block;
+    align-self: stretch;
+
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .nav-catalogo .nav-collapse-bootstrap > ul > li > a,
+  .nav-catalogo .nav-accion-boton,
+  .nav-catalogo .nav-comprar-boton {
+    display: flex !important;
+    align-items: center;
+    justify-content: center !important;
+
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+
+    height: 58px;
+    min-height: 58px;
+    max-height: 58px;
+
+    margin: 0 !important;
+    padding: 0 1rem !important;
+
+    box-sizing: border-box;
+
+    line-height: 1.2;
+    text-align: center !important;
+  }
+
+  .nav-catalogo .nav-accion-texto,
+  .nav-catalogo .nav-comprar-texto {
+    margin-inline: 0;
+
+    text-align: center !important;
+  }
+
+  .add-to-cart-button,
+  .add-to-cart-button--expanded,
+  .add-to-cart-button--compact,
+  .product-actions .btn,
+  .collector-card .btn,
+  .figure-card .btn,
+  .boton-agregar-carrito {
+    width: 100%;
+
+    justify-content: center !important;
+
+    text-align: center !important;
+  }
+}
+
+
+@media (max-width: 575.98px) {
+  .nav-catalogo .nav-collapse-bootstrap > ul {
+    width: min(100%, 440px);
+  }
+
+  .nav-catalogo .nav-collapse-bootstrap > ul > li > a,
+  .nav-catalogo .nav-accion-boton,
+  .nav-catalogo .nav-comprar-boton {
+    height: 58px;
+    min-height: 58px;
+    max-height: 58px;
+    padding-inline: 1rem !important;
+  }
+
+  .add-to-cart-button,
+  .add-to-cart-button--expanded,
+  .add-to-cart-button--compact,
+  .product-actions .btn,
+  .collector-card .btn,
+  .figure-card .btn,
+  .boton-agregar-carrito {
+    min-height: 54px;
+    padding: 0.85rem 1rem;
+  }
+}
+
+/* =========================================================
+   FIGURAS PREMIUM · LAYOUT FINAL Y ESTABLE EN ESCRITORIO
+
+   Este módulo es la única autoridad de escritorio para la fila
+   precio + botón de las figuras premium.
+
+   Objetivos:
+   - conservar hover, glow, zoom y expansión;
+   - impedir que precio y botón se empujen o se superpongan;
+   - mostrar completo "Agregar al carrito";
+   - evitar diferencias según el tipo de puntero;
+   - mantener intactos tablet, celular y Collector's Vault.
+   ========================================================= */
+
+/*
+ * En escritorios más estrechos, dos columnas dan a cada card
+ * espacio suficiente para conservar precio y botón completos.
+ */
+@media (min-width: 1200px) and (max-width: 1359.98px) {
+  .pagina-catalogo .figuras-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+
+/*
+ * A partir de 1200 px, precio y acción ocupan columnas propias.
+ * Esta regla NO depende de hover/pointer: el resultado es el mismo
+ * en local y en GitHub Pages.
+ */
+@media (min-width: 1200px) {
+  .figura-compra-linea {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 190px;
+    align-items: center;
+
+    width: auto;
+
+    column-gap: 10px;
+  }
+
+  .figura-compra-linea .precio-especial-bloque {
+    min-width: 0;
+    width: auto;
+  }
+
+  .figura-compra-linea .precio-especial-normal,
+  .figura-compra-linea .precio-figura {
+    white-space: nowrap;
+  }
+
+  /* Botón compacto: conserva el icono y su posición original. */
+  .figura-compra-linea .btn-agregar-carrito {
+    box-sizing: border-box;
+
+    justify-self: end;
+
+    width: 54px;
+    min-width: 54px;
+    max-width: 54px;
+
+    margin: 0;
+    padding-inline: 10px;
+
+    gap: 0;
+
+    white-space: nowrap;
+  }
+
+  .figura-compra-linea .btn-agregar-carrito .btn-carrito-texto {
+    max-width: 0;
+
+    margin-left: 0;
+
+    opacity: 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  /*
+   * Expansión completa dentro de los 190 px que ya están reservados.
+   * Como la columna existe desde reposo, el precio nunca se mueve.
+   */
+  .figura-compra-linea .btn-agregar-carrito.is-hover,
+  .figura-compra-linea .btn-agregar-carrito.is-touching,
+  .figura-compra-linea .btn-agregar-carrito:hover,
+  .figura-compra-linea .btn-agregar-carrito:focus-visible {
+    width: 190px;
+    min-width: 190px;
+    max-width: 190px;
+
+    padding-inline: 9px;
+
+    gap: 6px;
+
+    font-size: 0.88rem;
+
+    white-space: nowrap;
+  }
+
+  .figura-compra-linea .btn-agregar-carrito.is-hover .btn-carrito-texto,
+  .figura-compra-linea .btn-agregar-carrito.is-touching .btn-carrito-texto,
+  .figura-compra-linea .btn-agregar-carrito:hover .btn-carrito-texto,
+  .figura-compra-linea .btn-agregar-carrito:focus-visible .btn-carrito-texto {
+    max-width: 150px;
+
+    margin-left: 0;
+
+    opacity: 1;
+    overflow: visible;
+
+    transform: translateX(0);
+  }
+}
+
+
+/* =========================================================
+   SEMANA 8 · FAVORITOS PERSISTENTES
+   ========================================================= */
+
+.boton-favorito {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 6;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 46px;
+  height: 46px;
+
+  color: #f8fafc;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(10, 10, 16, 0.92),
+      rgba(30, 22, 46, 0.92)
+    );
+
+  border: 1px solid rgba(196, 181, 253, 0.58);
+  border-radius: 50%;
+
+  box-shadow:
+    0 8px 22px rgba(0, 0, 0, 0.34),
+    0 0 16px rgba(139, 92, 246, 0.12);
+
+  font-size: 1.7rem;
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    color 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.boton-favorito:hover,
+.boton-favorito:focus-visible {
+  transform: translateY(-2px) scale(1.05);
+
+  border-color: rgba(244, 114, 182, 0.92);
+
+  box-shadow:
+    0 10px 26px rgba(0, 0, 0, 0.40),
+    0 0 22px rgba(244, 114, 182, 0.24);
+}
+
+.boton-favorito:focus-visible {
+  outline: 2px solid var(--verde-claro);
+  outline-offset: 3px;
+}
+
+.boton-favorito.is-favorite {
+  color: #fb7185;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(76, 5, 25, 0.94),
+      rgba(74, 20, 140, 0.92)
+    );
+
+  border-color: rgba(251, 113, 133, 0.88);
+
+  box-shadow:
+    0 10px 26px rgba(0, 0, 0, 0.42),
+    0 0 22px rgba(251, 113, 133, 0.26),
+    0 0 34px rgba(139, 92, 246, 0.12);
+}
+
+.catalog-card--favorita {
+  box-shadow:
+    0 18px 42px rgba(0, 0, 0, 0.28),
+    0 0 24px rgba(244, 114, 182, 0.06);
+}
+
+/* Favoritos ocupa el penúltimo lugar del navbar, justo antes de Comprar.
+   En escritorio replica la lógica visual del carrito:
+   texto en reposo -> corazón al mouseover/focus, sin cambiar el ancho. */
+.nav-favoritos-link {
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: visible;
+
+  border-color: rgba(244, 114, 182, 0.58) !important;
+
+  transition:
+    color 0.22s ease,
+    background 0.22s ease,
+    border-color 0.22s ease,
+    box-shadow 0.22s ease,
+    transform 0.22s ease;
+}
+
+.nav-favoritos-texto,
+.nav-favoritos-icono {
+  transition:
+    opacity 0.18s ease,
+    transform 0.22s ease,
+    filter 0.22s ease;
+}
+
+.nav-favoritos-texto {
+  white-space: nowrap;
+}
+
+.nav-favoritos-icono {
+  position: absolute;
+
+  color: #fb7185;
+  opacity: 0;
+
+  font-size: 1.34rem;
+  line-height: 1;
+
+  transform: scale(0.76);
+}
+
+.nav-favoritos-contador {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+
+  display: grid;
+  place-items: center;
+
+  min-width: 23px;
+  height: 23px;
+  padding: 0 6px;
+
+  color: #fff1f2;
+  background-color: #881337;
+
+  border: 2px solid #111118;
+  border-radius: 999px;
+
+  font-size: 0.68rem;
+  font-weight: 800;
+  line-height: 1;
+
+  box-shadow: 0 0 10px rgba(244, 63, 94, 0.18);
+
+  transition:
+    background-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.nav-favoritos-contador.tiene-favoritos {
+  background-color: #e11d48;
+
+  box-shadow:
+    0 0 12px rgba(251, 113, 133, 0.72),
+    0 0 20px rgba(244, 63, 94, 0.26);
+
+  transform: scale(1.05);
+}
+
+.nav-favoritos-link:hover,
+.nav-favoritos-link:focus-visible {
+  color: #ffe4e6 !important;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(244, 63, 94, 0.16),
+      rgba(139, 92, 246, 0.10)
+    ) !important;
+
+  border-color: rgba(251, 113, 133, 0.92) !important;
+
+  box-shadow:
+    0 0 12px rgba(244, 63, 94, 0.28),
+    0 0 22px rgba(139, 92, 246, 0.10);
+
+  transform: translateY(-1px);
+}
+
+.nav-favoritos-link:hover .nav-favoritos-texto,
+.nav-favoritos-link:focus-visible .nav-favoritos-texto {
+  opacity: 0;
+  transform: scale(0.80);
+}
+
+.nav-favoritos-link:hover .nav-favoritos-icono,
+.nav-favoritos-link:focus-visible .nav-favoritos-icono {
+  opacity: 1;
+
+  transform: scale(1.20);
+
+  filter:
+    drop-shadow(0 0 7px rgba(251, 113, 133, 0.90));
+}
+
+.nav-favoritos-link:focus-visible {
+  outline: 2px solid var(--verde-claro);
+  outline-offset: 3px;
+}
+
+/* En pantallas táctiles no dependemos de hover: el texto queda visible. */
+@media (max-width: 991.98px) {
+  .nav-favoritos-link .nav-favoritos-texto {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .nav-favoritos-link .nav-favoritos-icono {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-favoritos-link,
+  .nav-favoritos-texto,
+  .nav-favoritos-icono,
+  .nav-favoritos-contador {
+    transition: none !important;
+  }
+}
+
+/* Botón de vaciado reutilizado en el footer del offcanvas de favoritos. */
+.favoritos-boton-vaciar {
+  width: 100%;
+  min-height: 46px;
+  padding: 10px 14px;
+
+  color: #ffe4e6;
+  background: rgba(244, 63, 94, 0.035);
+
+  border: 1px solid rgba(251, 113, 133, 0.46);
+  border-radius: 10px;
+
+  font: inherit;
+  font-size: 0.86rem;
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.favoritos-boton-vaciar:hover:not(:disabled),
+.favoritos-boton-vaciar:focus-visible:not(:disabled) {
+  transform: translateY(-1px);
+  background: rgba(244, 63, 94, 0.10);
+  border-color: rgba(251, 113, 133, 0.82);
+  box-shadow: 0 0 14px rgba(251, 113, 133, 0.10);
+}
+
+.favoritos-boton-vaciar:focus-visible {
+  outline: 2px solid var(--verde-claro);
+  outline-offset: 3px;
+}
+
+.favoritos-boton-vaciar:disabled {
+  opacity: 0.38;
+  cursor: not-allowed;
+}
+
+@media (max-width: 767.98px) {
+  .boton-favorito {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+/* =========================================================
+   NAVBAR SEMANA 8 · TEXTO -> ICONO EN HOVER
+
+   Todas las acciones mantienen la misma caja visual. En escritorio
+   el texto se sustituye por un icono al pasar el mouse o enfocar.
+   En dispositivos táctiles se conserva el texto para no depender
+   de estados hover.
+   ========================================================= */
+
+.nav-catalogo .nav-menu-interactivo {
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 0;
+  min-height: 58px;
+  padding: 10px 8px !important;
+
+  line-height: 1;
+  text-align: center;
+
+  overflow: visible;
+}
+
+.nav-catalogo .nav-menu-texto,
+.nav-catalogo .nav-menu-icono {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  transition:
+    opacity 0.18s ease,
+    transform 0.18s ease,
+    filter 0.18s ease;
+}
+
+.nav-catalogo .nav-menu-texto {
+  max-width: 100%;
+
+  opacity: 1;
+
+  white-space: nowrap;
+
+  transform: scale(1);
+}
+
+.nav-catalogo .nav-menu-icono {
+  position: absolute;
+  inset: 50% auto auto 50%;
+
+  font-size: 1.38rem;
+  line-height: 1;
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  transform: translate(-50%, -50%) scale(0.72);
+}
+
+.nav-catalogo .nav-menu-icono--trofeo {
+  filter: drop-shadow(0 0 5px rgba(250, 204, 21, 0.26));
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .nav-catalogo .nav-menu-interactivo:hover .nav-menu-texto,
+  .nav-catalogo .nav-menu-interactivo:focus-visible .nav-menu-texto {
+    opacity: 0;
+
+    transform: scale(0.78);
+  }
+
+  .nav-catalogo .nav-menu-interactivo:hover .nav-menu-icono,
+  .nav-catalogo .nav-menu-interactivo:focus-visible .nav-menu-icono {
+    opacity: 1;
+
+    transform: translate(-50%, -50%) scale(1.08);
+
+    filter: drop-shadow(0 0 7px rgba(139, 92, 246, 0.50));
+  }
+
+  .nav-catalogo .nav-favoritos-link:hover .nav-menu-icono,
+  .nav-catalogo .nav-favoritos-link:focus-visible .nav-menu-icono {
+    color: #fb7185;
+
+    filter:
+      drop-shadow(0 0 7px rgba(251, 113, 133, 0.90))
+      drop-shadow(0 0 14px rgba(244, 63, 94, 0.38));
+  }
+
+  .nav-catalogo .nav-menu-interactivo:hover .nav-menu-icono--trofeo,
+  .nav-catalogo .nav-menu-interactivo:focus-visible .nav-menu-icono--trofeo {
+    filter:
+      drop-shadow(0 0 6px rgba(250, 204, 21, 0.82))
+      drop-shadow(0 0 13px rgba(245, 158, 11, 0.34));
+  }
+}
+
+/* Nueve acciones en la misma fila: compactamos sin deformar el diseño. */
+@media (min-width: 1200px) {
+  .nav-catalogo .nav-collapse-bootstrap > ul {
+    gap: 10px;
+  }
+
+  .nav-catalogo .nav-collapse-bootstrap > ul > li {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .nav-catalogo .nav-collapse-bootstrap > ul > li > a,
+  .nav-catalogo .nav-accion-boton,
+  .nav-catalogo .nav-comprar-boton {
+    width: 100%;
+    min-width: 0;
+    min-height: 58px;
+
+    padding-inline: 8px !important;
+
+    font-size: clamp(0.80rem, 0.92vw, 0.98rem);
+  }
+
+  .nav-catalogo .nav-comprar-texto,
+  .nav-catalogo .nav-menu-texto {
+    white-space: nowrap;
+  }
+}
+
+/* Táctil: texto estable, sin depender de hover/focus visual. */
+@media (hover: none), (pointer: coarse), (max-width: 991.98px) {
+  .nav-catalogo .nav-menu-texto {
+    opacity: 1 !important;
+
+    transform: none !important;
+  }
+
+  .nav-catalogo .nav-menu-icono {
+    display: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-catalogo .nav-menu-texto,
+  .nav-catalogo .nav-menu-icono {
+    transition: none !important;
+  }
+}
+
+/* =========================================================
+   SEMANA 8 · OFFCANVAS DE FAVORITOS + FAVORITOS ESPECIALES
+   ========================================================= */
+
+/* Collector necesita contexto de posicionamiento para el corazón. */
+.pagina-catalogo .vault-carrusel-bootstrap .vault-card {
+  position: relative;
+}
+
+.boton-favorito--especial {
+  top: 14px;
+  right: 14px;
+  z-index: 12;
+}
+
+.vault-card--favorita,
+.figura-card--favorita {
+  border-color: rgba(244, 114, 182, 0.36) !important;
+  box-shadow:
+    0 18px 42px rgba(0, 0, 0, 0.30),
+    0 0 24px rgba(244, 114, 182, 0.10) !important;
+}
+
+.offcanvas-favoritos {
+  --bs-offcanvas-width: min(520px, 92vw);
+
+  color: var(--blanco);
+
+  background:
+    radial-gradient(
+      circle at 0% 0%,
+      rgba(244, 114, 182, 0.10),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 100% 100%,
+      rgba(139, 92, 246, 0.10),
+      transparent 36%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(20, 20, 30, 0.995),
+      rgba(11, 12, 18, 0.995)
+    );
+
+  border-right: 1px solid rgba(244, 114, 182, 0.28);
+  box-shadow: 18px 0 50px rgba(0, 0, 0, 0.44);
+}
+
+.favoritos-offcanvas-titulo h2 {
+  margin: 2px 0 0;
+  color: #c4b5fd;
+  font-size: clamp(1.45rem, 4vw, 2rem);
+}
+
+.favoritos-offcanvas-body {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.favoritos-offcanvas-estado {
+  margin: 0 0 14px;
+  padding: 12px 14px;
+
+  color: var(--gris-claro);
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(244, 114, 182, 0.12);
+  border-radius: 12px;
+
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.favoritos-offcanvas-lista {
+  min-height: 0;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 4px;
+  padding-bottom: 18px;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+}
+
+.favoritos-offcanvas-vacio {
+  display: grid;
+  place-items: center;
+  gap: 10px;
+
+  min-height: 260px;
+  padding: 24px;
+
+  color: var(--gris-claro);
+  text-align: center;
+
+  border: 1px dashed rgba(244, 114, 182, 0.24);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.018);
+}
+
+.favoritos-offcanvas-vacio > span {
+  color: #fb7185;
+  font-size: 3rem;
+  line-height: 1;
+  filter: drop-shadow(0 0 12px rgba(251, 113, 133, 0.34));
+}
+
+.favoritos-offcanvas-vacio strong {
+  color: var(--blanco);
+  font-size: 1.05rem;
+}
+
+.favoritos-offcanvas-vacio p {
+  max-width: 340px;
+  margin: 0;
+  line-height: 1.55;
+}
+
+.favoritos-offcanvas-item {
+  display: grid;
+  grid-template-columns: 96px minmax(0, 1fr);
+  align-items: center;
+  gap: 12px;
+
+  /* Anula el article { height: 100% } heredado de Home. */
+  height: auto;
+  min-height: 0;
+  align-self: start;
+
+  margin: 0 0 10px;
+  padding: 10px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(139, 92, 246, 0.055),
+      rgba(244, 114, 182, 0.035)
+    ),
+    rgba(255, 255, 255, 0.018);
+
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  border-radius: 14px;
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.favoritos-offcanvas-item:hover {
+  transform: translateY(-2px);
+  border-color: rgba(244, 114, 182, 0.28);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.24);
+}
+
+.favoritos-offcanvas-item figure {
+  width: 96px;
+  height: 96px;
+  margin: 0;
+  overflow: hidden;
+
+  border-radius: 11px;
+  background: rgba(0, 0, 0, 0.28);
+}
+
+.favoritos-offcanvas-item figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.favoritos-offcanvas-item-info {
+  min-width: 0;
+}
+
+.favoritos-offcanvas-categoria {
+  margin: 0 0 4px;
+  color: #a78bfa;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.055em;
+  text-transform: uppercase;
+}
+
+.favoritos-offcanvas-item h3 {
+  margin: 0 0 6px;
+  color: var(--blanco);
+  font-size: 0.96rem;
+  line-height: 1.2;
+}
+
+.favoritos-offcanvas-precio {
+  display: block;
+  margin-bottom: 8px;
+  color: #4ade80;
+  font-size: 0.96rem;
+}
+
+.favoritos-offcanvas-item-acciones {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.favoritos-offcanvas-agregar,
+.favoritos-offcanvas-quitar,
+.carrito-ultima-compra {
+  min-height: 38px;
+  padding: 8px 11px;
+
+  color: var(--blanco);
+  background: rgba(255, 255, 255, 0.028);
+
+  border: 1px solid rgba(148, 163, 184, 0.20);
+  border-radius: 9px;
+
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.18s ease,
+    background 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease,
+    opacity 0.18s ease;
+}
+
+.favoritos-offcanvas-agregar {
+  border-color: rgba(52, 211, 153, 0.48);
+}
+
+.favoritos-offcanvas-agregar:hover,
+.favoritos-offcanvas-agregar:focus-visible {
+  transform: translateY(-1px);
+  background: rgba(34, 197, 94, 0.10);
+  border-color: rgba(52, 211, 153, 0.82);
+  box-shadow: 0 0 14px rgba(52, 211, 153, 0.14);
+}
+
+.favoritos-offcanvas-quitar {
+  border-color: rgba(251, 113, 133, 0.42);
+}
+
+.favoritos-offcanvas-quitar:hover,
+.favoritos-offcanvas-quitar:focus-visible {
+  transform: translateY(-1px);
+  background: rgba(244, 63, 94, 0.09);
+  border-color: rgba(251, 113, 133, 0.80);
+  box-shadow: 0 0 14px rgba(251, 113, 133, 0.12);
+}
+
+.favoritos-offcanvas-footer {
+  padding: 14px 16px max(14px, env(safe-area-inset-bottom));
+
+  background: linear-gradient(
+    180deg,
+    rgba(22, 20, 31, 0.998),
+    rgba(12, 12, 18, 1)
+  );
+
+  border-top: 1px solid rgba(244, 114, 182, 0.18);
+  box-shadow: 0 -12px 30px rgba(0, 0, 0, 0.36);
+}
+
+.favoritos-offcanvas-footer .favoritos-boton-vaciar {
+  width: 100%;
+}
+
+.favoritos-boton-agregar-todos {
+  width: 100%;
+  min-height: 46px;
+  margin-top: 9px;
+  padding: 10px 14px;
+
+  color: #dcfce7;
+  background: linear-gradient(
+    135deg,
+    rgba(34, 197, 94, 0.16),
+    rgba(16, 185, 129, 0.08)
+  );
+
+  border: 1px solid rgba(52, 211, 153, 0.58);
+  border-radius: 10px;
+
+  font: inherit;
+  font-size: 0.86rem;
+  font-weight: 850;
+  letter-spacing: 0.01em;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.18s ease,
+    background 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease,
+    opacity 0.18s ease;
+}
+
+.favoritos-boton-agregar-todos:hover:not(:disabled),
+.favoritos-boton-agregar-todos:focus-visible:not(:disabled) {
+  transform: translateY(-1px);
+  background: linear-gradient(
+    135deg,
+    rgba(34, 197, 94, 0.25),
+    rgba(16, 185, 129, 0.13)
+  );
+  border-color: rgba(74, 222, 128, 0.92);
+  box-shadow:
+    0 0 0 1px rgba(74, 222, 128, 0.10),
+    0 0 18px rgba(34, 197, 94, 0.18);
+}
+
+.favoritos-boton-agregar-todos:disabled {
+  opacity: 0.36;
+  cursor: not-allowed;
+}
+
+.favoritos-offcanvas-footer > p {
+  margin: 9px 0 0;
+  color: var(--gris);
+  font-size: 0.72rem;
+  line-height: 1.4;
+  text-align: center;
+}
+
+body.favoritos-abierto .carrito-flotante-movil {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Última compra ahora pertenece al carrito, no a Favoritos. */
+.carrito-ultima-compra {
+  width: 100%;
+  margin-top: 8px;
+
+  color: #ddd6fe;
+  border-color: rgba(139, 92, 246, 0.42);
+}
+
+.carrito-ultima-compra:hover:not(:disabled),
+.carrito-ultima-compra:focus-visible:not(:disabled) {
+  transform: translateY(-1px);
+  background: rgba(139, 92, 246, 0.10);
+  border-color: rgba(167, 139, 250, 0.78);
+  box-shadow: 0 0 14px rgba(139, 92, 246, 0.14);
+}
+
+.carrito-ultima-compra:disabled {
+  opacity: 0.38;
+  cursor: not-allowed;
+}
+
+/* =========================================================
+   NAVBAR · GLOW INDIVIDUAL POR ACCIÓN
+   ========================================================= */
+
+@media (hover: hover) and (pointer: fine) {
+  .nav-catalogo .nav-menu-interactivo:hover .nav-icono--buscar,
+  .nav-catalogo .nav-menu-interactivo:focus-visible .nav-icono--buscar {
+    filter:
+      drop-shadow(0 0 7px rgba(34, 211, 238, 0.94))
+      drop-shadow(0 0 15px rgba(6, 182, 212, 0.34));
+  }
+
+  .nav-catalogo .nav-menu-interactivo:hover .nav-icono--inicio,
+  .nav-catalogo .nav-menu-interactivo:focus-visible .nav-icono--inicio {
+    filter:
+      drop-shadow(0 0 7px rgba(251, 146, 60, 0.96))
+      drop-shadow(0 0 15px rgba(249, 115, 22, 0.34));
+  }
+
+  .nav-catalogo .nav-menu-interactivo:hover .nav-icono--videojuegos,
+  .nav-catalogo .nav-menu-interactivo:focus-visible .nav-icono--videojuegos {
+    filter:
+      drop-shadow(0 0 7px rgba(167, 139, 250, 0.98))
+      drop-shadow(0 0 15px rgba(139, 92, 246, 0.38));
+  }
+
+  .nav-catalogo .nav-menu-interactivo:hover .nav-icono--recomendaciones,
+  .nav-catalogo .nav-menu-interactivo:focus-visible .nav-icono--recomendaciones {
+    filter:
+      drop-shadow(0 0 6px rgba(255, 255, 255, 0.88))
+      drop-shadow(0 0 13px rgba(226, 232, 240, 0.30));
+  }
+
+  .nav-catalogo .nav-menu-interactivo:hover .nav-icono--collector,
+  .nav-catalogo .nav-menu-interactivo:focus-visible .nav-icono--collector {
+    filter:
+      drop-shadow(0 0 7px rgba(34, 211, 238, 0.98))
+      drop-shadow(0 0 15px rgba(8, 145, 178, 0.36));
+  }
+
+  .nav-catalogo .nav-menu-interactivo:hover .nav-icono--figuras,
+  .nav-catalogo .nav-menu-interactivo:focus-visible .nav-icono--figuras {
+    filter:
+      drop-shadow(0 0 7px rgba(250, 204, 21, 0.98))
+      drop-shadow(0 0 15px rgba(245, 158, 11, 0.40));
+  }
+
+  .nav-catalogo .nav-menu-interactivo:hover .nav-icono--contacto,
+  .nav-catalogo .nav-menu-interactivo:focus-visible .nav-icono--contacto {
+    filter:
+      drop-shadow(0 0 6px rgba(203, 213, 225, 0.78))
+      drop-shadow(0 0 13px rgba(148, 163, 184, 0.26));
+  }
+}
+
+/* Favoritos y Comprar conservan color de acción incluso en reposo. */
+.nav-catalogo .nav-favoritos-link {
+  border-color: rgba(244, 114, 182, 0.62) !important;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(244, 63, 94, 0.07),
+      rgba(139, 92, 246, 0.045)
+    ) !important;
+}
+
+.nav-catalogo .nav-comprar-boton {
+  border-color: rgba(52, 211, 153, 0.64) !important;
+}
+
+@media (max-width: 575.98px) {
+  .offcanvas-favoritos {
+    --bs-offcanvas-width: 100vw;
+  }
+
+  .favoritos-offcanvas-item {
+    grid-template-columns: 88px minmax(0, 1fr);
+    gap: 11px;
+  }
+
+  .favoritos-offcanvas-item figure {
+    width: 88px;
+    height: 96px;
+  }
+
+  .favoritos-offcanvas-item-acciones {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .favoritos-offcanvas-agregar,
+  .favoritos-offcanvas-quitar {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .favoritos-offcanvas-item,
+  .favoritos-offcanvas-agregar,
+  .favoritos-offcanvas-quitar,
+  .favoritos-boton-agregar-todos,
+  .carrito-ultima-compra {
+    transition: none !important;
+  }
+}

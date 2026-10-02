@@ -1,17 +1,17 @@
 <div align="center">
 
-<img src="Semana%207/assets/img/logo_natgamez.png" alt="Logo de NatGamez" width="240">
+<img src="Semana%208/assets/img/logo_natgamez.png" alt="Logo de NatGamez" width="240">
 
 <h1>🎮 NATGAMEZ</h1>
 
-<h3>Desarrollo Frontend I · PFY2201 · Semana 7</h3>
+<h3>Desarrollo Frontend I · PFY2201 · Semana 8</h3>
 
 <p><strong>eCommerce gamer interactivo desarrollado con React + Vite</strong></p>
 
 <p>
   <a href="https://ladyred145.github.io/NatGamez/">🌐 Ver sitio</a>
   &nbsp;·&nbsp;
-  <a href="Semana%207/">⚛️ Código Semana 7</a>
+  <a href="Semana%208/">⚛️ Código Semana 8</a>
   &nbsp;·&nbsp;
   <a href="https://github.com/LadyRed145/NatGamez">📁 Repositorio</a>
 </p>
@@ -24,7 +24,7 @@
 
 **NatGamez** es una tienda ficticia de videojuegos desarrollada progresivamente durante la asignatura **Desarrollo Frontend I (PFY2201)**.
 
-En **Semana 7**, el proyecto evoluciona a una arquitectura **React + Vite**, conservando la identidad visual construida en las semanas anteriores y reorganizando la aplicación mediante componentes funcionales, Hooks personalizados, props, eventos React y renderizado condicional.
+En **Semana 8**, el proyecto consolida la arquitectura **React + Vite** y refuerza la gestión de estados, los efectos secundarios y el renderizado condicional. La versión incorpora **persistencia con `localStorage` para carrito, favoritos y última compra**, permitiendo conservar el estado relevante incluso después de recargar o cerrar el navegador.
 
 | 🏠 Portada | 🎮 Videojuegos | 💎 Collector's Vault | 🏆 Figuras premium | 🛒 Productos comprables |
 |:---:|:---:|:---:|:---:|:---:|
@@ -38,9 +38,14 @@ En **Semana 7**, el proyecto evoluciona a una arquitectura **React + Vite**, con
 - 🔎 Búsqueda por múltiples criterios.
 - 🎯 Recomendaciones y modo **Sorpréndeme**.
 - 🛒 Carrito unificado para todos los productos.
+- 💾 Persistencia del carrito con `localStorage`.
+- ♥️ Favoritos persistentes para videojuegos, Collector's Vault y figuras premium.
+- 🛍️ Offcanvas lateral de favoritos con **Agregar**, **Quitar**, **Vaciar favoritos** y **🛒 Agregar todos**.
+- 🧾 Persistencia y recuperación de la última compra.
+- ✅ Feedback condicional `✓ Agregado` al añadir productos.
 - 💎 Collector's Vault.
 - 🏆 Figuras premium.
-- 🧾 Comprobante de compra.
+- ✨ Navbar con iconos y glow contextual en escritorio.
 - 📱 Paridad funcional en PC, tablet y celular.
 - 🚀 Publicación mediante GitHub Pages.
 
@@ -75,7 +80,7 @@ Incluye:
 Los **12 videojuegos** se cargan desde una única fuente de datos:
 
 ```text
-Semana 7/assets/data/productos.json
+Semana 8/assets/data/productos.json
 ```
 
 La carga se realiza mediante **Fetch API** y es administrada por `useCatalog.js`.
@@ -176,6 +181,52 @@ El carrito permite:
 - finalizar una compra;
 - generar el comprobante.
 
+### 💾 Persistencia del carrito
+
+La Semana 8 agrega persistencia local mediante `localStorage`. El Hook `useCart.js`:
+
+- recupera el carrito guardado al iniciar la aplicación;
+- conserva únicamente IDs y cantidades válidas;
+- sincroniza automáticamente los cambios del carrito;
+- elimina la clave persistida cuando el carrito queda vacío o se finaliza la compra;
+- maneja contenido inválido o almacenamiento bloqueado sin detener la aplicación;
+- mantiene los datos maestros del producto en `productos.json`, evitando duplicarlos en el navegador.
+
+La clave utilizada es:
+
+```text
+natgamez:carrito:v1
+```
+
+Prueba esperada: agregar productos, recargar la página y comprobar que el carrito conserva las mismas cantidades.
+
+---
+
+## ♥️ Favoritos persistentes
+
+NatGamez incorpora una wishlist persistente que funciona sobre los **21 productos comprables** de la tienda:
+
+- 12 videojuegos;
+- 3 ediciones de Collector's Vault;
+- 6 figuras premium.
+
+Los favoritos se administran desde un **offcanvas lateral izquierdo** y permiten:
+
+- marcar o desmarcar productos mediante el corazón;
+- conservar la selección después de recargar o cerrar el navegador;
+- agregar un producto favorito directamente al carrito;
+- quitar productos individualmente;
+- vaciar toda la wishlist;
+- usar **🛒 Agregar todos** para enviar una unidad de cada favorito al carrito.
+
+La clave utilizada es:
+
+```text
+natgamez:favoritos:v1
+```
+
+El estado visual se refleja también en el contador de **Favoritos** de la navegación.
+
 ---
 
 ## 💎 Collector's Vault
@@ -213,6 +264,8 @@ Todas reutilizan el componente:
 AddToCartButton
 ```
 
+Tanto las ediciones Collector como las figuras premium pueden añadirse también a **Favoritos**, compartiendo la misma persistencia y flujo del catálogo principal.
+
 ---
 
 ## 🧾 Comprobante de compra
@@ -238,6 +291,14 @@ VoucherContent
 VoucherItem
 ```
 
+La compra más reciente también se conserva en `localStorage` con la clave:
+
+```text
+natgamez:ultima-compra:v1
+```
+
+Desde el carrito puede volver a abrirse mediante **🧾 Ver última compra** sin repetir el checkout.
+
 ---
 
 ## 🧭 Navegación
@@ -260,6 +321,13 @@ App.jsx
 | 💎 Collector's Vault | `/NatGamez/?vista=catalogo#coleccionistas` |
 | 🏆 Figuras premium | `/NatGamez/?vista=catalogo#figuras` |
 
+Además de las rutas, la navegación incluye dos acciones persistentes:
+
+- ♥ **Favoritos** → abre el offcanvas izquierdo.
+- 🛒 **Comprar** → abre el offcanvas derecho del carrito.
+
+En escritorio, las opciones del navbar sustituyen el texto por iconos con glow contextual al pasar el cursor. En dispositivos táctiles se mantiene el texto para no depender de `hover`.
+
 La navegación utiliza `URLSearchParams`, por lo que funciona correctamente en GitHub Pages sin requerir React Router.
 
 ---
@@ -269,7 +337,7 @@ La navegación utiliza `URLSearchParams`, por lo que funciona correctamente en G
 ### Componentes principales
 
 ```text
-Semana 7/src/components/
+Semana 8/src/components/
 ├── home/
 ├── layout/
 ├── catalog/
@@ -283,7 +351,7 @@ Semana 7/src/components/
 ### Hooks personalizados
 
 ```text
-Semana 7/src/hooks/
+Semana 8/src/hooks/
 ├── useCatalog.js
 ├── useCatalogSearch.js
 ├── useCart.js
@@ -295,8 +363,8 @@ Semana 7/src/hooks/
 
 | Hook | Responsabilidad |
 |---|---|
-| `useState` | Estado de interfaz, carrito y navegación |
-| `useEffect` | Carga de datos y efectos de navegación |
+| `useState` | Estado de interfaz, carrito, favoritos, última compra y navegación |
+| `useEffect` | Carga de datos, persistencia local y efectos de navegación |
 | `useLayoutEffect` | Clase visual activa por página |
 | `useMemo` | Filtros, cálculos y totales |
 | `useCallback` | Operaciones reutilizables |
@@ -325,6 +393,9 @@ React modifica la interfaz según el estado actual:
 - resultados disponibles;
 - búsqueda sin coincidencias;
 - carrito vacío o con productos;
+- favoritos vacíos o con productos guardados;
+- contador persistente de favoritos;
+- disponibilidad de última compra;
 - formularios con errores;
 - recomendación disponible;
 - comprobante generado.
@@ -339,8 +410,8 @@ NatGamez mantiene paridad funcional en los tres escenarios principales:
 |---|---|---|
 | Catálogo multicolumna | Columnas adaptadas | Una columna |
 | Hover completo | Interacción táctil | Interacción táctil |
-| Navbar horizontal | Navbar colapsable | Menú hamburguesa |
-| Offcanvas lateral | Offcanvas adaptado | Carrito flotante |
+| Navbar horizontal con iconos hover | Navbar colapsable | Menú hamburguesa simétrico |
+| Favoritos izquierdo + carrito derecho | Offcanvas adaptados | Offcanvas a pantalla útil + carrito flotante |
 | Vault horizontal | Vault responsive | Vault apilado |
 
 ---
@@ -367,8 +438,9 @@ NatGamez/
 ├── Semana 4/
 ├── Semana 5/
 ├── Semana 6/                 # respaldo histórico
+├── Semana 7/                 # respaldo React anterior
 │
-└── Semana 7/
+└── Semana 8/                 # versión actual
     ├── assets/
     │   ├── data/
     │   │   └── productos.json
@@ -388,6 +460,7 @@ NatGamez/
         │   ├── layout/
         │   ├── catalog/
         │   ├── cart/
+        │   ├── favorites/
         │   ├── recommendations/
         │   ├── collector/
         │   ├── figures/
@@ -429,6 +502,13 @@ NatGamez/
 | Recomendaciones | ✅ |
 | Sorpréndeme | ✅ |
 | Carrito y cantidades | ✅ |
+| Persistencia del carrito tras recargar | ✅ |
+| Favoritos persistentes | ✅ |
+| Favoritos en videojuegos, Vault y figuras | ✅ |
+| Offcanvas lateral de favoritos | ✅ |
+| `🛒 Agregar todos` desde favoritos | ✅ |
+| Persistencia de última compra | ✅ |
+| Feedback condicional `✓ Agregado` | ✅ |
 | Total del carrito | ✅ |
 | Collector's Vault | ✅ |
 | Figuras premium | ✅ |
@@ -444,6 +524,7 @@ NatGamez/
 
 ```text
 0 imports rotos
+Persistencia local de carrito, favoritos y última compra activa
 Build Vite correcto
 ```
 
@@ -517,7 +598,7 @@ https://ladyred145.github.io/NatGamez/
 
 <div align="center">
 
-### 🎮 NatGamez · Semana 7
+### 🎮 NatGamez · Semana 8
 
 **Desarrollo Frontend I · PFY2201**
 

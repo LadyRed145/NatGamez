@@ -1,0 +1,53 @@
+/* =========================================================
+   NATGAMEZ · SEMANA 8 · INTEGRACIÓN REACT
+
+   Ajustes estrictamente necesarios para integrar la interfaz
+   heredada con el árbol de componentes React sin alterar su
+   identidad visual.
+
+   IMPORTANTE:
+   Las figuras premium ya no se dimensionan desde este módulo.
+   Su layout final vive exclusivamente en 12-ui-overrides.css.
+   ========================================================= */
+
+#root {
+  min-height: 100vh;
+}
+
+#root > .carrito-flotante-movil {
+  position: fixed;
+}
+
+.nav-buscador-panel[hidden] {
+  display: none !important;
+}
+
+
+/* =========================================================
+   COLLECTOR'S VAULT · BOTÓN DE COMPRA EN ESCRITORIO
+
+   Se conserva el comportamiento aprobado del Vault.
+   Las figuras premium se controlan por separado para evitar
+   conflictos de cascada entre ambos componentes.
+   ========================================================= */
+
+@media (min-width: 1200px) {
+  .vault-compra-linea .btn-agregar-carrito.is-hover,
+  .vault-compra-linea .btn-agregar-carrito.is-touching,
+  .vault-compra-linea .btn-agregar-carrito:hover,
+  .vault-compra-linea .btn-agregar-carrito:focus-visible {
+    width: 215px;
+    min-width: 215px;
+    max-width: 215px;
+  }
+}
+
+
+/* =========================================================
+   CARRITO OFFCANVAS
+   ========================================================= */
+
+.offcanvas-natgamez .carrito-vaciar {
+  font-size: 0.88rem;
+  font-weight: 800;
+}

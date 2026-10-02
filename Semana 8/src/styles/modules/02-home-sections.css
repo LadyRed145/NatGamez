@@ -1,0 +1,912 @@
+/* =========================================================
+   12. SECCIONES
+   ========================================================= */
+
+section {
+    margin-bottom: 35px;
+
+    padding: 30px;
+
+    background-color: rgba(21, 21, 29, 0.96);
+
+    border: 1px solid var(--borde);
+    border-radius: 14px;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.35);
+}
+
+section h2 {
+    margin-bottom: 20px;
+
+    padding-bottom: 10px;
+
+    color: var(--morado-claro);
+
+    font-size: 2rem;
+
+    border-bottom: 2px solid var(--morado);
+}
+
+section p {
+    margin-bottom: 15px;
+
+    color: var(--gris-claro);
+}
+
+
+/* =========================================================
+   13. SECCIÓN DE PRODUCTOS
+   ========================================================= */
+
+#productos {
+    border-color: rgba(139, 92, 246, 0.40);
+}
+
+.productos-destacados-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 25px;
+
+    margin: 0 !important;
+
+    list-style: none;
+}
+
+.productos-destacados-grid > li {
+    margin: 0;
+}
+
+
+/* =========================================================
+   14. TARJETAS DE PRODUCTOS
+   ========================================================= */
+
+article {
+    height: 100%;
+
+    margin-bottom: 20px;
+
+    padding: 22px;
+
+    background-color: rgba(27, 27, 37, 0.97);
+
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        background-color 0.3s ease;
+}
+
+article:hover {
+    background-color: #20202c;
+
+    border-color: var(--morado);
+
+    transform: translateY(-7px);
+
+    box-shadow:
+        0 0 12px rgba(139, 92, 246, 0.55),
+        0 0 25px rgba(59, 130, 246, 0.20);
+}
+
+article h3 {
+    margin-bottom: 12px;
+
+    color: var(--azul-claro);
+
+    font-size: 1.35rem;
+}
+
+article p {
+    margin-bottom: 10px;
+
+    color: var(--gris-claro);
+}
+
+
+/* =========================================================
+   15. SELECTOR AVANZADO NTH-CHILD
+   ========================================================= */
+
+.productos-destacados-grid > li:nth-child(1) article {
+    border-top: 3px solid var(--morado);
+}
+
+.productos-destacados-grid > li:nth-child(2) article {
+    border-top: 3px solid var(--azul);
+}
+
+.productos-destacados-grid > li:nth-child(3) article {
+    border-top: 3px solid var(--verde);
+}
+
+/* Hover cromático coherente con la etiqueta de cada destacado */
+
+.productos-destacados-grid > li:nth-child(1) article:hover {
+    border-color: var(--morado);
+
+    box-shadow:
+        0 0 12px rgba(139, 92, 246, 0.72),
+        0 0 28px rgba(139, 92, 246, 0.30);
+}
+
+.productos-destacados-grid > li:nth-child(2) article:hover {
+    border-color: var(--azul-claro);
+
+    box-shadow:
+        0 0 12px rgba(96, 165, 250, 0.72),
+        0 0 28px rgba(59, 130, 246, 0.30);
+}
+
+.productos-destacados-grid > li:nth-child(3) article:hover {
+    border-color: var(--verde);
+
+    box-shadow:
+        0 0 12px rgba(34, 197, 94, 0.68),
+        0 0 28px rgba(34, 197, 94, 0.26);
+}
+
+
+/* =========================================================
+   16. FIGURAS E IMÁGENES
+   ========================================================= */
+
+figure {
+    margin: 18px 0;
+
+    text-align: center;
+}
+
+figure img {
+    display: block;
+
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+
+    margin: 0 auto;
+
+    border: 2px solid rgba(139, 92, 246, 0.40);
+    border-radius: 10px;
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+figure img:hover {
+    border-color: var(--azul);
+
+    transform: scale(1.02);
+
+    box-shadow:
+        0 0 15px rgba(59, 130, 246, 0.45);
+}
+
+figcaption {
+    margin-top: 10px;
+
+    color: var(--gris);
+
+    font-size: 0.9rem;
+}
+
+
+/* =========================================================
+   17. ENLACES DEL CONTENIDO
+   ========================================================= */
+
+main a {
+    color: var(--azul-claro);
+
+    text-decoration: none;
+
+    transition:
+        color 0.3s ease,
+        text-shadow 0.3s ease;
+}
+
+main a:hover {
+    color: var(--verde-claro);
+
+    text-shadow:
+        0 0 8px rgba(34, 197, 94, 0.50);
+}
+
+
+/* =========================================================
+   18. LISTAS GENERALES
+   ========================================================= */
+
+main ul,
+main ol {
+    margin: 15px 0 15px 25px;
+}
+
+main li {
+    margin-bottom: 8px;
+
+    color: var(--gris-claro);
+}
+
+
+/* =========================================================
+   19. BOTONES
+   ========================================================= */
+
+button,
+.boton {
+    display: inline-block;
+
+    margin-top: 10px;
+
+    padding: 12px 22px;
+
+    color: var(--blanco);
+
+    background-color: var(--morado);
+
+    border: 1px solid var(--morado-claro);
+    border-radius: 8px;
+
+    font-family: inherit;
+    font-size: 1rem;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.3s ease,
+        border-color 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+button:hover,
+.boton:hover {
+    background-color: var(--azul);
+
+    border-color: var(--verde-claro);
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 0 12px rgba(59, 130, 246, 0.55);
+}
+
+button:focus,
+.boton:focus {
+    outline: 2px solid var(--verde-claro);
+    outline-offset: 3px;
+}
+
+
+/* =========================================================
+   20. FOOTER / CONTACTO
+   ========================================================= */
+
+footer {
+    margin-top: 36px;
+
+    padding: 30px 6%;
+
+    color: var(--gris);
+
+    background-color: rgba(21, 21, 29, 0.97);
+
+    border-top: 1px solid var(--borde);
+
+    text-align: left;
+}
+
+footer::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 3px;
+
+    background: linear-gradient(
+        90deg,
+        var(--morado),
+        var(--azul),
+        var(--verde),
+        var(--azul),
+        var(--morado)
+    );
+
+    background-size: 300% 100%;
+
+    animation:
+        rgbMovimiento 6s linear infinite;
+}
+
+footer h2 {
+    margin-bottom: 14px;
+
+    color: var(--morado-claro);
+
+    font-size: 1.65rem;
+
+    text-shadow:
+        0 0 8px rgba(139, 92, 246, 0.35);
+}
+
+footer p {
+    margin-bottom: 8px;
+
+    font-size: 0.98rem;
+    line-height: 1.55;
+}
+
+footer ul {
+    margin: 10px 0;
+
+    padding: 0;
+
+    list-style: none;
+}
+
+footer li {
+    margin-bottom: 4px;
+
+    font-size: 0.98rem;
+}
+
+footer a {
+    color: var(--verde-claro);
+
+    text-decoration: none;
+
+    transition:
+        color 0.3s ease,
+        text-shadow 0.3s ease;
+}
+
+footer a:hover {
+    color: var(--azul-claro);
+
+    text-shadow:
+        0 0 8px rgba(59, 130, 246, 0.40);
+}
+
+
+/* =========================================================
+   21. SELECTORES DE ATRIBUTO
+   ========================================================= */
+
+a[href^="http"] {
+    font-weight: bold;
+}
+
+a[href^="mailto:"] {
+    color: var(--verde-claro);
+}
+
+
+/* =========================================================
+   22. SELECCIÓN DE TEXTO
+   ========================================================= */
+
+::selection {
+    color: var(--blanco);
+
+    background-color: var(--morado);
+}
+
+
+/* =========================================================
+   23. RESPONSIVIDAD - TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    header {
+        grid-template-columns:
+            minmax(200px, 260px)
+            minmax(260px, 1fr);
+
+        column-gap: 35px;
+
+        padding: 35px 6%;
+    }
+
+    .logo-natgamez {
+        max-width: 250px;
+    }
+
+    header p {
+        font-size: 1rem;
+    }
+
+    main {
+        width: 94%;
+
+        padding: 15px;
+    }
+
+    nav {
+        width: 94%;
+
+        padding: 0 15px;
+    }
+
+    .productos-destacados-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    section {
+        padding: 25px;
+    }
+
+    footer {
+        padding: 28px 5%;
+    }
+}
+
+
+/* =========================================================
+   24. RESPONSIVIDAD - MÓVIL
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    header {
+        grid-template-columns: 1fr;
+
+        row-gap: 22px;
+
+        padding: 28px 20px;
+    }
+
+    .logo-natgamez {
+        width: min(250px, 88%);
+
+        max-width: none;
+
+        justify-self: start;
+    }
+
+    header p {
+        max-width: 100%;
+
+        font-size: 0.95rem;
+    }
+
+    nav {
+        width: 96%;
+
+        margin: 25px auto 30px;
+
+        padding: 0 10px;
+    }
+
+    nav h2 {
+        font-size: 1.6rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+
+        gap: 10px;
+    }
+
+    nav li {
+        width: 100%;
+
+        text-align: center;
+    }
+
+    nav a {
+        width: 100%;
+        max-width: 280px;
+
+        text-align: center;
+    }
+
+    main {
+        width: 96%;
+
+        margin: 25px auto;
+
+        padding: 10px;
+    }
+
+    section {
+        margin-bottom: 25px;
+
+        padding: 20px;
+    }
+
+    section h2 {
+        font-size: 1.6rem;
+    }
+
+    .productos-destacados-grid {
+        grid-template-columns: 1fr;
+    }
+
+    article {
+        padding: 18px;
+    }
+
+    figure img {
+        max-width: 100%;
+    }
+
+    footer {
+        padding: 24px 20px;
+    }
+
+    footer h2 {
+        font-size: 1.45rem;
+    }
+
+    footer p,
+    footer li {
+        font-size: 0.95rem;
+    }
+
+    body::before {
+        opacity: 0.78;
+    }
+
+    body::after {
+        opacity: 0.68;
+    }
+}
+
+
+/* =========================================================
+   25. ACCESIBILIDAD
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    header::after,
+    footer::before,
+    body::before,
+    body::after {
+        animation: none;
+    }
+
+    article,
+    nav a,
+    figure img,
+    button,
+    .boton,
+    footer a,
+    .logo-natgamez {
+        transition: none;
+    }
+}
+
+/* =========================================================
+   26. EVOLUCIÓN SEMANA 6 - ELEMENTOS COMUNES
+   ========================================================= */
+
+.etiqueta-seccion {
+    display: inline-block;
+
+    margin-bottom: 10px;
+
+    color: var(--verde-claro);
+
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+}
+
+.hero-texto {
+    max-width: 650px;
+}
+
+.hero-texto .etiqueta-seccion {
+    margin-bottom: 12px;
+}
+
+
+.bienvenida-evolucion {
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(139, 92, 246, 0.12),
+            rgba(59, 130, 246, 0.06) 48%,
+            rgba(34, 197, 94, 0.08)
+        ),
+        rgba(21, 21, 29, 0.96);
+}
+
+.bienvenida-evolucion::after {
+    content: "";
+
+    position: absolute;
+
+    top: -70px;
+    right: -70px;
+
+    width: 180px;
+    height: 180px;
+
+    pointer-events: none;
+
+    border: 1px solid rgba(96, 165, 250, 0.18);
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 60px rgba(59, 130, 246, 0.14),
+        inset 0 0 40px rgba(139, 92, 246, 0.10);
+}
+
+
+/* =========================================================
+   27. CATEGORÍAS CON REDIRECCIÓN AL CATÁLOGO
+   ========================================================= */
+
+.seccion-categorias {
+    border-color: rgba(59, 130, 246, 0.30);
+}
+
+.categorias-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 18px;
+
+    margin: 22px 0 0 !important;
+
+    list-style: none;
+}
+
+.categorias-grid li {
+    margin: 0;
+}
+
+.categorias-grid a {
+    display: flex;
+    flex-direction: column;
+
+    min-height: 170px;
+
+    padding: 22px;
+
+    color: var(--gris-claro);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(139, 92, 246, 0.10),
+            rgba(59, 130, 246, 0.04)
+        );
+
+    border: 1px solid var(--borde);
+    border-radius: 14px;
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        background-color 0.3s ease;
+}
+
+.categorias-grid a:hover {
+    border-color: var(--azul-claro);
+
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 12px 28px rgba(0, 0, 0, 0.34),
+        0 0 22px rgba(59, 130, 246, 0.14);
+}
+
+.categorias-grid strong {
+    margin-bottom: 6px;
+
+    color: var(--blanco);
+
+    font-size: 1.15rem;
+}
+
+.categorias-grid span:last-child {
+    color: var(--gris);
+
+    font-size: 0.92rem;
+}
+
+.categoria-icono {
+    margin-bottom: 18px;
+
+    font-size: 1.8rem;
+}
+
+
+/* =========================================================
+   28. DESTACADOS Y CTA DEL CATÁLOGO
+   ========================================================= */
+
+.destacados-principal {
+    border-color: rgba(139, 92, 246, 0.40);
+}
+
+.seccion-encabezado {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: end;
+
+    gap: 28px;
+
+    margin-bottom: 24px;
+}
+
+.seccion-encabezado h2 {
+    margin-bottom: 0;
+}
+
+.seccion-encabezado > p {
+    max-width: 420px;
+
+    margin: 0;
+
+    text-align: right;
+}
+
+
+.badge-producto {
+    display: inline-block;
+
+    width: fit-content;
+
+    margin-bottom: 12px;
+
+    padding: 6px 9px;
+
+    color: var(--blanco);
+
+    background-color: rgba(139, 92, 246, 0.90);
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 999px;
+
+    font-size: 0.67rem;
+    font-weight: 900;
+    letter-spacing: 0.8px;
+}
+
+.badge-azul {
+    background-color: rgba(59, 130, 246, 0.92);
+}
+
+.badge-verde {
+    background-color: rgba(34, 197, 94, 0.82);
+}
+
+.precio-destacado {
+    margin-top: auto;
+}
+
+.cta-catalogo {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 28px;
+
+    margin-top: 28px;
+
+    padding: 24px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(139, 92, 246, 0.12),
+            rgba(59, 130, 246, 0.08),
+            rgba(34, 197, 94, 0.06)
+        );
+
+    border: 1px solid rgba(96, 165, 250, 0.24);
+    border-radius: 12px;
+}
+
+.cta-catalogo h3 {
+    margin-bottom: 6px;
+
+    color: var(--blanco);
+
+    font-size: 1.35rem;
+}
+
+.cta-catalogo p {
+    margin-bottom: 0;
+}
+
+.cta-catalogo .boton {
+    flex-shrink: 0;
+
+    margin-top: 0;
+}
+
+
+/* =========================================================
+   29. FOOTER FLEXBOX - SEMANA 6
+   ========================================================= */
+
+.footer-contenido {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-start;
+
+    gap: 50px;
+
+    max-width: 1200px;
+
+    margin: 0 auto;
+}
+
+.footer-bloque {
+    flex: 1;
+}
+
+.redes-sociales {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    margin-top: 12px !important;
+}
+
+.redes-sociales li {
+    margin: 0;
+}
+
+.redes-sociales a {
+    display: inline-block;
+
+    padding: 8px 12px;
+
+    background-color: rgba(34, 197, 94, 0.05);
+
+    border: 1px solid rgba(74, 222, 128, 0.22);
+    border-radius: 8px;
+}
+
+.footer-inferior {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 20px;
+
+    max-width: 1200px;
+
+    margin: 26px auto 0;
+
+    padding-top: 18px;
+
+    border-top: 1px solid var(--borde);
+}
